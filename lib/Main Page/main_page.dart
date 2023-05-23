@@ -53,22 +53,180 @@ class MainPage extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            Container(
+              padding: EdgeInsets.only(left: 45,right: 45),
+              child: Column(
+                children: [
+                   Text("Hi Taha",
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 35,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black
+                    ),
+                  ),
+                  Text("Let's Go Travel",
+                    style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 35,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black
+                    ),
+                  ),
+                ],
+              ),
+            ),
             //Add Search Box
-            TextField(decoration: new InputDecoration(
-                icon: Icon(Icons.search),
-              // SvgPicture.asset(
-              //   'assets/images/search.svg',
-              //   height: 35.16,
-              //   width: 35.23,
-              //   color: grey1,
-              // ),
-              labelText: "Explore",
-              labelStyle: TextStyle(
-                fontSize: 25,
-                fontFamily: 'Poppins',
-                color: grey1
-              )
-            ),)
+            Container(
+              padding: EdgeInsets.only(left: 45,right: 45),
+              child: TextField(decoration: new InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.search_rounded,
+                    size: 35,
+                  ),
+                  hintText: "Explore",
+                  hintStyle: TextStyle(
+                      fontSize: 25,
+                      fontFamily: 'Poppins',
+                      color: grey1
+                  )
+              ),),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  height: 87,
+                  width: 82,
+                  padding: const EdgeInsets.only(top: 3,bottom: 4),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(
+                          width: 1,
+                          color: green2
+                      )
+                  ),
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(child: SvgPicture.asset('assets/images/bus.svg',
+                        height: 60,
+                        width: 50,
+                      ),),
+                      Container(
+                        height: 18,
+                        child: const Text("Bus",
+                          style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 87,
+                  width: 82,
+                  padding: const EdgeInsets.only(top: 8,bottom: 3.97),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 1,
+                      color: green2
+                    )
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                    children: [
+                      InkWell(child: SvgPicture.asset('assets/images/international.svg',
+                      height: 50,
+                          width: 50,
+                          ),),
+                      Container(
+                        height: 17,
+                        child: const Text("International",
+                          style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 87,
+                  width: 82,
+                  padding: const EdgeInsets.only(top: 8,bottom: 4),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(
+                          width: 1,
+                          color: green2
+                      )
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(child: SvgPicture.asset('assets/images/local.svg',
+                        height: 50,
+                        width: 50,
+                      ),),
+                      Container(
+                        height: 19,
+                        child: const Text("Local",
+                          style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 87,
+                  width: 82,
+                  padding: EdgeInsets.only(top: 3,bottom: 5),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(
+                          width: 1,
+                          color: green2
+                      )
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(child: SvgPicture.asset('assets/images/train.svg',
+                        height: 60,
+                        width: 50,
+                      ),),
+                      Container(
+                        height: 15,
+                        child: const Text("Train",
+                          style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+
+              ],
+            )
           ],
         ),
         bottomNavigationBar: buildNavigationBar(),
@@ -79,7 +237,7 @@ class MainPage extends StatelessWidget {
   Container buildNavigationBar() {
     return Container(
         color: green2,
-        padding: EdgeInsets.only(top: 23.98,bottom: 23.98),
+        padding: const EdgeInsets.only(top: 23.98,bottom: 23.98),
         child : Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
