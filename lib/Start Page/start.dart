@@ -11,13 +11,13 @@ class start extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               child: Image.asset(
                 "assets/images/earth.png",
               ),
             ),
-            const SizedBox(height: 50),
             const Text(
               "LOGO",
               style: TextStyle(
@@ -26,7 +26,6 @@ class start extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 15),
             const Text(
               "Booking Any Where",
               style: TextStyle(
@@ -35,7 +34,6 @@ class start extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 10),
             const Text(
               "Flight , Train , Bus",
               style: TextStyle(
@@ -44,11 +42,7 @@ class start extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 50),
             MyButton().buildElevatedButton("Let's Start"),
-            const SizedBox(
-              height: 100,
-            ),
             const Text(
               "version 1.0",
               style: TextStyle(
@@ -80,7 +74,7 @@ class MyButton {
       ),
       child: Text(
         text,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 28,
           fontFamily: 'Poppins',
           color: Colors.black,
