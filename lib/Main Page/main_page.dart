@@ -50,6 +50,27 @@ class MainPage extends StatelessWidget {
             ),
           )
         ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            //Add Search Box
+            TextField(decoration: new InputDecoration(
+                icon: Icon(Icons.search),
+              // SvgPicture.asset(
+              //   'assets/images/search.svg',
+              //   height: 35.16,
+              //   width: 35.23,
+              //   color: grey1,
+              // ),
+              labelText: "Explore",
+              labelStyle: TextStyle(
+                fontSize: 25,
+                fontFamily: 'Poppins',
+                color: grey1
+              )
+            ),)
+          ],
+        ),
         bottomNavigationBar: buildNavigationBar(),
       ),
     );
