@@ -8,42 +8,80 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Container Height Example',
       home: Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          centerTitle: true,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(
-                'assets/images/avatar.png',
-              height: 50,
-                width: 50,
-              ),
-              Container(
-                margin: EdgeInsets.only(bottom: 15),
-                child: Text(
-                  'Logo',
-                  style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 35,
-                      color: Colors.black
-                  ),),
-              ),
-              SvgPicture.asset(
-                  'assets/images/menu.svg',
-                height: 50,
+          // centerTitle: true,
+            toolbarHeight: 92,
+            title: Container(
+              padding: EdgeInsets.all(0),
+            margin: EdgeInsets.all(0),
+            // padding: EdgeInsets.only(top: 41,left:30,right: 30 ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(
+                  'assets/images/avatar.png',
+                  height: 50,
                   width: 50,
-              )
-            ],
-          ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 15),
+
+                  child: Text(
+                      'Logo',
+                      style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 35,
+                          color: Colors.black
+                      )),
+                ),
+                SvgPicture.asset(
+                  'assets/images/menu.svg',
+                  height: 50,
+                  width: 50,
+                )
+              ],
+            ),
+          )
         ),
+        bottomNavigationBar: buildNavigationBar(),
       ),
     );
+  }
+
+  Container buildNavigationBar() {
+    return Container(
+        color: green2,
+        padding: EdgeInsets.only(top: 23.98,bottom: 23.98),
+        child : Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SvgPicture.asset(
+              'assets/images/ticket.svg',
+              height: 34.03,
+              width: 33.23,
+              color: Colors.white,
+            ),
+            SvgPicture.asset(
+              'assets/images/home.svg',
+              height: 38.93,
+              width: 38.41,
+              color: green3,
+            ),
+            SvgPicture.asset(
+              'assets/images/setting.svg',
+              height: 34.0,
+              width: 29.75,
+              color: Colors.white,
+            ),
+          ],
+        ),
+      );
   }
 }
