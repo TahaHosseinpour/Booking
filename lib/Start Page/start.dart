@@ -31,7 +31,7 @@ class start extends StatelessWidget {
               "Booking Any Where",
               style: TextStyle(
                 fontSize: 24,
-                fontFamily: 'Inter',
+                fontFamily: 'Poppins',
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -40,29 +40,12 @@ class start extends StatelessWidget {
               "Flight , Train , Bus",
               style: TextStyle(
                 fontSize: 24,
-                fontFamily: 'Inter',
+                fontFamily: 'Poppins',
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 50),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: yellow1,
-                  fixedSize: const Size(358, 100),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(70),
-                  )),
-              child: const Text(
-                "Let's Start",
-                style: TextStyle(
-                  fontSize: 28,
-                  fontFamily: 'Poppins',
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            MyButton().buildElevatedButton("Let's Start"),
             const SizedBox(
               height: 100,
             ),
@@ -75,6 +58,33 @@ class start extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+
+  }
+class MyButton {
+  ElevatedButton buildElevatedButton(String text) {
+    return ElevatedButton(
+      onPressed: () {
+        // اجرای عملیات مناسب
+      },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: yellow1,
+        fixedSize: const Size(358, 100),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(70),
+        ),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 28,
+          fontFamily: 'Poppins',
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
