@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:booking/Information/colors.dart';
 
 class start extends StatelessWidget {
   const start({super.key});
@@ -47,7 +48,7 @@ class start extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.yellow,
+                  backgroundColor: yellow1,
                   fixedSize: const Size(358, 100),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(70),
