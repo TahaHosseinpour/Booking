@@ -226,6 +226,66 @@ class MainPage extends StatelessWidget {
                 ),
 
               ],
+            ),
+            Container(
+              padding: EdgeInsets.only(left:28,right: 168),
+              child: Text(
+                "Recommended",
+                style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 30,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 60,bottom:30,left: 27),
+              height: 350,
+              color: green1,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                
+                children: [
+
+
+
+
+                  Padding(padding: EdgeInsets.only(right: 18),
+                    child:
+                    Container(
+                      height: 260,
+                      width: 170,
+
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 90,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(25),
+                                    topRight: Radius.circular(25)
+                                )
+                            ),
+                            child: Text("Yazd is the Best"),
+                          ),
+                          Container(
+                            height: 170,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(25),
+                                    bottomRight: Radius.circular(25)
+                                )
+                            ),
+                            child: Image.asset(
+                              "earth.png"
+                            ),
+                          )
+                        ],
+                      ),
+                    ),),
+                ],
+              ),
             )
           ],
         ),
