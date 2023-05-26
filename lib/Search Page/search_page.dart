@@ -35,7 +35,7 @@ class SearchPage extends StatelessWidget{
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SvgPicture.asset(
+                          SvgPicture.asset(''
 
                           )
                         ],
