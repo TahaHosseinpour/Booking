@@ -278,7 +278,7 @@ class MainPage extends StatelessWidget {
                                 )
                             ),
                             child: Image.asset(
-                              "earth.png"
+                              "assets/images/landscape.png"
                             ),
                           )
                         ],
