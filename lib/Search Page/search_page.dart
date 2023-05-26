@@ -32,14 +32,88 @@ class SearchPage extends StatelessWidget{
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TwoButton(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SvgPicture.asset(''
 
-                          )
-                        ],
-                      )
+                      Container(
+                        width: 297,
+                        margin: EdgeInsets.only(left: 30,right: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width:45,
+                              padding: EdgeInsets.only(top: 20),
+                              child: SvgPicture.asset(
+                                'assets/images/From.svg'
+                              ),
+                            ),
+                            Container(
+                              width: 238,
+                              padding: EdgeInsets.only(top: 3.5),
+                              child: DropdownSearch<String> (
+                                popupProps: const PopupProps.menu(
+                                  showSelectedItems: true,
+                                  showSearchBox: true,
+                                ),
+                                items: const ["Brazil,Brasilia", "China,Beijing", "France,Paris", "Italia,Rome", "Canada,Vancouver",],
+                                dropdownDecoratorProps: DropDownDecoratorProps(
+                                  dropdownSearchDecoration: InputDecoration(
+                                    labelText: "From",
+                                    labelStyle: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 12,
+                                        color: grey2
+                                    ),
+                                    contentPadding: EdgeInsets.only(bottom: 5),
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 297,
+                        margin: EdgeInsets.only(left: 30,right: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width:45,
+                              padding: EdgeInsets.only(top: 20),
+                              child: SvgPicture.asset(
+                                  'assets/images/To.svg'
+                              ),
+                            ),
+                            Container(
+                              width: 238,
+                              padding: EdgeInsets.only(top: 3.5),
+                              child: DropdownSearch<String> (
+                                popupProps: const PopupProps.menu(
+                                  showSelectedItems: true,
+                                  showSearchBox: true,
+                                ),
+                                items: const ["Brazil,Brasilia", "China,Beijing", "France,Paris", "Italia,Rome", "Canada,Vancouver",],
+                                dropdownDecoratorProps: DropDownDecoratorProps(
+                                  dropdownSearchDecoration: InputDecoration(
+                                    labelText: "To",
+                                    labelStyle: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 12,
+                                        color: grey2
+                                    ),
+                                    contentPadding: EdgeInsets.only(bottom: 5),
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+
+
+
                     ],
                   ),
                 ),
