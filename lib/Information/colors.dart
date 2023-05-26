@@ -9,6 +9,7 @@ final Color green3 = Color.fromARGB(255, 44, 120, 115);
 
 final Color grey1 = Color.fromARGB(255, 198, 198, 198);
 final Color grey2 = Color.fromARGB(255, 135, 135, 135);
+final Color grey3 = Color.fromARGB(255, 242, 242, 242);
 
 
 final Color myColor = Color.fromARGB(255, 255, 216, 0); // رنگ HEX شما
