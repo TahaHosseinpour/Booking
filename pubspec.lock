@@ -94,6 +94,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  flutter_range_slider:
+    dependency: "direct main"
+    description:
+      name: flutter_range_slider
+      sha256: "2d5937695dd01c447084c6bb9c8ca0efcdd2838a9cc0dcd70b426e3736dbd22b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.5.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -273,5 +281,5 @@ packages:
     source: hosted
     version: "6.2.2"
 sdks:
-  dart: ">=2.19.0 <4.0.0"
+  dart: ">=2.19.0 <3.0.0"
   flutter: ">=3.7.0-0"
