@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:checkbox_grouped/checkbox_grouped.dart';
 
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Information/colors.dart';
@@ -127,6 +128,7 @@ class _FilterState extends State<Filter> {
                                 fontSize: 20,
                               ),
                             ),
+
                             // SizedBox(
                             //   width: 296,
                             //   child: ListView(
