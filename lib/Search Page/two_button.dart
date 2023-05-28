@@ -24,6 +24,9 @@ class _TwoButtonState extends State<TwoButton> {
   }
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
 
       // decoration: BoxDecoration(
@@ -33,14 +36,14 @@ class _TwoButtonState extends State<TwoButton> {
 
         borderRadius: BorderRadius.circular(40),
         child: Container(
-          width: 358,
-          height: 50,
+          width: screenWidth * 0.83,
+          height: screenHeight * 0.053,
             color: yellow2,
           child: Row(
             children: [
               Container(
-                width: 179,
-                height: 50,
+                width: screenWidth * 0.415,
+                height: screenHeight * 0.053,
                 child: ElevatedButton(
                   onPressed: () {
                     if(!leftButtonIsActive){
@@ -67,8 +70,8 @@ class _TwoButtonState extends State<TwoButton> {
                 ),
               ),
               Container(
-                width: 179,
-                height: 50,
+                width: screenWidth * 0.415,
+                height: screenHeight * 0.053,
                 child: ElevatedButton(
                   onPressed: () {
                     if(!rightButtonIsActive){
