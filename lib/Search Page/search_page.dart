@@ -22,9 +22,7 @@ class SearchPage extends StatelessWidget{
         body: Container(
           child: Column(
             children: [
-              Container(
-                child: Image.asset('assets/images/train.png'),
-              ),
+              Back(),
               Center(
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
@@ -122,9 +120,11 @@ class SearchPage extends StatelessWidget{
                         ),
                         Container(
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
                                 child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
                                       child: Text("Adult",
@@ -145,15 +145,16 @@ class SearchPage extends StatelessWidget{
                                           color: grey2,
                                         ),
                                       ),
-                                      margin: EdgeInsets.only(right: 96.5),
+                                     // margin: EdgeInsets.only(right: 96.5),
                                     ),
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 3.6,),
+                              //SizedBox(height: 3.6,),
                               Container(
                                 margin: EdgeInsets.only(right: 62),
                                 child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
                                       child: SvgPicture.asset('assets/images/Passengers.svg',
@@ -206,7 +207,7 @@ class SearchPage extends StatelessWidget{
                                           ],
                                         )
                                     ),
-                                    SizedBox(width: 35,),
+                                    //SizedBox(width: 35,),
                                     Container(
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(10),
@@ -336,6 +337,27 @@ class SearchPage extends StatelessWidget{
       ),
     );
   }
+}
+Widget Back(){
+  return Stack(
+      alignment: Alignment.topLeft,
+      children: <Widget>[
+  Image(
+  image: new AssetImage('assets/images/train.png'),
+  ),
+        Padding(
+          padding: EdgeInsets.all(8),
+          child: InkWell(
+            child: SvgPicture.asset('assets/images/arrow_back.svg',
+            width: 26,
+              height: 38,
+            ),
+            onTap: (){
+            },
+          ),
+        ),
+  ],
+  );
 }
 
 
