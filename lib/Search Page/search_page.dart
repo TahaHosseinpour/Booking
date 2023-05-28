@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:booking/Start%20Page/start.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import'package:flutter/material.dart';
@@ -22,7 +24,7 @@ class SearchPage extends StatelessWidget{
         body: Container(
           child: Column(
             children: [
-              Back(),
+              Back(context),
               Center(
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
@@ -134,9 +136,9 @@ class SearchPage extends StatelessWidget{
                                           color: grey2,
                                         ),
                                       ),
-                                      // margin: EdgeInsets.only(left: 107.5),
+                                       margin: EdgeInsets.only(left: screenWidth * 0.28),
                                     ),
-                                    SizedBox(width: 93,),
+                                   // SizedBox(width: screenWidth * 0.216,),
                                     Container(
                                       child: Text("child",
                                         style: TextStyle(
@@ -145,14 +147,14 @@ class SearchPage extends StatelessWidget{
                                           color: grey2,
                                         ),
                                       ),
-                                     // margin: EdgeInsets.only(right: 96.5),
+                                      margin: EdgeInsets.only(right: screenWidth * 0.224 ),
                                     ),
                                   ],
                                 ),
                               ),
-                              //SizedBox(height: 3.6,),
+                              SizedBox(height: screenHeight * 0.003,),
                               Container(
-                                margin: EdgeInsets.only(right: 62),
+                                margin: EdgeInsets.only(right: screenWidth * 0.144),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
@@ -161,9 +163,9 @@ class SearchPage extends StatelessWidget{
                                         height: 30,
                                         width: 30,
                                       ),
-                                      margin: EdgeInsets.only(left: 32.5),
+                                      margin: EdgeInsets.only(left: screenWidth * 0.075),
                                     ),
-                                    SizedBox(width: 10.5,),
+                                   // SizedBox(width: screenWidth * 0.024,),
                                     Container(
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(10),
@@ -175,15 +177,16 @@ class SearchPage extends StatelessWidget{
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Container(
-                                              child: IconButton(
-                                                onPressed: (){
+                                              child:InkWell(
+                                                onTap: (){
 
                                                 },
-                                                icon:  SvgPicture.asset('assets/images/plus.svg',
+                                                child:  SvgPicture.asset('assets/images/minus.svg',
                                                   height: 20,
                                                   width: 20,
                                                 ),
                                               ),
+                                              margin: EdgeInsets.only(left: 2.22),
                                             ),
                                             Container(
                                               child: Text('2',
@@ -194,20 +197,21 @@ class SearchPage extends StatelessWidget{
                                               ),
                                             ),
                                             Container(
-                                              child: IconButton(
-                                                onPressed: (){
+                                              child:  InkWell(
+                                                onTap: (){
 
                                                 },
-                                                icon:  SvgPicture.asset('assets/images/minus.svg',
+                                                child:  SvgPicture.asset('assets/images/plus.svg',
                                                   height: 20,
                                                   width: 20,
                                                 ),
-                                              ),
+                                            ),
+                                              margin: EdgeInsets.only(right: 2.22),
                                             ),
                                           ],
                                         )
                                     ),
-                                    //SizedBox(width: 35,),
+                                   // SizedBox(width: screenWidth * 0.081,),
                                     Container(
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(10),
@@ -219,18 +223,19 @@ class SearchPage extends StatelessWidget{
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Container(
-                                              child: IconButton(
-                                                onPressed: (){
+                                              child: InkWell(
+                                                onTap: (){
 
                                                 },
-                                                icon:  SvgPicture.asset('assets/images/plus.svg',
+                                                child:  SvgPicture.asset('assets/images/minus.svg',
                                                   height: 20,
                                                   width: 20,
                                                 ),
                                               ),
+                                              margin: EdgeInsets.only(left: 2.22),
                                             ),
                                             Container(
-                                              child: Text('2',
+                                              child: Text('0',
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                   fontFamily: 'Poppins',
@@ -238,15 +243,16 @@ class SearchPage extends StatelessWidget{
                                               ),
                                             ),
                                             Container(
-                                              child: IconButton(
-                                                onPressed: (){
+                                              child: InkWell(
+                                                onTap: (){
 
                                                 },
-                                                icon:  SvgPicture.asset('assets/images/minus.svg',
+                                                child:  SvgPicture.asset('assets/images/plus.svg',
                                                   height: 20,
                                                   width: 20,
                                                 ),
                                               ),
+                                              margin: EdgeInsets.only(right: 2.22),
                                             ),
                                           ],
                                         )
@@ -260,67 +266,82 @@ class SearchPage extends StatelessWidget{
 
                         ),
                         Container(
-                          child: Row(
+                          child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                  margin: EdgeInsets.only(left: 70),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        child: SvgPicture.asset('assets/images/Departure.svg',
-                                          width: 16,
-                                          height: 17,
-                                        ),
-                                      ),
-                                      SizedBox(width: 5,),
-                                      Container(
-                                        child: Text("Departure",
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            fontFamily: 'Poppins',
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  )
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                        margin: EdgeInsets.only(left: screenWidth * 0.16),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Container(
+                                              child: SvgPicture.asset('assets/images/Departure.svg',
+                                                width: 16,
+                                                height: 17,
+                                              ),
+                                            ),
+                                            SizedBox(width: 5,),
+                                            Container(
+                                              child: Text("Departure",
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontFamily: 'Poppins',
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                    ),
+                                    Container(
+                                        margin: EdgeInsets.only(right: screenWidth * 0.27),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              child: SvgPicture.asset('assets/images/Departure.svg',
+                                                width: 16,
+                                                height: 17,
+                                              ),
+                                            ),
+                                            SizedBox(width: 5,),
+                                            Container(
+                                              child: Text("Back",
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontFamily: 'Poppins',
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                    ),
+                                  ],
+                                ),
                               ),
+                              SizedBox(height:screenHeight * 0.009 ,),
                               Container(
-                                  margin: EdgeInsets.only(right: 110),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        child: SvgPicture.asset('assets/images/Departure.svg',
-                                          width: 16,
-                                          height: 17,
-                                        ),
-                                      ),
-                                      SizedBox(width: 5,),
-                                      Container(
-                                        child: Text("Back",
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            fontFamily: 'Poppins',
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  )
+                                width: 239,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      child:   MyDatePickerTextField(),
+                                      margin: EdgeInsets.only(left: screenWidth * 0.02),
+                                    ),
+                                    Container(
+                                      child: MyDatePickerTextField(),
+                                      margin: EdgeInsets.only(left: screenWidth * 0.01),
+                                    )
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                         ),
-                        Container(
-                          width: 239,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              MyDatePickerTextField(),
-                              MyDatePickerTextField()
-                            ],
-                          ),
-                        ),
-                        MyButton().buildElevatedButton("Search Trains"),
+                        MyButton().buildElevatedButton("Search Trains", context),
 
 
 
@@ -338,23 +359,26 @@ class SearchPage extends StatelessWidget{
     );
   }
 }
-Widget Back(){
+Widget Back(BuildContext context){
   return Stack(
       alignment: Alignment.topLeft,
       children: <Widget>[
   Image(
+    height: MediaQuery.of(context).size.height * 0.375,
+    width:  MediaQuery.of(context).size.width,
   image: new AssetImage('assets/images/train.png'),
   ),
         Padding(
-          padding: EdgeInsets.all(8),
-          child: InkWell(
+          padding: EdgeInsets.only(top: 30, left: 40),
+          child:InkWell(
+            onTap: (){
+              print("salam");
+            },
             child: SvgPicture.asset('assets/images/arrow_back.svg',
-            width: 26,
+              width: 26,
               height: 38,
             ),
-            onTap: (){
-            },
-          ),
+          )
         ),
   ],
   );
