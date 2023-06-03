@@ -116,7 +116,7 @@ class SearchPage extends StatelessWidget{
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -354,7 +354,7 @@ class SearchPage extends StatelessWidget{
             ],
           ),
         ),
-        bottomNavigationBar: buildNavigationBar(),
+        bottomNavigationBar: buildNavigationBar(context),
       ),
     );
   }

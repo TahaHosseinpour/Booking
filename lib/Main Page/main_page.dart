@@ -290,7 +290,7 @@ class MainPage extends StatelessWidget {
             )
           ],
         ),
-        bottomNavigationBar: buildNavigationBar(),
+        bottomNavigationBar: buildNavigationBar(context),
       ),
     );
   }

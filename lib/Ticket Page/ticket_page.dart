@@ -250,7 +250,7 @@ class TicketPage extends StatelessWidget {
             )
           ],
         ),
-        bottomNavigationBar: buildNavigationBar(),
+        bottomNavigationBar: buildNavigationBar(context),
       )
 
     );
