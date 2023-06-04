@@ -3,14 +3,13 @@ import 'package:booking/Information/widgets.dart';
 import 'package:booking/Start%20Page/start.dart';
 import 'package:flutter/cupertino.dart';
 
-Container Price(BuildContext context){
+Container Price(BuildContext context, String botton_name){
   final screenWidth = MediaQuery.of(context).size.width;
   final screenHeight = MediaQuery.of(context).size.height;
   return Container(
-    height:screenHeight * 0.29
-    ,
+    height:screenHeight * 0.29,
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+      borderRadius: BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
       color: yellow2,
     ),
     child: Column(
@@ -24,7 +23,7 @@ Container Price(BuildContext context){
                 width: screenWidth * 0.22,
                 height: screenHeight * 0.048,
                 child: FittedBox(
-                  child: Text('Price:',
+                  child: Text('Price :',
                     style: TextStyle(
                       fontSize: 34,
                       fontFamily: 'Poppins',
@@ -52,7 +51,7 @@ Container Price(BuildContext context){
             ],
           ),
         ),
-        MyButton().buildElevatedButton('Continue', context),
+        MyButton().buildElevatedButton(botton_name, context),
         buildNavigationBar(context),
       ],
     ),

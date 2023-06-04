@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Passengers%20Page/passenger_information.dart';
 import 'package:booking/Passengers%20Page/price.dart';
@@ -100,7 +99,7 @@ class _PassengersPageState extends State<PassengersPage>{
                     ),
                   ),
                   Container(
-                    child: SvgPicture.asset('assets/images/arrow_back_right.svg',
+                    child: SvgPicture.asset('assets/images/arrow_right_black.svg',
                       height: screenHeight * 0.02,
                       width: screenWidth * 0.02,
                     ),
@@ -112,7 +111,7 @@ class _PassengersPageState extends State<PassengersPage>{
                     ),
                   ),
                   Container(
-                    child: SvgPicture.asset('assets/images/arrow_back_right.svg',
+                    child: SvgPicture.asset('assets/images/arrow_right_black.svg',
                       height: screenHeight * 0.02,
                       width: screenWidth * 0.02,
                     ),
@@ -272,7 +271,7 @@ class _PassengersPageState extends State<PassengersPage>{
       ),
           ],
         ),
-        bottomNavigationBar: Price(context),
+        bottomNavigationBar: Price(context, "Continue"),
       ),
     );
     throw UnimplementedError();
