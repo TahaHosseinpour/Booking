@@ -5,7 +5,6 @@ import 'package:booking/Information/widgets.dart';
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Filter%20Page/range_side.dart';
 import 'package:booking/Filter Page/checkBox.dart';
-import 'package:booking/Start Page/start.dart';
 
 class Filter extends StatefulWidget {
   const Filter({super.key});
@@ -41,8 +40,8 @@ class _FilterState extends State<Filter> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 146,
+                  SizedBox(
+                    width: screenWidth * 0.337,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -52,7 +51,7 @@ class _FilterState extends State<Filter> {
                             "assets/images/arrow_back.svg",
                           ),
                         ),
-                        Text(
+                        const Text(
                           "Filter",
                           style: TextStyle(
                               fontFamily: 'Poppins',
@@ -83,24 +82,25 @@ class _FilterState extends State<Filter> {
                   width: screenWidth * 0.83,
                   height: screenHeight * 0.78,
                   color: grey3,
-                  padding: EdgeInsets.only(top: 35 ),
+                  padding: EdgeInsets.only(top: screenHeight * 0.037 ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        padding: EdgeInsets.only(left: 31),
+                        padding: EdgeInsets.only(left: screenWidth * 0.072),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                           children: [
-                            Container(
-                              width: 296,
-                              height: 78,
+                            SizedBox(
+                              width: screenWidth * 0.685,
+                              height: screenHeight * 0.1,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  const Text(
                                     "Departure Time",
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
@@ -112,13 +112,13 @@ class _FilterState extends State<Filter> {
                                 ],
                               ),
                             ),
-                            Container(
-                              width: 296,
-                              height: 78,
+                            SizedBox(
+                              width: screenWidth * 0.685,
+                              height: screenHeight * 0.1,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  const Text(
                                     "Back Time",
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
@@ -130,95 +130,89 @@ class _FilterState extends State<Filter> {
                                 ],
                               ),
                             ),
-                            Container(
-                              // margin: EdgeInsets.only(top: 28),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(bottom : 10),
-                                    child: Text(
-                                      "Class",
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 20,
-                                      ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(bottom : screenHeight * 0.010),
+                                  child: const Text(
+                                    "Class",
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 20,
                                     ),
                                   ),
-                                  Container(
-                                    margin: EdgeInsets.only(left: 8),
-                                    child: Column(
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(bottom: 8),
-                                          child:checkBox(lable: 'First Class'),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(bottom: 8),
-                                          child:checkBox(lable: 'Business Class'),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(bottom: 8),
-                                          child:checkBox(lable: 'Economy Class'),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: screenWidth * 0.018),
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(bottom: screenHeight * 0.009),
+                                        child:checkBox(lable: 'First Class'),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(bottom: screenHeight * 0.009),
+                                        child:checkBox(lable: 'Business Class'),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(bottom: screenHeight * 0.009),
+                                        child:checkBox(lable: 'Economy Class'),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
                             ),
-                            Container(
-                              // margin: EdgeInsets.only(top: 28),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(bottom : 10),
-                                    child: const Text(
-                                      "Company",
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 20,
-                                      ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(bottom : screenHeight * 0.010),
+                                  child: const Text(
+                                    "Company",
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 20,
                                     ),
                                   ),
-                                  Container(
-                                    height: 200,
-                                    margin: EdgeInsets.only(left: 8),
-                                    child: ListView(
-                                      scrollDirection: Axis.vertical,
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(bottom: 8),
-                                          child:checkBox(lable: 'Delta'),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(bottom: 8),
-                                          child:checkBox(lable: 'United'),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(bottom: 8),
-                                          child:checkBox(lable: 'KLM'),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(bottom: 8),
-                                          child:checkBox(lable: 'Air France'),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(bottom: 8),
-                                          child:checkBox(lable: 'British Airways'),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(bottom: 8),
-                                          child:checkBox(lable: 'Iberia'),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
+                                ),
+                                Container(
+                                  height: 200,
+                                  margin: EdgeInsets.only(left: screenWidth * 0.018),
+                                  child: ListView(
+                                    scrollDirection: Axis.vertical,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(bottom: screenHeight * 0.009),
+                                        child:checkBox(lable: 'Delta'),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(bottom: screenHeight * 0.009),
+                                        child:checkBox(lable: 'United'),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(bottom: screenHeight * 0.009),
+                                        child:checkBox(lable: 'KLM'),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(bottom: screenHeight * 0.009),
+                                        child:checkBox(lable: 'Air France'),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(bottom: screenHeight * 0.009),
+                                        child:checkBox(lable: 'British Airways'),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(bottom: screenHeight * 0.009),
+                                        child:checkBox(lable: 'Iberia'),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
                             ),
                           ],
                         ),
