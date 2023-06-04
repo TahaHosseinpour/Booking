@@ -341,7 +341,7 @@ class SearchPage extends StatelessWidget{
                             ],
                           ),
                         ),
-                        MyButton().buildElevatedButton("Search Trains", context),
+                        MyButton().buildElevatedButton("Search Trains",context),
 
 
 

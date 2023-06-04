@@ -34,3 +34,26 @@ Container buildNavigationBar(BuildContext context) {
   );
 }
 
+
+ClipRRect buttonContainer(String text , double screenHeight , double screenWidth){
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(70),
+    child: Container(
+      width: screenWidth * 0.83,
+      height: screenHeight * 0.107,
+      color: yellow1,
+      child: Center(
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontSize: 28,
+            fontFamily: 'Poppins',
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
