@@ -1,11 +1,10 @@
-import 'package:booking/Filter%20Page/group_checkbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Filter%20Page/range_side.dart';
-import 'package:checkbox_grouped/checkbox_grouped.dart';
+import 'package:booking/Filter Page/checkBox.dart';
 import 'package:booking/Start Page/start.dart';
 
 class Filter extends StatefulWidget {
@@ -24,6 +23,10 @@ class _FilterState extends State<Filter> {
         .of(context)
         .size
         .height;
+    final screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'TicketPage',
@@ -77,150 +80,167 @@ class _FilterState extends State<Filter> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(50),
                 child: Container(
-                  width: 358,
+                  width: screenWidth * 0.83,
                   height: screenHeight * 0.78,
                   color: grey3,
-                  padding: EdgeInsets.only(top: 35 , left: 31),
+                  padding: EdgeInsets.only(top: 35 ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                     children: [
                       Container(
-                        width: 296,
-                        height: 78,
+                        padding: EdgeInsets.only(left: 31),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Departure Time",
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w700,
-                                fontSize: 20,
-                              ),
-                            ),
-                            MyRange()
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 296,
-                        height: 78,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Back Time",
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w700,
-                                fontSize: 20,
-                              ),
-                            ),
-                            MyRange()
-                          ],
-                        ),
-                      ),
-                      Container(
-                        // margin: EdgeInsets.only(top: 28),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                           children: [
                             Container(
-                              margin: EdgeInsets.only(bottom : 10),
-                              child: Text(
-                                "Class",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 8),
+                              width: 296,
+                              height: 78,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(bottom: 8),
-                                    child:checkBox(lable: 'First Class'),
+                                  Text(
+                                    "Departure Time",
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 20,
+                                    ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.only(bottom: 8),
-                                    child:checkBox(lable: 'Business Class'),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(bottom: 8),
-                                    child:checkBox(lable: 'Economy Class'),
-                                  ),
+                                  MyRange()
                                 ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        // margin: EdgeInsets.only(top: 28),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(bottom : 10),
-                              child: const Text(
-                                "Company",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 20,
-                                ),
                               ),
                             ),
                             Container(
-                              height: 200,
-                              margin: EdgeInsets.only(left: 8),
-                              child: ListView(
-                                scrollDirection: Axis.vertical,
+                              width: 296,
+                              height: 78,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(bottom: 8),
-                                    child:checkBox(lable: 'Delta'),
+                                  Text(
+                                    "Back Time",
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 20,
+                                    ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.only(bottom: 8),
-                                    child:checkBox(lable: 'United'),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(bottom: 8),
-                                    child:checkBox(lable: 'KLM'),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(bottom: 8),
-                                    child:checkBox(lable: 'Air France'),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(bottom: 8),
-                                    child:checkBox(lable: 'British Airways'),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(bottom: 8),
-                                    child:checkBox(lable: 'Iberia'),
-                                  ),
+                                  MyRange()
                                 ],
                               ),
-                            )
+                            ),
+                            Container(
+                              // margin: EdgeInsets.only(top: 28),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(bottom : 10),
+                                    child: Text(
+                                      "Class",
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 8),
+                                    child: Column(
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(bottom: 8),
+                                          child:checkBox(lable: 'First Class'),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(bottom: 8),
+                                          child:checkBox(lable: 'Business Class'),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(bottom: 8),
+                                          child:checkBox(lable: 'Economy Class'),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Container(
+                              // margin: EdgeInsets.only(top: 28),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(bottom : 10),
+                                    child: const Text(
+                                      "Company",
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 200,
+                                    margin: EdgeInsets.only(left: 8),
+                                    child: ListView(
+                                      scrollDirection: Axis.vertical,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(bottom: 8),
+                                          child:checkBox(lable: 'Delta'),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(bottom: 8),
+                                          child:checkBox(lable: 'United'),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(bottom: 8),
+                                          child:checkBox(lable: 'KLM'),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(bottom: 8),
+                                          child:checkBox(lable: 'Air France'),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(bottom: 8),
+                                          child:checkBox(lable: 'British Airways'),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(bottom: 8),
+                                          child:checkBox(lable: 'Iberia'),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),
-                      MyButton().buildElevatedButton("Apply Filters", context),
-                    ],
+                      InkWell(
+                        child: buttonContainer(
+                            "Apply Travels",
+                            screenHeight,
+                            screenWidth,
+                        ),
+                        onTap: (){
+                          print("click on Apply Filters");
+                        },
+                      )
+                    ]
                   ),
                 ),
               ),
             )
           ],
         ),
-        bottomNavigationBar: buildNavigationBar(),
+        bottomNavigationBar: buildNavigationBar(context),
       ),
     );
   }
