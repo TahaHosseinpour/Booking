@@ -1,0 +1,143 @@
+import 'package:booking/Information/colors.dart';
+import 'package:dropdown_search/dropdown_search.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+Container PassengerInformation(BuildContext context){
+  final screenWidth = MediaQuery.of(context).size.width;
+  final screenHeight = MediaQuery.of(context).size.height;
+  return Container(
+    width: screenWidth * 0.83,
+    height: screenHeight * 0.32,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(15),
+      color: grey3,
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          height: screenHeight * 0.06,
+          padding: EdgeInsets.only(right: screenWidth * 0.13, left:screenWidth * 0.13, top: screenHeight * 0.02 ),
+          child: TextField(
+            decoration: InputDecoration(
+              labelText: 'First Name',
+              hintStyle: TextStyle(
+                fontSize: 25,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+
+          ),
+        ),
+        Container(
+          height: screenHeight * 0.06,
+          padding: EdgeInsets.only(right: screenWidth * 0.13, left:screenWidth * 0.13 ),
+          child: TextField(
+            style: TextStyle(
+            ),
+            decoration: InputDecoration(
+              labelText: 'Last Name',
+              hintStyle: TextStyle(
+                fontSize: 25,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+
+          ),
+        ),
+        Container(
+          height: screenHeight * 0.06,
+          padding: EdgeInsets.only(right: screenWidth * 0.13, left:screenWidth * 0.13 ),
+          child: TextField(
+            decoration: InputDecoration(
+              labelText: 'Passport Number',
+              hintStyle: TextStyle(
+                fontSize: 25,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: screenWidth * 0.14, bottom: screenHeight * 0.02),
+              width: screenWidth * 0.19,
+              child: DropdownSearch<String> (
+                popupProps: const PopupProps.menu(
+                  showSelectedItems: true,
+                  showSearchBox: true,
+                ),
+                items: const ["2019", "2020", "2021", "2022", "2023",],
+                dropdownDecoratorProps: DropDownDecoratorProps(
+                  dropdownSearchDecoration: InputDecoration(
+                    labelText: "Year",
+                    labelStyle: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 12,
+                        color: grey2
+                    ),
+                    //contentPadding: EdgeInsets.only(bottom: 5),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only( bottom: screenHeight * 0.02),
+              width: screenWidth * 0.18,
+              child: DropdownSearch<String> (
+                popupProps: const PopupProps.menu(
+                  showSelectedItems: true,
+                  showSearchBox: true,
+                ),
+                items: const ["01", "02", "03", "04", "05",],
+                dropdownDecoratorProps: DropDownDecoratorProps(
+                  dropdownSearchDecoration: InputDecoration(
+                    labelText: "Month",
+                    labelStyle: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 12,
+                        color: grey2
+                    ),
+                    //contentPadding: EdgeInsets.only(bottom: 5),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(right: screenWidth * 0.14,  bottom: screenHeight * 0.02),
+              width: screenWidth * 0.18,
+              child: DropdownSearch<String> (
+                popupProps: const PopupProps.menu(
+                  showSelectedItems: true,
+                  showSearchBox: true,
+                ),
+                items: const ["1", "2", "3", "4", "5",],
+                dropdownDecoratorProps: DropDownDecoratorProps(
+                  dropdownSearchDecoration: InputDecoration(
+                    labelText: "Day",
+                    labelStyle: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 12,
+                        color: grey2
+                    ),
+                    //contentPadding: EdgeInsets.only(bottom: 5),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+}
