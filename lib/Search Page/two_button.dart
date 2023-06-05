@@ -11,6 +11,7 @@ class TwoButton extends StatefulWidget {
   bool leftButtonIsActive = true;
   bool rightButtonIsActive = false;
 
+
   TwoButton({required this.leftText ,required this.rightText ,required this.height });
 
   @override
@@ -80,6 +81,7 @@ class _TwoButtonState extends State<TwoButton> {
                 onPressed: () {
                   if(!widget.rightButtonIsActive){
                     setActiveButton("right");
+
                   }
                 },
                 style: ElevatedButton.styleFrom(

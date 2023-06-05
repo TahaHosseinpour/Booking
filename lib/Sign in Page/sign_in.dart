@@ -3,7 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Information/colors.dart';
-import 'package:booking/Search Page/two_button.dart';
+import 'package:booking/Sign in Page/log_in_tab.dart';
+import 'package:booking/Sign in Page/tab_button.dart';
+
 
 
 class SignIn extends StatefulWidget{
@@ -17,9 +19,11 @@ class _SignInState extends State<SignIn> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
-    TwoButton SignInSignUp = TwoButton(leftText: "Log In", rightText: "Sign Up", height: screenHeight * 0.076);
+    TabButton SignInSignUp = TabButton(leftText: "Log In", rightText: "Sign Up", height: screenHeight * 0.076);
     SignInSignUp.fontSize = 30;
     SignInSignUp.fontWeight = FontWeight.w400;
+
+    Widget tab = LogInTab();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -66,7 +70,7 @@ class _SignInState extends State<SignIn> {
             Container(
               margin: EdgeInsets.only(bottom: screenHeight * 0.040),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(40),
                 child: Container(
                   width: screenWidth * 0.832,
                   height: screenHeight * 0.461,
