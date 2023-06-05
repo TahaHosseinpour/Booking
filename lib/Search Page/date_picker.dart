@@ -35,10 +35,12 @@ class _MyDatePickerTextFieldState extends State<MyDatePickerTextField> {
         });
       }
     }
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
-      width: 110,
-      height: 40,
+      width: screenWidth * 0.255,
+      height:screenHeight * 0.04,
 
       child:TextField(
         controller: _textEditingController,
@@ -52,7 +54,6 @@ class _MyDatePickerTextFieldState extends State<MyDatePickerTextField> {
                 fontFamily: 'Poppins',
                 fontSize: 14,
                 color: grey1,
-              // height: 21
             ),
             contentPadding: EdgeInsets.only(top: 10 , bottom: 9,right: 15,left: 15),
             border: OutlineInputBorder(
