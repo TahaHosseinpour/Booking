@@ -40,7 +40,7 @@ class SearchPage extends StatelessWidget{
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TwoButton(),
+                        TwoButton(leftText: "Round Trip",rightText: "One Way" , height: screenHeight * 0.053,),
 
                         Container(
                           width: screenWidth * 0.69,
