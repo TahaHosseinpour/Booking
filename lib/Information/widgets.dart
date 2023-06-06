@@ -7,7 +7,7 @@ ClipRRect buildNavigationBar(BuildContext context) {
   return ClipRRect(
     borderRadius: const BorderRadius.only(
         topLeft: Radius.circular(25),
-      topRight: Radius.circular(25)
+        topRight: Radius.circular(25)
     ),
     child: Container(
       color: green2,
