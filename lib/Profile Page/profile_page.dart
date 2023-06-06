@@ -1,12 +1,14 @@
 import 'package:booking/Information/buildBottomNavigationBar.dart';
 import 'package:booking/Information/wallet.dart';
 import 'package:booking/Information/widgets.dart';
-import 'package:booking/Profile%20Page/account_box.dart';
-import 'package:booking/Profile%20Page/personal_box.dart';
+import 'package:booking/Profile%20Page/account_static_box.dart';
+import 'package:booking/Profile%20Page/personal_static_box.dart';
 import 'package:booking/Profile%20Page/shapes_painter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:booking/Profile Page/personal_editing_box.dart';
+import 'package:booking/Profile Page/account_editing_box.dart';
 
 import '../Information/colors.dart';
 
@@ -17,7 +19,8 @@ class ProfilePage extends StatefulWidget{
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  bool isChecked = false;
+  bool isPersonalEditing = false;
+  bool isAccountEditing = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +32,12 @@ class _ProfilePageState extends State<ProfilePage> {
         .of(context)
         .size
         .height;
+    Widget personalEditing = PersonalEditingBox();
+    Widget personalColumn = isPersonalEditing ? personalEditing : PersonalStaticBox();
+    Widget accountColumn = isAccountEditing ? AccountEditingBox() : AccountStaticBox();
+
+    String personalIcon = isPersonalEditing ? "assets/images/tick.svg" : "assets/images/edit.svg";
+    String accountIcon = isAccountEditing ? "assets/images/tick.svg" : "assets/images/edit.svg";
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -51,15 +60,15 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           InkWell(
                             child: Container(
-                              child: SvgPicture.asset('assets/images/profile_edit.svg',
-                              height: screenHeight * 0.139,
-                                width: screenWidth * 0.3,
+                              child: Image.asset('assets/images/profile_edit.png',
+                              height: screenWidth * 0.302,
+                                width: screenWidth * 0.302,
                               ),
                             ),
                           ),
                           Container(
                             height: screenHeight * 0.048,
-                            child:FittedBox(
+                            child: FittedBox(
                               child:  Text("T.hosseinpour",
                                 style: TextStyle(
                                   fontSize: 30,
@@ -81,7 +90,7 @@ class _ProfilePageState extends State<ProfilePage> {
               margin: EdgeInsets.only(left: screenWidth * 0.1),
                 alignment: Alignment.topLeft,
                 height: screenHeight * 0.045,
-                child:FittedBox(
+                child: FittedBox(
                   child:  Text("Account",
                     style: TextStyle(
                       fontSize: 30,
@@ -91,12 +100,43 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
             ),
-            AccountBox(context),
+            Container(
+              padding: EdgeInsets.only(top: screenHeight * 0.011, bottom: screenHeight * 0.011, right: screenWidth * 0.06, left: screenWidth * 0.03 ),
+              width: screenWidth * 0.83 ,
+              height: screenHeight * 0.187,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(35),
+                color: grey3,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  accountColumn,
+                  InkWell(
+                    child:  Container(
+                      alignment: Alignment.centerRight,
+                      child: SvgPicture.asset(personalIcon,
+                        width: screenHeight * 0.042,
+                        height: screenHeight * 0.042,
+                      ),
+                    ),
+                    onTap: (){
+                      setState(() {
+                        isAccountEditing = !isAccountEditing;
+                      });
+                    },
+                  )
+                ],
+              ),
+            ),
+
+
+
             Container(
               margin: EdgeInsets.only(left: screenWidth * 0.1),
               alignment: Alignment.topLeft,
               height: screenHeight * 0.045,
-              child:FittedBox(
+              child: FittedBox(
                 child:  Text("Personal",
                   style: TextStyle(
                     fontSize: 30,
@@ -106,7 +146,35 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ),
-            PersonalBox(context),
+            Container(
+              padding: EdgeInsets.only(top: screenHeight * 0.011, bottom: screenHeight * 0.011, right: screenWidth * 0.06, left: screenWidth * 0.03 ),
+              width: screenWidth * 0.83 ,
+              height: screenHeight * 0.187,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(35),
+                color: grey3,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  personalColumn,
+                  InkWell(
+                    child:  Container(
+                      alignment: Alignment.centerRight,
+                      child: SvgPicture.asset(personalIcon,
+                        width: screenHeight * 0.042,
+                        height: screenHeight * 0.042,
+                      ),
+                    ),
+                    onTap: (){
+                      setState(() {
+                        isPersonalEditing = !isPersonalEditing;
+                      });
+                    },
+                  )
+                ],
+              ),
+            ),
            Container(
              padding: EdgeInsets.only(right: screenWidth * 0.14),
              child: Row(
@@ -126,23 +194,20 @@ class _ProfilePageState extends State<ProfilePage> {
                      ),
                    ),
                  ),
-                 Container(
-                   child: SvgPicture.asset('assets/images/call.svg',
-                   width: screenWidth * 0.08,
-                     height: screenHeight * 0.037,
-                   ),
+                 Image.asset(
+                     'assets/images/call.png',
+                   height: screenWidth * 0.081,
+                   width: screenWidth * 0.081,
                  ),
-                 Container(
-                   child: SvgPicture.asset('assets/images/Earth.svg',
-                     width: screenWidth * 0.08,
-                     height: screenHeight * 0.037,
-                   ),
+                 Image.asset(
+                   'assets/images/internet.png',
+                   height: screenWidth * 0.081,
+                   width: screenWidth * 0.081,
                  ),
-                 Container(
-                   child: SvgPicture.asset('assets/images/mail.svg',
-                     width: screenWidth * 0.08,
-                     height: screenHeight * 0.037,
-                   ),
+                 Image.asset(
+                   'assets/images/mail.png',
+                   height: screenWidth * 0.081,
+                   width: screenWidth * 0.081,
                  ),
                ],
              ),
