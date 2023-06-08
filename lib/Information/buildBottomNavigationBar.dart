@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:booking/Information/colors.dart';
+import 'package:booking/Profile Page/profile_page.dart';
+import 'package:booking/Transactions Page/transactions.dart';
+import 'package:booking/Main Page/main_page.dart';
+import 'package:booking/Travels Page/travels_page.dart';
+import 'package:booking/Database/user.dart';
 
 class BuildBottomNavigationBar extends StatefulWidget{
 
@@ -95,11 +100,16 @@ class _BuildBottomNavigationBarState extends State<BuildBottomNavigationBar> {
                 height: screenWidth * 0.079,
                 width: screenWidth * 0.083,
                 color: profileColor,
-              ),
+        ),
               onTap: (){
+
                 setState(() {
                   widget.activeIcon = "profile";
                 });
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfilePage(),
+                    ));
               },
             ),
             InkWell(
@@ -113,6 +123,10 @@ class _BuildBottomNavigationBarState extends State<BuildBottomNavigationBar> {
                 setState(() {
                   widget.activeIcon = "transaction";
                 });
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Transactions(),
+                    ));
               },
             ),
             InkWell(
@@ -126,6 +140,10 @@ class _BuildBottomNavigationBarState extends State<BuildBottomNavigationBar> {
                 setState(() {
                   widget.activeIcon = "ticket";
                 });
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TravelsPage(),
+                    ));
               },
             ),
             InkWell(
@@ -139,6 +157,20 @@ class _BuildBottomNavigationBarState extends State<BuildBottomNavigationBar> {
                 setState(() {
                   widget.activeIcon = "home";
                 });
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MainPage(currentUser: User(
+                        username: "Taha223",
+                        password: "Thoss1010",
+                        email: "t.hosseinpour2347@gmail.com",
+                        avatarPath: "assets/images/avatars/Taha223.png",
+                        phone: "09105860050",
+                        id: "0200052934",
+                        birthday: "02.3.16",
+                        walletBalance: "140"
+                    ,),
+                    ),
+                    ));
               },
             ),
           ],

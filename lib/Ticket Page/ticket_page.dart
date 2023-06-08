@@ -7,6 +7,8 @@ import 'package:booking/Information/colors.dart';
 import 'package:booking/Ticket Page/ticket.dart';
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Database/user.dart';
+import 'package:booking/Database/country.dart';
+import 'package:booking/Filter Page/filter.dart';
 
 class TicketPage extends StatefulWidget {
 
@@ -33,9 +35,35 @@ class TicketPage extends StatefulWidget {
 
 class _TicketPageState extends State<TicketPage> {
   // This widget is the root of your application.
+  String des = "";
+  String ori = "";
+  String iconPath = "";
+
+
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      for(Country country in countriesList){
+        if(widget.origin == country.fullName){
+          ori = country.shortName;
+        }
+        if(widget.destination == country.fullName){
+          des = country.shortName;
+        }
+      }
+      if(widget.vehicle == "intenational" || widget.vehicle == "local"){
+        iconPath = "assets/images/airplane_ticket.svg";
+      }
+      if(widget.vehicle == "train"){
+        iconPath = "assets/images/train_ticket.svg" ;
+      }
+      if(widget.vehicle == "bus"){
+        iconPath ="assets/images/bus.svg" ;
+      }
+    });
     final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'TicketPage',
@@ -51,13 +79,17 @@ class _TicketPageState extends State<TicketPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
-                      onTap: (){},
+                      onTap: (){
+                        Navigator.pop(context);
+                      },
                       child: SvgPicture.asset(
                         "assets/images/arrow_back.svg",
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
                       child: SvgPicture.asset(
                         "assets/images/search_yellow.svg"
                       ),
@@ -72,8 +104,8 @@ class _TicketPageState extends State<TicketPage> {
                 children: [
                   Column(
                     children: [
-                      const Text(
-                        'SYD',
+                       Text(
+                        ori,
                         style: TextStyle(
                             fontFamily: 'Poppins',
                             color: Colors.black,
@@ -83,8 +115,8 @@ class _TicketPageState extends State<TicketPage> {
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 20),
-                        child: const Text(
-                          'Sydney',
+                        child: Text(
+                          widget.origin,
                           style: TextStyle(
                               fontFamily: 'Poppins',
                               color: Colors.black,
@@ -105,9 +137,11 @@ class _TicketPageState extends State<TicketPage> {
                           dashLength: 3.5
                       ),
                       Container(
-                        margin: const EdgeInsets.only(left: 5,right: 5),
+                        margin: EdgeInsets.only(left: screenWidth * 0.011,right: screenWidth * 0.011),
                         child: SvgPicture.asset(
-                            "assets/images/airplane_ticket.svg"
+                            iconPath,
+                          height: screenWidth * 0.081,
+                          width: screenWidth * 0.081,
                         ),
                       ),
                       const DottedLine(
@@ -120,8 +154,8 @@ class _TicketPageState extends State<TicketPage> {
                   ),
                   Column(
                     children: [
-                      const Text(
-                        'LCI',
+                      Text(
+                        des,
                         style: TextStyle(
                             fontFamily: 'Poppins',
                             color: Colors.black,
@@ -131,8 +165,8 @@ class _TicketPageState extends State<TicketPage> {
                       ),
                       Container(
                         margin: const EdgeInsets.only(right: 20),
-                        child: const Text(
-                          'London',
+                        child: Text(
+                          widget.destination,
                           style: TextStyle(
                               fontFamily: 'Poppins',
                               color: Colors.black,
@@ -192,7 +226,7 @@ class _TicketPageState extends State<TicketPage> {
                                   showSelectedItems: true,
                                   showSearchBox: true,
                                 ),
-                                items: const ["Price", "Time", "Star"],
+                                items: const ["Price", "Time", "Distance"],
                                 dropdownDecoratorProps: DropDownDecoratorProps(
                                   dropdownSearchDecoration: InputDecoration(
                                     hintText: "Sort By :",
@@ -236,7 +270,13 @@ class _TicketPageState extends State<TicketPage> {
                                       )
                                     ],
                                   ),
-                                )
+                                ),
+                                onTap: (){
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Filter(),
+                                      ));
+                                },
                               ),
                             ),
                           )

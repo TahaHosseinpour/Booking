@@ -13,6 +13,7 @@ import 'package:booking/Search Page/date_picker.dart';
 import 'package:booking/Database/user.dart';
 import 'package:booking/Database/country.dart';
 import 'package:booking/Ticket Page/ticket_page.dart';
+import 'package:booking/Information/buildBottomNavigationBar.dart';
 
 
 class SearchPage extends StatefulWidget{
@@ -452,7 +453,7 @@ class _SearchPageState extends State<SearchPage> {
             ],
           ),
         ),
-        bottomNavigationBar: buildNavigationBar(context),
+        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "home"),
       ),
     );
   }
