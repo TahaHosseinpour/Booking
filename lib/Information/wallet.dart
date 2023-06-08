@@ -40,7 +40,7 @@ class _WalletState extends State<Wallet> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: screenWidth * 0.325,
+                    width: screenWidth * 0.33,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -89,7 +89,7 @@ class _WalletState extends State<Wallet> {
 
         InkWell(
             onTap: (){
-              print("salam");
+              //print("salam");
             },
             child: Container(
                 width: screenWidth * 0.3,
