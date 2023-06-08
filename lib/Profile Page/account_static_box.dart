@@ -83,11 +83,14 @@ class _AccountStaticBoxState extends State<AccountStaticBox> {
                           ),
                         ),
                       ),
+                      SizedBox(width: screenWidth * 0.03,),
                       InkWell(
                         onTap: (){
 
                         },
                         child: Container(
+                          height: screenHeight * 0.025,
+                          alignment: Alignment.topCenter,
                           child: SvgPicture.asset('assets/images/visible.svg',
                             width: screenWidth * 0.07,
                             height: screenHeight * 0.016,

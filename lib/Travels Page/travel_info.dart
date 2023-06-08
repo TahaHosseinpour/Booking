@@ -25,18 +25,15 @@ Container TravelInfo(BuildContext context){
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: screenHeight * 0.028,
-                child:FittedBox(
-                  child:   Text("Fly Emirates",
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 18,
-                        color: Colors.black,
-                        decoration: TextDecoration.none
+                child:Text("Fly Emirates",
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: screenHeight * 0.019,
+                      color: Colors.black,
+                      decoration: TextDecoration.none
 
-                    ),
                   ),
-                )
+                ),
               ),
               SizedBox(width: 6,),
               Container(
@@ -63,37 +60,31 @@ Container TravelInfo(BuildContext context){
                     Container(
                       // height: 20,
                       margin: EdgeInsets.only(left: screenWidth * 0.032),
-                      height: screenHeight * 0.028,
                       alignment: Alignment.centerLeft,
-                      child:FittedBox(
-                        child:  Text('SYD',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontFamily: 'Poppins',
-                              color: grey2,
-                              fontWeight: FontWeight.w400,
-                              decoration: TextDecoration.none
-                          ),
+                      child: Text('SYD',
+                        style: TextStyle(
+                            fontSize: screenHeight * 0.016,
+                            fontFamily: 'Poppins',
+                            color: grey2,
+                            fontWeight: FontWeight.w400,
+                            decoration: TextDecoration.none
                         ),
-                      )
+                      ),
                     ),
                     Container(
                       // height: 20,
                       margin: EdgeInsets.only(right: screenWidth * 0.032),
                       alignment: Alignment.centerRight,
-                      height: screenHeight * 0.028,
-                      child: FittedBox(
-                        child: Text('LCY',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontFamily: 'Poppins',
-                              color:grey2,
-                              fontWeight: FontWeight.w400,
-                              decoration: TextDecoration.none
+                      child: Text('LCY',
+                        style: TextStyle(
+                            fontSize: screenHeight * 0.016,
+                            fontFamily: 'Poppins',
+                            color:grey2,
+                            fontWeight: FontWeight.w400,
+                            decoration: TextDecoration.none
 
-                          ),
                         ),
-                      )
+                      ),
                     ),
                   ],
                 ),
@@ -107,18 +98,15 @@ Container TravelInfo(BuildContext context){
                       // height: 21,
                       margin:  EdgeInsets.only(left: screenWidth * 0.032),
                       alignment: Alignment.centerLeft,
-                      height: screenHeight * 0.045,
-                      child: FittedBox(
-                        child:  Text('18:50',
-                          style: TextStyle(
-                              fontSize: 28,
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400,
+                      child: Text('18:50',
+                        style: TextStyle(
+                          fontSize: screenHeight * 0.03,
+                          fontFamily: 'Poppins',
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400,
 
-                          ),
                         ),
-                      )
+                      ),
                     ),
                     Container(
                       // height: 21,
@@ -131,19 +119,15 @@ Container TravelInfo(BuildContext context){
                       margin:  EdgeInsets.only(right:screenWidth * 0.032),
                       // height: 21,
                       alignment: Alignment.centerRight,
-                        height: screenHeight * 0.045,
-                        width: screenWidth * 0.167,
-                      child:FittedBox(
-                        child:   Text('22:10',
-                          style: TextStyle(
-                              fontSize: 28,
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400,
+                      child:Text('22:10',
+                        style: TextStyle(
+                          fontSize: screenHeight * 0.03,
+                          fontFamily: 'Poppins',
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400,
 
-                          ),
                         ),
-                      )
+                      ),
                     ),
                   ],
                 ),
@@ -158,36 +142,30 @@ Container TravelInfo(BuildContext context){
           indent: 15.5,
           endIndent: 15.5,
         ),
-       SizedBox(height: screenHeight * 0.015,),
+       SizedBox(height: screenHeight * 0.013,),
         Container(
           padding: EdgeInsets.only(right: screenWidth * 0.13, left: screenWidth *0.12),
           child:Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                height: screenHeight * 0.025,
-                child: FittedBox(
-                  child: Text("Number",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      color: grey2,
-                    ),
+                child:Text("Number",
+                  style: TextStyle(
+                    fontSize: screenHeight * 0.019,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: grey2,
                   ),
-                )
+                ),
               ),
               Container(
-                  height: screenHeight * 0.025,
-                child:FittedBox(
-                  child:  Text("987423",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                    ),
+                child:Text("987423",
+                  style: TextStyle(
+                    fontSize: screenHeight * 0.019,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
                   ),
-                )
+                ),
               ),
             ],
           ),

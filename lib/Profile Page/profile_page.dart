@@ -51,10 +51,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: screenWidth,
                 height: screenHeight * 0.37,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      padding: EdgeInsets.only(right: screenWidth * 0.08, left: screenWidth * 0.08, top: screenHeight * 0.032),
+                      padding: EdgeInsets.only(right: screenWidth * 0.08, left: screenWidth * 0.08,top: screenHeight * 0.012 ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -71,7 +71,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: FittedBox(
                               child:  Text("T.hosseinpour",
                                 style: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: screenHeight * 0.032,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w400,
                                 ),
