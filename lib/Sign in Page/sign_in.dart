@@ -37,39 +37,48 @@ class _SignInState extends State<SignIn> {
             Image.asset(
               'assets/images/sign_in.png',
               width: screenWidth,
-              // height: screenHeight * 0.436,
+               height: screenHeight * 0.436,
+              fit: BoxFit.fill,
             ),
             Container(
-              height: 40,
+              //height: screenHeight * 0.043,
               width: screenWidth * 0.546,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
                     child: SvgPicture.asset(
-                        'assets/images/google_logo.svg'
+                        'assets/images/google_logo.svg',
+                      width: screenWidth * 0.093,
+                      height: screenHeight * 0.042,
                     ),
                   ),
                   InkWell(
                     child: SvgPicture.asset(
-                        'assets/images/facebook_logo.svg'
+                        'assets/images/facebook_logo.svg',
+                      width: screenWidth * 0.093,
+                      height: screenHeight * 0.042,
                     ),
                   ),
                   InkWell(
                     child: SvgPicture.asset(
-                        'assets/images/twitter_logo.svg'
+                        'assets/images/twitter_logo.svg',
+                      width: screenWidth * 0.093,
+                      height: screenHeight * 0.042,
                     ),
                   ),
                   InkWell(
                     child: SvgPicture.asset(
-                        'assets/images/driblle_logo.svg'
+                        'assets/images/driblle_logo.svg',
+                      width: screenWidth * 0.093,
+                      height: screenHeight * 0.042,
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.only(bottom: screenHeight * 0.040),
+              margin: EdgeInsets.only(bottom: screenHeight * 0.04,),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(40),
                 child: Container(

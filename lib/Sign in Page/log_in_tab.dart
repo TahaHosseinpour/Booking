@@ -42,25 +42,25 @@ class _LogInTabState extends State<LogInTab> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              height: contextHeight * 0.190,
+              //height: contextHeight * 0.190,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: contextHeight * 0.079,
+                    //height: contextHeight * 0.079,
                     padding: EdgeInsets.only(left: contextWidth * 0.090 , right: contextWidth * 0.090),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextField(
-                          style: const TextStyle(
+                          style:  TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 16,
+                            fontSize: contextHeight * 0.017,
                             fontWeight: FontWeight.w400,
                           ),
                           controller: _usernameController,
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                               border: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color.fromRGBO(198, 198, 198, 1),
@@ -71,16 +71,17 @@ class _LogInTabState extends State<LogInTab> {
                               labelStyle: TextStyle(
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
-                                fontSize: 15,
+                                fontSize: contextHeight * 0.016,
                                 color: Color.fromARGB(255, 135, 135, 135),
                               )
                           ),
                         ),
+                        SizedBox(height: contextHeight * 0.007,),
                         Text(
                           isUsernameValid ? "" : usernameError,
-                          style: const TextStyle(
+                          style:  TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 11,
+                              fontSize: contextHeight * 0.011,
                               fontWeight: FontWeight.w400,
                               color: Color.fromRGBO(202, 44, 44, 1)
                           ),
@@ -89,22 +90,23 @@ class _LogInTabState extends State<LogInTab> {
                     ),
                   ),
                   Container(
-                    height: contextHeight * 0.079,
+                    //height: contextHeight * 0.079,
 
                     padding: EdgeInsets.only(left: contextWidth * 0.090 , right: contextWidth * 0.090),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextField(
                           obscureText: true,
-                          style: const TextStyle(
+                          style:  TextStyle(
 
                            fontFamily: 'Poppins',
-                            fontSize: 16,
+                            fontSize: contextHeight * 0.017,
                             fontWeight: FontWeight.w400,
                           ),
                           controller: _passwordController,
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                               border: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color.fromRGBO(198, 198, 198, 1),  // رنگ بوردر پایینی
@@ -116,16 +118,17 @@ class _LogInTabState extends State<LogInTab> {
                               labelStyle: TextStyle(
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
-                                fontSize: 15,
+                                fontSize: contextHeight * 0.016,
                                 color: Color.fromARGB(255, 135, 135, 135),
                               )
                           ),
                         ),
+                        SizedBox(height: contextHeight * 0.007,),
                         Text(
                           isPasswordValid ? "" : passwordError,
-                          style: const TextStyle(
+                          style:  TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 11,
+                              fontSize: contextHeight * 0.011,
                               fontWeight: FontWeight.w400,
                               color: Color.fromRGBO(202, 44, 44, 1)
                           ),
@@ -140,9 +143,9 @@ class _LogInTabState extends State<LogInTab> {
                         children: [
                           TextSpan(
                             text: 'Forgot My Password',
-                            style: const TextStyle(
+                            style:  TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 15,
+                              fontSize: contextHeight * 0.016,
                               fontWeight: FontWeight.w400,
                               decoration: TextDecoration.underline,
                               color: Color.fromRGBO(93, 154, 224, 1),
@@ -164,7 +167,7 @@ class _LogInTabState extends State<LogInTab> {
               height: contextHeight * 0.107,
               width: contextWidth *  0.832,
               child: InkWell(
-                child: buttonContainer("Submit",contextHeight * 0.107 , contextWidth),
+                child: buttonContainer("Submit",contextHeight , contextWidth),
                 onTap: (){
                   setState(() {
                     isUsernameValid = false;

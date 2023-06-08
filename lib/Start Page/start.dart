@@ -26,6 +26,8 @@ class _StartState extends State<Start> {
           children: [
             Image.asset(
               "assets/images/earth.png",
+              width: screenWidth,
+              height: screenHeight * 0.51,
             ),
              Text(
               "LOGO",
