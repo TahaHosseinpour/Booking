@@ -1,3 +1,4 @@
+import 'package:booking/Information/buildBottomNavigationBar.dart';
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Start%20Page/start.dart';
@@ -52,7 +53,7 @@ Container Price(BuildContext context, String botton_name){
           ),
         ),
         MyButton().buildElevatedButton(botton_name, context),
-        buildNavigationBar(context),
+        BuildBottomNavigationBar(activeIcon: "home")
       ],
     ),
   );
