@@ -110,7 +110,7 @@ Widget SearchBox(BuildContext context){
                 decoration: InputDecoration(
                   labelText: 'Travel Number',
                   hintStyle: TextStyle(
-                    fontSize: 25,
+                    fontSize: screenHeight * 0.0268,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     //height: screenHeight * 0.04,

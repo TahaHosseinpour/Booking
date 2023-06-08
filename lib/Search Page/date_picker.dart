@@ -52,7 +52,7 @@ class _MyDatePickerTextFieldState extends State<MyDatePickerTextField> {
             hintText: 'Seclect',
             hintStyle: TextStyle(
                 fontFamily: 'Poppins',
-                fontSize: 14,
+                fontSize: screenHeight * 0.015,
                 color: grey1,
             ),
             contentPadding: EdgeInsets.only(top: 10 , bottom: 9,right: 15,left: 15),
