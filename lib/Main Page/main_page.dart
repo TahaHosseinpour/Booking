@@ -5,6 +5,8 @@ import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Database/user.dart';
 import 'package:booking/Search Page/search_page.dart';
+import 'package:booking/Database/place.dart';
+import 'package:booking/Information/buildBottomNavigationBar.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -23,7 +25,7 @@ class _MainPageState extends State<MainPage> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
-    String vehicle;
+    String selectVehicle;
 
 
     return MaterialApp(
@@ -42,7 +44,7 @@ class _MainPageState extends State<MainPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Image.asset(
-                  'assets/images/avatar.png',
+                  widget.currentUser.avatarPath,
                   height: 50,
                   width: 50,
                 ),
@@ -125,10 +127,20 @@ class _MainPageState extends State<MainPage> {
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      InkWell(child: SvgPicture.asset('assets/images/bus.svg',
-                        height: 60,
-                        width: 50,
-                      ),),
+                      InkWell(
+                        child: SvgPicture.asset(
+                          'assets/images/bus.svg',
+                          height: 60,
+                          width: 50,
+                        ),
+                        onTap: (){
+                          selectVehicle = "bus";
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SearchPage(currentUser: widget.currentUser, vehicle: selectVehicle,)),
+                          );
+                        },
+                      ),
                       Container(
                         height: 18,
                         child: const Text("Bus",
@@ -165,10 +177,10 @@ class _MainPageState extends State<MainPage> {
                           width: 50,
                           ),
                         onTap: (){
-                          vehicle = "international";
+                          selectVehicle = "international";
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => SearchPage()),
+                            MaterialPageRoute(builder: (context) => SearchPage(currentUser: widget.currentUser, vehicle: selectVehicle,)),
                           );
                         },
                       ),
@@ -200,10 +212,20 @@ class _MainPageState extends State<MainPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      InkWell(child: SvgPicture.asset('assets/images/local.svg',
-                        height: 50,
-                        width: 50,
-                      ),),
+                      InkWell(
+                        child: SvgPicture.asset(
+                          'assets/images/local.svg',
+                          height: 50,
+                          width: 50,
+                        ),
+                        onTap: (){
+                          selectVehicle = "local";
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SearchPage(currentUser: widget.currentUser, vehicle: selectVehicle,)),
+                          );
+                        },
+                      ),
                       Container(
                         height: 19,
                         child: const Text("Local",
@@ -232,10 +254,20 @@ class _MainPageState extends State<MainPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      InkWell(child: SvgPicture.asset('assets/images/train.svg',
-                        height: 60,
-                        width: 50,
-                      ),),
+                      InkWell(
+                        child: SvgPicture.asset(
+                          'assets/images/train.svg',
+                          height: 60,
+                          width: 50,
+                        ),
+                        onTap: (){
+                          selectVehicle = "train";
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SearchPage(currentUser: widget.currentUser, vehicle: selectVehicle,)),
+                          );
+                        },
+                      ),
                       Container(
                         height: 15,
                         child: const Text("Train",
@@ -269,54 +301,80 @@ class _MainPageState extends State<MainPage> {
               padding: EdgeInsets.only(top: 60,bottom:30,left: 27),
               height: 350,
               color: green1,
-              child: ListView(
+              child: ListView.builder(
                 scrollDirection: Axis.horizontal,
+                itemCount: placesList.length,
+                itemBuilder: (context, index) {
+                  final item = placesList[index];
+                  return buildPlaceItem(
+                    screenWidth,
+                    screenHeight,
+                    item.title,
+                    item.text,
+                    item.imagePath,
+                  );
+                },
 
-                children: [
-
-
-
-
-                  Padding(padding: EdgeInsets.only(right: 18),
-                    child:
-                    Container(
-                      height: 260,
-                      width: 170,
-
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 90,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(25),
-                                    topRight: Radius.circular(25)
-                                )
-                            ),
-                            child: Text("Yazd is the Best"),
-                          ),
-                          Container(
-                            height: 170,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(25),
-                                    bottomRight: Radius.circular(25)
-                                )
-                            ),
-                            child: Image.asset(
-                              "assets/images/landscape.png"
-                            ),
-                          )
-                        ],
-                      ),
-                    ),),
-                ],
               ),
             )
           ],
         ),
-        bottomNavigationBar: buildNavigationBar(context),
+        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "home"),
       ),
     );
+  }
+
+
+  Padding buildPlaceItem(double screenWidth, double screenHeight , String title, String text , String imagePath) {
+    return Padding(
+                  padding: EdgeInsets.only(right: screenWidth * 0.041),
+                  child:
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(screenHeight * 0.026),
+                      child: Container(
+                        height: screenHeight * 0.276,
+                        width: screenHeight * 0.182,
+                        child: Column(
+                          children: [
+                            Container(
+                              color: yellow1,
+                              height: screenHeight * 0.094,
+                              width: screenHeight * 0.182,
+                              padding: EdgeInsets.only(left: screenHeight * 0.023, right: screenHeight * 0.023),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    title,
+                                    style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: screenHeight * 0.016
+                                    ),
+                                  ),
+                                  Text(
+                                    text,
+                                    style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: screenHeight * 0.010
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ),
+                            Container(
+                              height: screenHeight * 0.182,
+                              width: screenHeight * 0.182,
+                              child: Image.asset(
+                                  imagePath
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                );
   }
 }

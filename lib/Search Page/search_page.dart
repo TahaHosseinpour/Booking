@@ -9,10 +9,23 @@ import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Search Page/two_button.dart';
 import 'package:booking/Search Page/date_picker.dart';
+import 'package:booking/Database/user.dart';
 
 
-class SearchPage extends StatelessWidget{
-  const SearchPage({super.key});
+class SearchPage extends StatefulWidget{
+
+  User currentUser;
+  String vehicle;
+
+  SearchPage({super.key,
+  required this.currentUser,
+  required this.vehicle
+  });
+  @override
+  State<SearchPage> createState() => _SearchPageState();
+}
+
+class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
