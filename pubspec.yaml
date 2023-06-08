@@ -72,6 +72,9 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/
+    - assets/images/avatars/
+    - assets/images/places/
+    - assets/images/company/
     #- assets/images/From.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

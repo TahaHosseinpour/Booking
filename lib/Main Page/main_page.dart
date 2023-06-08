@@ -35,7 +35,7 @@ class _MainPageState extends State<MainPage> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           // centerTitle: true,
-            toolbarHeight: 92,
+            toolbarHeight: screenHeight * 0.098,
             title: Container(
               padding: EdgeInsets.all(0),
             margin: EdgeInsets.all(0),
@@ -45,24 +45,24 @@ class _MainPageState extends State<MainPage> {
               children: [
                 Image.asset(
                   widget.currentUser.avatarPath,
-                  height: 50,
-                  width: 50,
+                  height: screenHeight * 0.053,
+                  width: screenWidth * 0.11,
                 ),
                 Container(
-                  margin: EdgeInsets.only(bottom: 15),
+                  margin: EdgeInsets.only(bottom: screenHeight * 0.016),
 
                   child: Text(
                       'Logo',
                       style: TextStyle(
                           fontFamily: 'Poppins',
-                          fontSize: 35,
+                          fontSize: screenHeight * 0.037,
                           color: Colors.black
                       )),
                 ),
                 SvgPicture.asset(
                   'assets/images/menu.svg',
-                  height: 50,
-                  width: 50,
+                  height: screenHeight * 0.053,
+                  width: screenWidth * 0.11,
                 )
               ],
             ),
@@ -72,13 +72,13 @@ class _MainPageState extends State<MainPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 45,right: 45),
+              padding: EdgeInsets.only(left: screenWidth * 0.1,right: screenWidth * 0.1),
               child: Column(
                 children: [
                    Text("Hi Taha",
                     style: TextStyle(
                       fontFamily: 'Poppins',
-                      fontSize: 35,
+                      fontSize: screenHeight * 0.037,
                       fontWeight: FontWeight.w400,
                       color: Colors.black
                     ),
@@ -86,7 +86,7 @@ class _MainPageState extends State<MainPage> {
                   Text("Let's Go Travel",
                     style: TextStyle(
                         fontFamily: 'Poppins',
-                        fontSize: 35,
+                        fontSize: screenHeight * 0.037,
                         fontWeight: FontWeight.w400,
                         color: Colors.black
                     ),
@@ -96,15 +96,15 @@ class _MainPageState extends State<MainPage> {
             ),
             //Add Search Box
             Container(
-              padding: EdgeInsets.only(left: 45,right: 45),
+              padding: EdgeInsets.only(left: screenWidth * 0.1,right: screenWidth * 0.1),
               child: TextField(decoration: new InputDecoration(
                   prefixIcon: Icon(
                     Icons.search_rounded,
-                    size: 35,
+                    size: screenHeight * 0.037,
                   ),
                   hintText: "Explore",
                   hintStyle: TextStyle(
-                      fontSize: 25,
+                      fontSize: screenHeight * 0.026,
                       fontFamily: 'Poppins',
                       color: grey1
                   )
@@ -114,9 +114,9 @@ class _MainPageState extends State<MainPage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  height: 87,
-                  width: 82,
-                  padding: const EdgeInsets.only(top: 3,bottom: 4),
+                  height: screenHeight * 0.093,
+                  width: screenWidth * 0.19,
+                  padding:  EdgeInsets.only(top: screenHeight * 0.002,bottom: screenHeight * 0.004),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       border: Border.all(
@@ -130,8 +130,8 @@ class _MainPageState extends State<MainPage> {
                       InkWell(
                         child: SvgPicture.asset(
                           'assets/images/bus.svg',
-                          height: 60,
-                          width: 50,
+                          height: screenHeight * 0.064,
+                          width: screenWidth * 0.11,
                         ),
                         onTap: (){
                           selectVehicle = "bus";
@@ -142,11 +142,11 @@ class _MainPageState extends State<MainPage> {
                         },
                       ),
                       Container(
-                        height: 18,
-                        child: const Text("Bus",
+                        height: screenHeight * 0.019,
+                        child:  Text("Bus",
                           style: TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 15,
+                              fontSize: screenHeight * 0.016,
                               fontWeight: FontWeight.w600,
                               color: Colors.black
                           ),
@@ -156,9 +156,9 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
                 Container(
-                  height: 87,
-                  width: 82,
-                  padding: const EdgeInsets.only(top: 8,bottom: 3.97),
+                  height: screenHeight * 0.093,
+                  width: screenWidth * 0.19,
+                  padding:  EdgeInsets.only(top: screenHeight * 0.008,bottom: screenHeight * 0.004),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(
@@ -173,8 +173,8 @@ class _MainPageState extends State<MainPage> {
                       InkWell(
                         child: SvgPicture.asset(
                           'assets/images/international.svg',
-                          height: 50,
-                          width: 50,
+                          height: screenHeight * 0.053,
+                          width: screenWidth * 0.11,
                           ),
                         onTap: (){
                           selectVehicle = "international";
@@ -185,11 +185,11 @@ class _MainPageState extends State<MainPage> {
                         },
                       ),
                       Container(
-                        height: 17,
-                        child: const Text("International",
+                        height: screenHeight * 0.018,
+                        child: Text("International",
                           style: TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 11,
+                              fontSize: screenHeight * 0.011,
                               fontWeight: FontWeight.w600,
                               color: Colors.black
                           ),
@@ -199,9 +199,9 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
                 Container(
-                  height: 87,
-                  width: 82,
-                  padding: const EdgeInsets.only(top: 8,bottom: 4),
+                  height: screenHeight * 0.093,
+                  width: screenWidth * 0.19,
+                  padding: EdgeInsets.only(top:screenHeight * 0.008 ,bottom: screenHeight * 0.004),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       border: Border.all(
@@ -215,8 +215,8 @@ class _MainPageState extends State<MainPage> {
                       InkWell(
                         child: SvgPicture.asset(
                           'assets/images/local.svg',
-                          height: 50,
-                          width: 50,
+                          height: screenHeight * 0.053,
+                          width: screenWidth * 0.11,
                         ),
                         onTap: (){
                           selectVehicle = "local";
@@ -227,11 +227,11 @@ class _MainPageState extends State<MainPage> {
                         },
                       ),
                       Container(
-                        height: 19,
-                        child: const Text("Local",
+                        height: screenHeight * 0.02,
+                        child: Text("Local",
                           style: TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 15,
+                              fontSize: screenHeight * 0.016,
                               fontWeight: FontWeight.w600,
                               color: Colors.black,
                           ),
@@ -241,9 +241,9 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
                 Container(
-                  height: 87,
-                  width: 82,
-                  padding: EdgeInsets.only(top: 3,bottom: 5),
+                  height: screenHeight * 0.093,
+                  width: screenWidth * 0.19,
+                  padding: EdgeInsets.only(top: screenHeight * 0.003,bottom: screenHeight * 0.005),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       border: Border.all(
@@ -257,8 +257,8 @@ class _MainPageState extends State<MainPage> {
                       InkWell(
                         child: SvgPicture.asset(
                           'assets/images/train.svg',
-                          height: 60,
-                          width: 50,
+                          height: screenHeight * 0.06,
+                          width: screenWidth * 0.11,
                         ),
                         onTap: (){
                           selectVehicle = "train";
@@ -269,11 +269,11 @@ class _MainPageState extends State<MainPage> {
                         },
                       ),
                       Container(
-                        height: 15,
-                        child: const Text("Train",
+                        height: screenHeight * 0.016,
+                        child: Text("Train",
                           style: TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 15,
+                              fontSize: screenHeight * 0.016,
                               fontWeight: FontWeight.w600,
                               color: Colors.black
                           ),
@@ -286,20 +286,20 @@ class _MainPageState extends State<MainPage> {
               ],
             ),
             Container(
-              padding: EdgeInsets.only(left:28,right: 168),
+              padding: EdgeInsets.only(left:screenWidth * 0.06,right: screenWidth * 0.39),
               child: Text(
                 "Recommended",
                 style: TextStyle(
                     fontFamily: 'Poppins',
-                    fontSize: 30,
+                    fontSize: screenHeight * 0.032,
                     fontWeight: FontWeight.w400,
                     color: Colors.black
                 ),
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 60,bottom:30,left: 27),
-              height: 350,
+              padding: EdgeInsets.only(top: screenHeight * 0.064,bottom:screenHeight * 0.032,left: screenWidth * 0.062),
+              height: screenHeight * 0.39,
               color: green1,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,

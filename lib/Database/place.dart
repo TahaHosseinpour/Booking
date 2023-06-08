@@ -28,7 +28,7 @@ List<Place> placesList = [
   ),
   Place(
     title: "Shoshtar",
-      text: "Shoshtar is the most beautiful place in iran ... this place is in the tehran",
+      text: "Shoshtar is the most beautiful place in iran...this place is in the tehran",
       imagePath: "assets/images/places/shoshtar.png"
   ),
   Place(

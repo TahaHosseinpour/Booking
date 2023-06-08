@@ -77,7 +77,7 @@ class _TabButtonState extends State<TabButton> {
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: widget.fontWeight,
-                    fontSize: widget.fontSize,
+                    fontSize: screenHeight * 0.03,
                     color: widget.leftButtonIsActive ? Colors.black : grey2
                   ),
                 ),
@@ -105,7 +105,7 @@ class _TabButtonState extends State<TabButton> {
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontWeight: widget.fontWeight,
-                        fontSize: widget.fontSize,
+                        fontSize: screenHeight * 0.03,
                         color: widget.rightButtonIsActive ? Colors.black : grey2
                       ),
                     ),
