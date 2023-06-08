@@ -39,7 +39,7 @@ class _MyDatePickerTextFieldState extends State<MyDatePickerTextField> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
-      width: screenWidth * 0.255,
+      width: screenWidth * 0.27,
       height:screenHeight * 0.04,
 
       child:TextField(
