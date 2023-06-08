@@ -27,30 +27,37 @@ class _StartState extends State<Start> {
             Image.asset(
               "assets/images/earth.png",
             ),
-            const Text(
+             Text(
               "LOGO",
               style: TextStyle(
-                fontSize: 34,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const Text(
-              "Booking Any Where",
-              style: TextStyle(
-                fontSize: 24,
+                fontSize: screenHeight * 0.036,
                 fontFamily: 'Poppins',
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w400,
               ),
             ),
-            const Text(
-              "Flight , Train , Bus",
-              style: TextStyle(
-                fontSize: 24,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+             Container(
+               child: Column(
+                 children: [
+                   Text(
+                     "Booking Any Where",
+                     style: TextStyle(
+                       fontSize: screenHeight * 0.025,
+                       fontFamily: 'Poppins',
+                       fontWeight: FontWeight.w400,
+                     ),
+                   ),
+                   SizedBox(height: screenHeight * 0.013,),
+                   Text(
+                     "Flight , Train , Bus",
+                     style: TextStyle(
+                       fontSize: screenHeight * 0.025,
+                       fontFamily: 'Poppins',
+                       fontWeight: FontWeight.w400,
+                     ),
+                   ),
+                 ],
+               ),
+             ),
             InkWell(
               child: buttonContainer("Let's Start", screenHeight, screenWidth),
               onTap: (){
@@ -60,12 +67,12 @@ class _StartState extends State<Start> {
                 );
               },
             ),
-            const Text(
+             Text(
               "version 1.0",
               style: TextStyle(
-                fontSize: 15,
+                fontSize: screenHeight * 0.016,
                 fontFamily: 'Poppins',
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w400,
               ),
             ),
           ],
@@ -86,6 +93,8 @@ class _StartState extends State<Start> {
 
 class MyButton {
   ElevatedButton buildElevatedButton(String text, BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return ElevatedButton(
       onPressed: () {
         // اجرای عملیات مناسب
@@ -99,11 +108,11 @@ class MyButton {
       ),
       child: Text(
         text,
-        style: const TextStyle(
-          fontSize: 28,
+        style:  TextStyle(
+          fontSize: screenHeight * 0.03,
           fontFamily: 'Poppins',
           color: Colors.black,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w500,
         ),
       ),
     );
