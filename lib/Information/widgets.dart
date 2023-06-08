@@ -71,8 +71,8 @@ ClipRRect buttonContainer(String text , double screenHeight , double screenWidth
       child: Center(
         child: Text(
           text,
-          style: const TextStyle(
-            fontSize: 28,
+          style: TextStyle(
+            fontSize: screenHeight * 0.03,
             fontFamily: 'Poppins',
             color: Colors.black,
             fontWeight: FontWeight.bold,
