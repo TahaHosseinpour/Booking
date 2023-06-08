@@ -18,14 +18,22 @@ class _checkBoxState extends State<checkBox> {
 
   @override
   Widget build(context) {
+    final screenHeight = MediaQuery
+        .of(context)
+        .size
+        .height;
+    final screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
     return Container(
-      height: 20,
+      height:screenHeight * 0.02 ,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            width: 20,
-            height: 20,
+            width: screenWidth * 0.046,
+            height: screenHeight * 0.02,
             child: InkWell(
               onTap: (){
                 setState(() {
@@ -43,13 +51,13 @@ class _checkBoxState extends State<checkBox> {
             ),
           ),
           SizedBox(
-            width: 17.5,
+            width: screenWidth * 0.04,
           ),
           Text(
             widget.lable ,
-            style: const TextStyle(
+            style:  TextStyle(
               fontFamily: "Poppins",
-              fontSize: 16,
+              fontSize: screenHeight * 0.017,
               fontWeight: FontWeight.w700,
               color: Colors.black
             ),
