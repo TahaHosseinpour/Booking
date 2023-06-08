@@ -4,18 +4,22 @@ import 'package:booking/Start%20Page/start.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Search Page/two_button.dart';
 import 'package:booking/Search Page/date_picker.dart';
 import 'package:booking/Database/user.dart';
+import 'package:booking/Database/country.dart';
+import 'package:booking/Ticket Page/ticket_page.dart';
 
 
 class SearchPage extends StatefulWidget{
 
   User currentUser;
   String vehicle;
+
 
   SearchPage({super.key,
   required this.currentUser,
@@ -26,10 +30,51 @@ class SearchPage extends StatefulWidget{
 }
 
 class _SearchPageState extends State<SearchPage> {
+
+  List<String> originList = countriesList.map((country) => country.fullName).toList();
+  List<String> destinationList = countriesList.map((country) => country.fullName).toList();
+  int adultPassengersNumber = 0;
+  int childPassengersNumber = 0;
+  String origin = "";
+  String destination = "";
+
+  DateTime backDate = DateTime.utc(2023,11,11);
+  DateTime departureDate = DateTime.utc(2023,11,9);
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+
+
+
+
+
+
+    String imagePa = "";
+    String buttonText = "";
+
+
+
+
+    if(widget.vehicle == "international"){
+      imagePa = "assets/images/airplane.png";
+      buttonText = "Search Flights";
+    }
+    if(widget.vehicle == "local"){
+      imagePa = "assets/images/airplane.png";
+      buttonText = "Search Flights";
+
+    }
+    if(widget.vehicle == "train"){
+      imagePa = "assets/images/train.png";
+      buttonText = "Search Trains";
+
+    }
+    if(widget.vehicle == "bus"){
+      imagePa = "assets/images/bus.png";
+      buttonText = "Search Buses";
+
+    }
 
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -37,7 +82,7 @@ class _SearchPageState extends State<SearchPage> {
         body: Container(
           child: Column(
             children: [
-              Back(context),
+              Back(context , imagePa),
               Center(
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
@@ -72,11 +117,11 @@ class _SearchPageState extends State<SearchPage> {
                                 width: screenWidth * 0.553,
                                 padding: EdgeInsets.only(top: 3.5),
                                 child: DropdownSearch<String> (
-                                  popupProps: const PopupProps.menu(
+                                  popupProps: PopupProps.menu(
                                     showSelectedItems: true,
                                     showSearchBox: true,
                                   ),
-                                  items: const ["Brazil,Brasilia", "China,Beijing", "France,Paris", "Italia,Rome", "Canada,Vancouver",],
+                                  items: originList,
                                   dropdownDecoratorProps: DropDownDecoratorProps(
                                     dropdownSearchDecoration: InputDecoration(
                                       labelText: "From",
@@ -89,6 +134,12 @@ class _SearchPageState extends State<SearchPage> {
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
+                                  onChanged: (String? selectItem){
+                                    setState(() {
+                                      origin = selectItem!;
+                                      destinationList.remove(selectItem);
+                                    });
+                                  },
                                 ),
                               )
                             ],
@@ -115,7 +166,7 @@ class _SearchPageState extends State<SearchPage> {
                                     showSelectedItems: true,
                                     showSearchBox: true,
                                   ),
-                                  items: const ["Brazil,Brasilia", "China,Beijing", "France,Paris", "Italia,Rome", "Canada,Vancouver",],
+                                  items: destinationList,
                                   dropdownDecoratorProps: DropDownDecoratorProps(
                                     dropdownSearchDecoration: InputDecoration(
                                       labelText: "To",
@@ -128,6 +179,12 @@ class _SearchPageState extends State<SearchPage> {
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
+                                  onChanged: (String? selectItem){
+                                    setState(() {
+                                      destination = selectItem!;
+                                      originList.remove(selectItem);
+                                    });
+                                  },
                                 ),
                               ),
                             ],
@@ -192,7 +249,11 @@ class _SearchPageState extends State<SearchPage> {
                                             Container(
                                               child:InkWell(
                                                 onTap: (){
-
+                                                  setState(() {
+                                                    if(adultPassengersNumber > 0){
+                                                      adultPassengersNumber -= 1;
+                                                    }
+                                                  });
                                                 },
                                                 child:  SvgPicture.asset('assets/images/minus.svg',
                                                   height: 20,
@@ -202,7 +263,7 @@ class _SearchPageState extends State<SearchPage> {
                                               margin: EdgeInsets.only(left: 2.22),
                                             ),
                                             Container(
-                                              child: Text('2',
+                                              child: Text(adultPassengersNumber.toString(),
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                   fontFamily: 'Poppins',
@@ -212,7 +273,9 @@ class _SearchPageState extends State<SearchPage> {
                                             Container(
                                               child:  InkWell(
                                                 onTap: (){
-
+                                                  setState(() {
+                                                    adultPassengersNumber += 1;
+                                                  });
                                                 },
                                                 child:  SvgPicture.asset('assets/images/plus.svg',
                                                   height: 20,
@@ -238,7 +301,11 @@ class _SearchPageState extends State<SearchPage> {
                                             Container(
                                               child: InkWell(
                                                 onTap: (){
-
+                                                  setState(() {
+                                                    if(childPassengersNumber > 0){
+                                                      childPassengersNumber -= 1;
+                                                    }
+                                                  });
                                                 },
                                                 child:  SvgPicture.asset('assets/images/minus.svg',
                                                   height: 20,
@@ -248,7 +315,7 @@ class _SearchPageState extends State<SearchPage> {
                                               margin: EdgeInsets.only(left: 2.22),
                                             ),
                                             Container(
-                                              child: Text('0',
+                                              child: Text(childPassengersNumber.toString(),
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                   fontFamily: 'Poppins',
@@ -258,7 +325,9 @@ class _SearchPageState extends State<SearchPage> {
                                             Container(
                                               child: InkWell(
                                                 onTap: (){
-
+                                                  setState(() {
+                                                    childPassengersNumber += 1;
+                                                  });
                                                 },
                                                 child:  SvgPicture.asset('assets/images/plus.svg',
                                                   height: 20,
@@ -341,7 +410,7 @@ class _SearchPageState extends State<SearchPage> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      child:   MyDatePickerTextField(),
+                                      child: MyDatePickerTextField(),
                                       margin: EdgeInsets.only(left: screenWidth * 0.02),
                                     ),
                                     Container(
@@ -354,7 +423,23 @@ class _SearchPageState extends State<SearchPage> {
                             ],
                           ),
                         ),
-                        MyButton().buildElevatedButton("Search Trains",context),
+                        InkWell(
+                          child: buttonContainer(buttonText, screenHeight, screenWidth),
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => TicketPage(
+                                  currnetUser: widget.currentUser,
+                                vehicle: widget.vehicle,
+                                date: departureDate,
+                                origin: origin,
+                                destination: destination,
+                                passengersNumber: childPassengersNumber + adultPassengersNumber,
+                              )),
+                            );
+
+                          },
+                        ),
 
 
 
@@ -372,20 +457,20 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 }
-Widget Back(BuildContext context){
+Widget Back(BuildContext context , String imagePath){
   return Stack(
       alignment: Alignment.topLeft,
       children: <Widget>[
   Image(
     height: MediaQuery.of(context).size.height * 0.375,
     width:  MediaQuery.of(context).size.width,
-  image: new AssetImage('assets/images/train.png'),
+  image: new AssetImage(imagePath),
   ),
         Padding(
           padding: EdgeInsets.only(top: 30, left: 40),
           child:InkWell(
             onTap: (){
-              print("salam");
+              Navigator.pop(context);
             },
             child: SvgPicture.asset('assets/images/arrow_back.svg',
               width: 26,

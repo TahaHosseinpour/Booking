@@ -2,8 +2,11 @@ import 'package:booking/Information/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:booking/Information/colors.dart';
+import 'package:booking/Search Page/search_page.dart';
 
 class MyDatePickerTextField extends StatefulWidget {
+
+
   @override
   _MyDatePickerTextFieldState createState() => _MyDatePickerTextFieldState();
 }
@@ -11,7 +14,16 @@ class MyDatePickerTextField extends StatefulWidget {
 class _MyDatePickerTextFieldState extends State<MyDatePickerTextField> {
   TextEditingController _textEditingController = TextEditingController();
   String _selectedDate = '';
+  static DateTime pickDate = DateTime.utc(1,3,15);
 
+  static GlobalKey<_MyDatePickerTextFieldState> key1 = GlobalKey<_MyDatePickerTextFieldState>();
+  static GlobalKey<_MyDatePickerTextFieldState> key2 = GlobalKey<_MyDatePickerTextFieldState>();
+
+
+
+  DateTime getter(){
+    return pickDate;
+  }
   @override
   void dispose() {
     _textEditingController.dispose();
@@ -32,6 +44,11 @@ class _MyDatePickerTextFieldState extends State<MyDatePickerTextField> {
         setState(() {
           _selectedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
           _textEditingController.text = _selectedDate;
+          setState(() {
+            pickDate = pickedDate;
+          });
+          print(pickedDate);
+          print(pickDate);
         });
       }
     }

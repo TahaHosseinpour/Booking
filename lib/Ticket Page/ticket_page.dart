@@ -6,10 +6,32 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Ticket Page/ticket.dart';
 import 'package:booking/Information/widgets.dart';
+import 'package:booking/Database/user.dart';
 
-class TicketPage extends StatelessWidget {
-  const TicketPage({super.key});
+class TicketPage extends StatefulWidget {
 
+  TicketPage({
+    required this.currnetUser,
+    required this.vehicle,
+    required this.date,
+    required this.origin,
+    required this.destination,
+    required this.passengersNumber
+  });
+
+
+  User currnetUser;
+  String vehicle;
+  DateTime date;
+  String origin;
+  String destination;
+  int passengersNumber;
+
+  @override
+  State<TicketPage> createState() => _TicketPageState();
+}
+
+class _TicketPageState extends State<TicketPage> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -24,7 +46,7 @@ class TicketPage extends StatelessWidget {
             Container(
                 // color: Colors.red,
                 margin: const EdgeInsets.only(top: 19,right:33,left: 33),
-                
+
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
