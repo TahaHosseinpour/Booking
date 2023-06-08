@@ -3,13 +3,28 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
+import 'package:booking/Database/user.dart';
+import 'package:booking/Search Page/search_page.dart';
 
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
+
+  User currentUser;
+
+  MainPage({required this.currentUser});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+
+    String vehicle;
+
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -143,10 +158,20 @@ class MainPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                     children: [
-                      InkWell(child: SvgPicture.asset('assets/images/international.svg',
-                      height: 50,
+                      InkWell(
+                        child: SvgPicture.asset(
+                          'assets/images/international.svg',
+                          height: 50,
                           width: 50,
-                          ),),
+                          ),
+                        onTap: (){
+                          vehicle = "international";
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SearchPage()),
+                          );
+                        },
+                      ),
                       Container(
                         height: 17,
                         child: const Text("International",
@@ -246,7 +271,7 @@ class MainPage extends StatelessWidget {
               color: green1,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                
+
                 children: [
 
 

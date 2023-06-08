@@ -3,6 +3,8 @@ import 'package:flutter/gestures.dart';
 
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
+import 'package:booking/Database/user.dart';
+import 'package:booking/Main Page/main_page.dart';
 
 class LogInTab extends StatefulWidget{
   const LogInTab({super.key});
@@ -12,11 +14,11 @@ class LogInTab extends StatefulWidget{
 }
 
 class _LogInTabState extends State<LogInTab> {
-  String usernameError = "";
-  String passwordError = "";
+  String usernameError = "username not found";
+  String passwordError = "password incorrect";
 
-  bool isUsernameValid = false;
-  bool isPasswordValid = false;
+  bool isUsernameValid = true;
+  bool isPasswordValid = true;
 
   //Controllers
   final _usernameController = TextEditingController();
@@ -26,6 +28,9 @@ class _LogInTabState extends State<LogInTab> {
   Widget build(context){
     final contextWidth = MediaQuery.of(context).size.width;
     final contextHeight = MediaQuery.of(context).size.height;
+
+    User currnetUser;
+
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(30),
@@ -72,7 +77,7 @@ class _LogInTabState extends State<LogInTab> {
                           ),
                         ),
                         Text(
-                          usernameError,
+                          isUsernameValid ? "" : usernameError,
                           style: const TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 11,
@@ -93,7 +98,8 @@ class _LogInTabState extends State<LogInTab> {
                         TextField(
                           obscureText: true,
                           style: const TextStyle(
-                            fontFamily: 'Poppins',
+
+                           fontFamily: 'Poppins',
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
                           ),
@@ -116,7 +122,7 @@ class _LogInTabState extends State<LogInTab> {
                           ),
                         ),
                         Text(
-                          passwordError,
+                          isPasswordValid ? "" : passwordError,
                           style: const TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 11,
@@ -160,6 +166,28 @@ class _LogInTabState extends State<LogInTab> {
               child: InkWell(
                 child: buttonContainer("Submit",contextHeight * 0.107 , contextWidth),
                 onTap: (){
+                  setState(() {
+                    isUsernameValid = false;
+                    isPasswordValid = false;
+                  });
+                  for(var user in usersList){
+                    if(_usernameController.text == user.username){
+                      setState(() {
+                        isUsernameValid = true;
+                      });
+                      if(_passwordController.text == user.password){
+                        setState(() {
+                          isPasswordValid = true;
+                        });
+                        currnetUser = user;
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MainPage(currentUser: currnetUser,)),
+                        );
+                        break;
+                      }
+                    }
+                  }
                 },
               ),
             )
