@@ -176,6 +176,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
            Container(
+             margin: EdgeInsets.only(bottom: screenHeight * 0.02),
              padding: EdgeInsets.only(right: screenWidth * 0.14),
              child: Row(
                mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -183,11 +184,11 @@ class _ProfilePageState extends State<ProfilePage> {
                  Container(
                    margin: EdgeInsets.only(left: screenWidth * 0.1),
                    alignment: Alignment.topLeft,
-                   height: screenHeight * 0.045,
+                   height: screenHeight * 0.04,
                    child:FittedBox(
                      child:  Text("Cantact Us",
                        style: TextStyle(
-                         fontSize: 30,
+                         fontSize: 25,
                          fontFamily: 'Poppins',
                          fontWeight: FontWeight.w400,
                        ),

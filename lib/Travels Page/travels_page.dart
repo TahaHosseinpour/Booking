@@ -1,3 +1,4 @@
+import 'package:booking/Information/buildBottomNavigationBar.dart';
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Travels%20Page/search_box.dart';
@@ -60,7 +61,7 @@ class _TravelsPageState extends State<TravelsPage> {
               SearchBox(context),
              Container(
                margin: EdgeInsets.only(top: screenHeight * 0.01),
-               height: screenHeight * 0.59,
+               height: screenHeight * 0.58,
                width: screenWidth * 0.83,
                child: ListView(
                  scrollDirection: Axis.vertical,
@@ -88,7 +89,7 @@ class _TravelsPageState extends State<TravelsPage> {
             ],
           ),
         ),
-        bottomNavigationBar: buildNavigationBar(context),
+        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "ticket"),
       ),
     );
   }
