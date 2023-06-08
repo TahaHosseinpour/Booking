@@ -54,7 +54,7 @@ class _TransactionsState extends State<Transactions> {
                     ),
                   )
               ),
-              Wallet(balance: 234),
+              Wallet(balance: int.parse(widget.currentUser.walletBalance)),
               SizedBox(
                 height: screenHeight * 0.625,
                 width: screenWidth * 0.823,

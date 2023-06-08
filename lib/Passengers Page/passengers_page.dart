@@ -28,6 +28,7 @@ class PassengersPage extends StatefulWidget{
 }
 
 class _PassengersPageState extends State<PassengersPage>{
+  List<String> textFieldValues = ['Value 1',];
 
   String des = "";
   String ori = "";
@@ -281,23 +282,23 @@ class _PassengersPageState extends State<PassengersPage>{
       Container(
         height: screenHeight * 0.37,
         width: screenWidth * 0.83,
-        child: ListView(
+        child: ListView.builder(
           scrollDirection: Axis.vertical,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: PassengerInformation(context),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: PassengerInformation(context),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: PassengerInformation(context),
-            ),
+          itemCount: widget.passengersNumber,
+          itemBuilder: (BuildContext context, int index) {
+            return PassengerInformation(
+              onTextChanged: (String value) {
+                setState(() {
+                  textFieldValues[index] = value;
+                  setState(() {
+                    print(textFieldValues);
+                  });
+                });
+              },
+            );
 
-          ],
+          },
+
         ),
       ),
           ],
@@ -306,6 +307,7 @@ class _PassengersPageState extends State<PassengersPage>{
       ),
     );
     throw UnimplementedError();
+
   }
 }
 

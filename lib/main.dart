@@ -27,18 +27,7 @@ class MyApp extends StatelessWidget {
          primarySwatch: Colors.blue,
 
        ),
-       home: MainPage(
-         currentUser: User(
-           username: "Taha223",
-           password: "Thoss1010",
-           email: "t.hosseinpour2347@gmail.com",
-           avatarPath: "assets/images/avatars/Taha223.png",
-           phone: "09105860050",
-           id: "0200052934",
-           birthday: "02.3.16",
-           walletBalance: "140"
-       ),
-       ),
+       home: Start(),
     );
   }
 }

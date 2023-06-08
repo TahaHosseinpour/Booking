@@ -2,8 +2,10 @@ import 'package:booking/Information/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:booking/Database/user.dart';
+import 'package:booking/Database/travel.dart';
 
-Container TravelInformation(BuildContext context){
+Container TravelInformation(BuildContext context , User currentUser , Travel futueTravel ,int passengersNumber){
   final screenWidth = MediaQuery
       .of(context)
       .size
@@ -12,6 +14,13 @@ Container TravelInformation(BuildContext context){
       .of(context)
       .size
       .height;
+  List<String> monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+  String monthName = monthNames[futueTravel.departureTime.month - 1];
+
+  String travelCla = futueTravel.travelClass.replaceAll(' Class', '');
   return Container(
     width: screenWidth * 0.83,
     height: screenHeight * 0.3,
@@ -51,7 +60,7 @@ Container TravelInformation(BuildContext context){
                 // width:screenWidth * 0.158,
                 height: screenHeight * 0.028,
                 child: FittedBox(
-                  child: Text("Sunday",
+                  child: Text(futueTravel.origin,
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Poppins',
@@ -85,7 +94,7 @@ Container TravelInformation(BuildContext context){
                 // width:screenWidth * 0.16,
                 height: screenHeight * 0.028,
                 child: FittedBox(
-                  child: Text("London",
+                  child: Text(futueTravel.destination,
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Poppins',
@@ -119,7 +128,7 @@ Container TravelInformation(BuildContext context){
                 // width:screenWidth * 0.27,
                 height: screenHeight * 0.028,
                 child: FittedBox(
-                  child: Text("19 May - 18:20",
+                  child: Text("${futueTravel.departureTime.day} ${monthName} - ${futueTravel.departureTime.hour}:${futueTravel.departureTime.minute}",
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Poppins',
@@ -153,7 +162,7 @@ Container TravelInformation(BuildContext context){
                 // width:screenWidth * 0.24,
                 height: screenHeight * 0.028,
                 child: FittedBox(
-                  child: Text("Fly Emirates",
+                  child: Text(futueTravel.companyName,
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Poppins',
@@ -187,7 +196,7 @@ Container TravelInformation(BuildContext context){
                 // width:screenWidth * 0.12,
                 height: screenHeight * 0.028,
                 child: FittedBox(
-                  child: Text("10675",
+                  child: Text(futueTravel.id.toString(),
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Poppins',
@@ -221,7 +230,7 @@ Container TravelInformation(BuildContext context){
                 // width:screenWidth * 0.18,
                 height: screenHeight * 0.028,
                 child: FittedBox(
-                  child: Text("Business",
+                  child: Text(travelCla,
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Poppins',

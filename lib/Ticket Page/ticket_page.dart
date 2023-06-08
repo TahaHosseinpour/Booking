@@ -15,7 +15,7 @@ import 'package:booking/Database/travel.dart';
 class TicketPage extends StatefulWidget {
 
   TicketPage({
-    required this.currnetUser,
+    required this.currentUser,
     required this.vehicle,
     required this.date,
     required this.origin,
@@ -24,7 +24,7 @@ class TicketPage extends StatefulWidget {
   });
 
 
-  User currnetUser;
+  User currentUser;
   String vehicle;
   DateTime date;
   String origin;
@@ -291,7 +291,7 @@ class _TicketPageState extends State<TicketPage> {
                                 onTap: (){
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => Filter(),
+                                      MaterialPageRoute(builder: (context) => Filter(currentUser: widget.currentUser,vehicle: widget.vehicle,date: widget.date,origin: widget.origin,destination: widget.destination,passengersNumber: widget.passengersNumber,),
                                       ));
                                 },
                               ),
@@ -310,7 +310,7 @@ class _TicketPageState extends State<TicketPage> {
                           final item = travelsList[index];
                           return ticket(
                             context,
-                            widget.currnetUser,
+                            widget.currentUser,
                             widget.passengersNumber,
                             screenWidth,
                             screenHeight,

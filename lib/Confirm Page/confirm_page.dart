@@ -148,7 +148,7 @@ class _ConfirmPage extends State<ConfirmPage> {
                   ],
                 ),
               ),
-              TravelInformation(context),
+              TravelInformation(context , widget.currentUser,widget.futureTravel, widget.passengersNumber),
               Container(
                 height: screenHeight * 0.22,
                 width: screenWidth * 0.83,

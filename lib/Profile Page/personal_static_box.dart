@@ -2,43 +2,20 @@ import 'package:booking/Information/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-//
-// Container PersonalBox (BuildContext context){
-//   final screenWidth = MediaQuery
-//       .of(context)
-//       .size
-//       .width;
-//   final screenHeight = MediaQuery
-//       .of(context)
-//       .size
-//       .height;
-//   return Container(
-//     padding: EdgeInsets.only(top: screenHeight * 0.011, bottom: screenHeight * 0.011, right: screenWidth * 0.06, left: screenWidth * 0.03 ),
-//     width: screenWidth * 0.83 ,
-//     height: screenHeight * 0.18,
-//     decoration: BoxDecoration(
-//       borderRadius: BorderRadius.circular(35),
-//       color: grey3,
-//     ),
-//     child: Column(
-//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//       children: [
-//
-//         InkWell(
-//           child:  Container(
-//             alignment: Alignment.centerRight,
-//             child: SvgPicture.asset('assets/images/edit.svg',
-//               width: screenWidth * 0.093,
-//               height: screenHeight * 0.042,
-//             ),
-//           ),
-//         )
-//       ],
-//     ),
-//   );
-// }
+
 
 class PersonalStaticBox extends StatefulWidget{
+
+  String phone;
+  String id;
+  String birthday;
+
+  PersonalStaticBox({
+    required this.phone,
+    required this.id,
+    required this.birthday
+  });
+
   @override
   State<PersonalStaticBox> createState() => _PersonalStaticBoxState();
 }
@@ -70,7 +47,7 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
               Container(
                 height: screenHeight * 0.025,
                 child: FittedBox(
-                  child:  Text("09105860050",
+                  child:  Text(widget.phone,
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Poppins',
@@ -102,7 +79,7 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
               Container(
                 height: screenHeight * 0.025,
                 child: FittedBox(
-                  child:  Text("03489547",
+                  child:  Text(widget.id,
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Poppins',
@@ -134,7 +111,7 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
               Container(
                 height: screenHeight * 0.025,
                 child: FittedBox(
-                  child:  Text("1382/05/17",
+                  child:  Text(widget.birthday,
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Poppins',

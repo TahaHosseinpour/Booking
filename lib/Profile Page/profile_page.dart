@@ -36,8 +36,8 @@ class _ProfilePageState extends State<ProfilePage> {
         .size
         .height;
     Widget personalEditing = PersonalEditingBox();
-    Widget personalColumn = isPersonalEditing ? personalEditing : PersonalStaticBox();
-    Widget accountColumn = isAccountEditing ? AccountEditingBox() : AccountStaticBox();
+    Widget personalColumn = isPersonalEditing ? personalEditing : PersonalStaticBox(phone: widget.currentUser.phone,id: widget.currentUser.id,birthday: widget.currentUser.birthday,);
+    Widget accountColumn = isAccountEditing ? AccountEditingBox() : AccountStaticBox(username: widget.currentUser.username,password: widget.currentUser.password,email: widget.currentUser.email,);
 
     String personalIcon = isPersonalEditing ? "assets/images/tick.svg" : "assets/images/edit.svg";
     String accountIcon = isAccountEditing ? "assets/images/tick.svg" : "assets/images/edit.svg";
@@ -72,7 +72,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           Container(
                             height: screenHeight * 0.048,
                             child: FittedBox(
-                              child:  Text("T.hosseinpour",
+                              child:  Text(widget.currentUser.username,
                                 style: TextStyle(
                                   fontSize: screenHeight * 0.032,
                                   fontFamily: 'Poppins',
@@ -84,7 +84,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ],
                       ),
                     ),
-                    Wallet(balance: 753),
+                    Wallet(balance: int.parse(widget.currentUser.walletBalance)),
                   ],
                 )
               ),

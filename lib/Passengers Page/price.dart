@@ -9,7 +9,7 @@ import 'package:booking/Confirm Page/confirm_page.dart';
 import 'package:booking/Database/travel.dart';
 import 'package:booking/Database/user.dart';
 
-Container Price(BuildContext context,String button_name ,Travel futureTravel , User currentUser, int passengersNumber){
+Container Price(BuildContext context,String button_name ,Travel futureTravel , User currentUser, int passengersNumber ){
 
 
   final screenWidth = MediaQuery.of(context).size.width;

@@ -7,11 +7,12 @@ import 'package:booking/Information/colors.dart';
 import 'package:booking/Filter%20Page/range_side.dart';
 import 'package:booking/Filter Page/checkBox.dart';
 import 'package:booking/Database/user.dart';
+import 'package:booking/Ticket Page/ticket_page.dart';
 
 class Filter extends StatefulWidget {
 
   Filter({
-    required this.currnetUser,
+    required this.currentUser,
     required this.vehicle,
     required this.date,
     required this.origin,
@@ -20,7 +21,7 @@ class Filter extends StatefulWidget {
   });
 
 
-  User currnetUser;
+  User currentUser;
   String vehicle;
   DateTime date;
   String origin;
@@ -248,6 +249,17 @@ class _FilterState extends State<Filter> {
                         ),
                         onTap: (){
                           print("click on Apply Filters");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => TicketPage(
+                            currentUser: widget.currentUser,
+                            vehicle: widget.vehicle,
+                            date: widget.date,
+                            origin: widget.origin,
+                            destination: widget.destination,
+                            passengersNumber: widget.passengersNumber,
+                          )
+                          ));
                         },
                       )
                     ]
@@ -257,7 +269,7 @@ class _FilterState extends State<Filter> {
             )
           ],
         ),
-        bottomNavigationBar: BuildBottomNavigationBar(activeIcon:"home",currentUser: widget.currnetUser,),
+        bottomNavigationBar: BuildBottomNavigationBar(activeIcon:"home",currentUser: widget.currentUser,),
       ),
     );
   }

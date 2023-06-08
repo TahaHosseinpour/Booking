@@ -6,6 +6,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 
   class AccountStaticBox extends StatefulWidget{
 
+    String username;
+    String password;
+    String email;
+
+    AccountStaticBox({
+      required this.username,
+      required this.password,
+      required this.email
+     });
   @override
   State<AccountStaticBox> createState() => _AccountStaticBoxState();
 }
@@ -37,7 +46,7 @@ class _AccountStaticBoxState extends State<AccountStaticBox> {
                 Container(
                   height: screenHeight * 0.025,
                   child: FittedBox(
-                    child:  Text("T.hosseinpour",
+                    child:  Text(widget.username,
                       style: TextStyle(
                         fontSize: 20,
                         fontFamily: 'Poppins',
@@ -74,7 +83,7 @@ class _AccountStaticBoxState extends State<AccountStaticBox> {
                       Container(
                         height: screenHeight * 0.04,
                         child: FittedBox(
-                          child:  Text("********",
+                          child:  Text(widget.password,
                             style: TextStyle(
                               fontSize: 20,
                               fontFamily: 'Poppins',
@@ -123,7 +132,7 @@ class _AccountStaticBoxState extends State<AccountStaticBox> {
                 Container(
                   height: screenHeight * 0.025,
                   child: FittedBox(
-                    child:  Text("t.hosseinpour@gmail.com",
+                    child:  Text(widget.email,
                       style: TextStyle(
                         fontSize: 20,
                         fontFamily: 'Poppins',

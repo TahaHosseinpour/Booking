@@ -430,7 +430,7 @@ class _SearchPageState extends State<SearchPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => TicketPage(
-                                  currnetUser: widget.currentUser,
+                                  currentUser: widget.currentUser,
                                 vehicle: widget.vehicle,
                                 date: departureDate,
                                 origin: origin,
