@@ -4,9 +4,18 @@ import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/buildBottomNavigationBar.dart';
 import 'package:booking/Information/wallet.dart';
 import 'package:booking/Transactions Page/transaction_item.dart';
+import 'package:booking/Database/user.dart';
 
-class Transactions extends StatelessWidget{
+class Transactions extends StatefulWidget{
 
+  User currentUser;
+
+  Transactions({required this.currentUser});
+  @override
+  State<Transactions> createState() => _TransactionsState();
+}
+
+class _TransactionsState extends State<Transactions> {
   Widget build(context){
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
@@ -210,7 +219,7 @@ class Transactions extends StatelessWidget{
             ],
           ),
         ),
-        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "transaction"),
+        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "transaction",currentUser: widget.currentUser,),
       ),
     );
   }

@@ -6,15 +6,27 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../Information/colors.dart';
+import 'package:booking/Database/travel.dart';
+import 'package:booking/Database/user.dart';
 
 class ConfirmPage extends StatefulWidget{
-  const ConfirmPage({super.key});
+
+  Travel futureTravel;
+  User currentUser;
+  int passengersNumber;
+
+
+  ConfirmPage({
+    required this.futureTravel,
+    required this.currentUser,
+    required this.passengersNumber,
+  });
+
   @override
   State<ConfirmPage> createState() => _ConfirmPage();
 }
 
 class _ConfirmPage extends State<ConfirmPage> {
-  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +55,9 @@ class _ConfirmPage extends State<ConfirmPage> {
                       height: screenHeight * 0.04,
                       margin: EdgeInsets.only(left: screenWidth * 0.08, top: screenHeight * 0.018),
                       child:  InkWell(
-                        onTap: (){},
+                        onTap: (){
+                          Navigator.pop(context);
+                        },
                         child: SvgPicture.asset(
                           "assets/images/arrow_back.svg",
                           width: screenWidth * 0.06,
@@ -152,7 +166,7 @@ class _ConfirmPage extends State<ConfirmPage> {
                   ],
                 ),
               ),
-              Price(context, "Payment"),
+              Price(context, "Payment",widget.futureTravel,widget.currentUser,widget.passengersNumber),
             ],
           ),
         ),

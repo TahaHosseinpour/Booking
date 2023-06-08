@@ -1,3 +1,4 @@
+import 'package:booking/Database/company.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dotted_line/dotted_line.dart';
@@ -9,6 +10,7 @@ import 'package:booking/Information/widgets.dart';
 import 'package:booking/Database/user.dart';
 import 'package:booking/Database/country.dart';
 import 'package:booking/Filter Page/filter.dart';
+import 'package:booking/Database/travel.dart';
 
 class TicketPage extends StatefulWidget {
 
@@ -40,6 +42,7 @@ class _TicketPageState extends State<TicketPage> {
   String iconPath = "";
 
 
+  List<Travel> searchedTravels = [];
   @override
   Widget build(BuildContext context) {
     setState(() {
@@ -60,7 +63,23 @@ class _TicketPageState extends State<TicketPage> {
       if(widget.vehicle == "bus"){
         iconPath ="assets/images/bus.svg" ;
       }
+
     });
+
+    setState(() {
+      for(Travel travel in travelsList){
+        for(Company company in companiesList){
+          if(travel.companyName == company){
+            if(company.vehicle == widget.vehicle && travel.origin == widget.origin && travel.destination == widget.destination && travel.departureTime.day == widget.date.day){
+              searchedTravels.add(travel);
+              print(travel);
+            }
+          }
+        }
+      }
+      print(searchedTravels);
+    });
+
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
@@ -194,8 +213,6 @@ class _TicketPageState extends State<TicketPage> {
                   buildDateItem("Thu","19"),
                   buildDateItem("Fri","20"),
                   buildDateItem("Sat","21"),
-
-
                 ],
               ),
             ),
@@ -286,23 +303,43 @@ class _TicketPageState extends State<TicketPage> {
                     Container(
                       height: 500,
                       width: 360,
-                      child: ListView(
+                      child: ListView.builder(
                         scrollDirection: Axis.vertical,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 18),
-                            child: ticket(),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 18),
-                            child: ticket(),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 18),
-                            child: ticket(),
-                          ),
-
-                        ],
+                        itemCount: travelsList.length,
+                        itemBuilder: (context, index) {
+                          final item = travelsList[index];
+                          return ticket(
+                            context,
+                            widget.currnetUser,
+                            widget.passengersNumber,
+                            screenWidth,
+                            screenHeight,
+                            item.departureTime,
+                            item.arrivalTime,
+                            item.travelTime,
+                            item.origin,
+                            item.destination,
+                            item.cost,
+                            item.travelClass,
+                            item.companyName,
+                            item.id
+                          );
+                        },
+                        // children: [
+                        //   Padding(
+                        //     padding: const EdgeInsets.only(bottom: 18),
+                        //     child: ticket(),
+                        //   ),
+                        //   Padding(
+                        //     padding: const EdgeInsets.only(bottom: 18),
+                        //     child: ticket(),
+                        //   ),
+                        //   Padding(
+                        //     padding: const EdgeInsets.only(bottom: 18),
+                        //     child: ticket(),
+                        //   ),
+                        //
+                        // ],
                       ),
                     )
                   ],

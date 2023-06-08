@@ -3,8 +3,15 @@ import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Start%20Page/start.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:booking/Information/widgets.dart';
+import 'package:booking/Confirm Page/confirm_page.dart';
+import 'package:booking/Database/travel.dart';
+import 'package:booking/Database/user.dart';
 
-Container Price(BuildContext context, String botton_name){
+Container Price(BuildContext context,String button_name ,Travel futureTravel , User currentUser, int passengersNumber){
+
+
   final screenWidth = MediaQuery.of(context).size.width;
   final screenHeight = MediaQuery.of(context).size.height;
   return Container(
@@ -39,7 +46,7 @@ Container Price(BuildContext context, String botton_name){
                 width: screenWidth * 0.26,
                 height: screenHeight * 0.07,
                 child: FittedBox(
-                  child: Text('320\$',
+                  child: Text('${futureTravel.cost}\$',
                     style: TextStyle(
                       fontSize: 50,
                       fontFamily: 'Poppins',
@@ -52,8 +59,16 @@ Container Price(BuildContext context, String botton_name){
             ],
           ),
         ),
-        MyButton().buildElevatedButton(botton_name, context),
-        BuildBottomNavigationBar(activeIcon: "home")
+        InkWell(
+          child: buttonContainer(button_name, screenHeight, screenWidth),
+          onTap: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ConfirmPage(currentUser: currentUser,futureTravel: futureTravel,passengersNumber: passengersNumber,)),
+            );
+          },
+        ),
+        BuildBottomNavigationBar(activeIcon: "home",currentUser: currentUser,)
       ],
     ),
   );

@@ -6,9 +6,26 @@ import 'package:booking/Information/widgets.dart';
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Filter%20Page/range_side.dart';
 import 'package:booking/Filter Page/checkBox.dart';
+import 'package:booking/Database/user.dart';
 
 class Filter extends StatefulWidget {
-  const Filter({super.key});
+
+  Filter({
+    required this.currnetUser,
+    required this.vehicle,
+    required this.date,
+    required this.origin,
+    required this.destination,
+    required this.passengersNumber
+  });
+
+
+  User currnetUser;
+  String vehicle;
+  DateTime date;
+  String origin;
+  String destination;
+  int passengersNumber;
 
   @override
   State<Filter> createState() => _FilterState();
@@ -240,7 +257,7 @@ class _FilterState extends State<Filter> {
             )
           ],
         ),
-        bottomNavigationBar: BuildBottomNavigationBar(activeIcon:"home"),
+        bottomNavigationBar: BuildBottomNavigationBar(activeIcon:"home",currentUser: widget.currnetUser,),
       ),
     );
   }

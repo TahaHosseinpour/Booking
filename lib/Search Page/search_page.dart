@@ -39,8 +39,8 @@ class _SearchPageState extends State<SearchPage> {
   String origin = "";
   String destination = "";
 
-  DateTime backDate = DateTime.utc(2023,11,11);
-  DateTime departureDate = DateTime.utc(2023,11,9);
+  DateTime backDate = DateTime(2023,11,10);
+  DateTime departureDate = DateTime(2023,11,10);
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -453,7 +453,7 @@ class _SearchPageState extends State<SearchPage> {
             ],
           ),
         ),
-        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "home"),
+        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "home",currentUser: widget.currentUser,),
       ),
     );
   }

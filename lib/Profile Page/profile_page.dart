@@ -9,11 +9,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:booking/Profile Page/personal_editing_box.dart';
 import 'package:booking/Profile Page/account_editing_box.dart';
+import 'package:booking/Database/user.dart';
 
 import '../Information/colors.dart';
 
 class ProfilePage extends StatefulWidget{
-  const ProfilePage({super.key});
+
+  User currentUser;
+  ProfilePage({super.key , required this.currentUser});
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
@@ -215,7 +218,7 @@ class _ProfilePageState extends State<ProfilePage> {
            ),
           ],
         ),
-        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "profile")
+        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "profile",currentUser: widget.currentUser,)
       ),
     );
   }

@@ -6,20 +6,49 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:booking/Information/colors.dart';
+import 'package:booking/Database/country.dart';
+import 'package:booking/Database/travel.dart';
+import 'package:booking/Database/user.dart';
 
 class PassengersPage extends StatefulWidget{
-  const PassengersPage({super.key});
+
+  Travel futureTravel;
+  User currentUser;
+  int passengersNumber;
+
+
+  PassengersPage({
+    required this.futureTravel,
+    required this.currentUser,
+    required this.passengersNumber,
+  });
+
   @override
   State<PassengersPage> createState() => _PassengersPageState();
 }
 
 class _PassengersPageState extends State<PassengersPage>{
-  bool isChecked = false;
+
+  String des = "";
+  String ori = "";
 
   @override
   Widget build(BuildContext context) {
+
+    for(Country country in countriesList){
+      if(widget.futureTravel.origin == country.fullName){
+        ori = country.shortName;
+      }
+      if(widget.futureTravel.destination == country.fullName){
+        des = country.shortName;
+      }
+    }
+
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+
+    List<String> weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    String dayOfWeek = weekDays[widget.futureTravel.departureTime.weekday - 1];
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -35,7 +64,9 @@ class _PassengersPageState extends State<PassengersPage>{
                     height: screenHeight * 0.04,
                     margin: EdgeInsets.only(left: screenWidth * 0.08, top: screenHeight * 0.018),
                     child:  InkWell(
-                      onTap: (){},
+                      onTap: (){
+                        Navigator.pop(context);
+                      },
                       child: SvgPicture.asset(
                         "assets/images/arrow_back.svg",
                         width: screenWidth * 0.06,
@@ -158,7 +189,7 @@ class _PassengersPageState extends State<PassengersPage>{
                             height: screenHeight * 0.034,
                           margin: EdgeInsets.only(bottom: screenHeight * 0.013),
                           child:FittedBox(
-                            child:  Text("Fly Emirates",
+                            child:  Text(widget.futureTravel.companyName,
                               style: TextStyle(
                                 fontSize: 24,
                                 fontFamily: 'Poppins',
@@ -183,7 +214,7 @@ class _PassengersPageState extends State<PassengersPage>{
                                 width: screenWidth * 0.15,
                                 height: screenHeight * 0.048,
                                 child:FittedBox(
-                                  child:  Text("SYD",
+                                  child:  Text(ori,
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 34,
@@ -205,7 +236,7 @@ class _PassengersPageState extends State<PassengersPage>{
                                 width: screenWidth * 0.137,
                                 height: screenHeight * 0.048,
                                 child: FittedBox(
-                                  child: Text("LCY",
+                                  child: Text(des,
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 34,
@@ -223,7 +254,7 @@ class _PassengersPageState extends State<PassengersPage>{
                           width: screenWidth * 0.38,
                           height: screenHeight * 0.048,
                           child:FittedBox(
-                            child:  Text("Fri , 03/18",
+                            child:  Text("${dayOfWeek} , ${widget.futureTravel.departureTime.month}/${widget.futureTravel.departureTime.day}",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 34,
@@ -271,7 +302,7 @@ class _PassengersPageState extends State<PassengersPage>{
       ),
           ],
         ),
-        bottomNavigationBar: Price(context, "Continue"),
+        bottomNavigationBar: Price(context, "Continue",widget.futureTravel,widget.currentUser,widget.passengersNumber),
       ),
     );
     throw UnimplementedError();

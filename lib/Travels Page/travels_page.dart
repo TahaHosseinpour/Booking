@@ -5,9 +5,13 @@ import 'package:booking/Travels%20Page/search_box.dart';
 import 'package:booking/Travels%20Page/travel_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:booking/Database/user.dart';
 
 class TravelsPage extends StatefulWidget{
-  const TravelsPage({super.key});
+  User currentUser;
+
+  TravelsPage({super.key , required this.currentUser});
+
   @override
   State<TravelsPage> createState() => _TravelsPageState();
 }
@@ -89,7 +93,7 @@ class _TravelsPageState extends State<TravelsPage> {
             ],
           ),
         ),
-        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "ticket"),
+        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "ticket",currentUser: widget.currentUser,),
       ),
     );
   }

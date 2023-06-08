@@ -319,7 +319,7 @@ class _MainPageState extends State<MainPage> {
             )
           ],
         ),
-        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "home"),
+        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "home",currentUser: widget.currentUser,),
       ),
     );
   }

@@ -11,8 +11,9 @@ import 'package:booking/Database/user.dart';
 class BuildBottomNavigationBar extends StatefulWidget{
 
   String activeIcon = "";
+  User currentUser;
 
-  BuildBottomNavigationBar({super.key, required this.activeIcon});
+  BuildBottomNavigationBar({super.key, required this.activeIcon , required this.currentUser});
 
   @override
   State<BuildBottomNavigationBar> createState() => _BuildBottomNavigationBarState();
@@ -108,7 +109,7 @@ class _BuildBottomNavigationBarState extends State<BuildBottomNavigationBar> {
                 });
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ProfilePage(),
+                    MaterialPageRoute(builder: (context) => ProfilePage(currentUser: widget.currentUser,),
                     ));
               },
             ),
@@ -125,7 +126,7 @@ class _BuildBottomNavigationBarState extends State<BuildBottomNavigationBar> {
                 });
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Transactions(),
+                    MaterialPageRoute(builder: (context) => Transactions(currentUser: widget.currentUser,),
                     ));
               },
             ),
@@ -142,7 +143,7 @@ class _BuildBottomNavigationBarState extends State<BuildBottomNavigationBar> {
                 });
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => TravelsPage(),
+                    MaterialPageRoute(builder: (context) => TravelsPage(currentUser: widget.currentUser,),
                     ));
               },
             ),
