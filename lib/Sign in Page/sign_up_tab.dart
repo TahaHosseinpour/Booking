@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
+import 'package:booking/Main Page/main_page.dart';
+import 'package:booking/Database/user.dart';
 
 
 class SignUpTab extends StatefulWidget{
@@ -39,9 +41,7 @@ class _SignUpTabState extends State<SignUpTab> {
     final contextWidth = MediaQuery.of(context).size.width;
     final contextHeight = MediaQuery.of(context).size.height;
 
-
-
-
+    User currnetUser;
 
 
 
@@ -229,7 +229,26 @@ class _SignUpTabState extends State<SignUpTab> {
                       emailError = "Email not Valid";
                     }
                     if(isUsernameValid && isPasswordValid && isEmailValid){
-                      print("next page");
+
+                      currnetUser = User(
+                          username: _usernameController.text,
+                          password: _passwordController.text,
+                          email: _emailController.text,
+                          avatarPath: "assets/images/avatars/default_avatar.png",
+                          phone: "Null",
+                          id: "Null",
+                          birthday: "Null",
+                          walletBalance: "0"
+                      );
+
+                      usersList.add(currnetUser);
+
+                      print(usersList);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MainPage(currentUser: currnetUser,)),
+                      );
                     }
                   });
                   setState(() {
