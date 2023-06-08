@@ -1,22 +1,31 @@
 import 'package:flutter/material.dart';
+
 import 'package:booking/Information/colors.dart';
+import 'package:booking/Information/widgets.dart';
+import 'package:booking/Sign in Page/sign_in.dart';
 
-class start extends StatelessWidget {
-  const start({super.key});
+class Start extends StatefulWidget {
+  const Start({super.key});
 
+  @override
+  State<Start> createState() => _StartState();
+}
+
+class _StartState extends State<Start> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              child: Image.asset(
-                "assets/images/earth.png",
-              ),
+            Image.asset(
+              "assets/images/earth.png",
             ),
             const Text(
               "LOGO",
@@ -42,7 +51,15 @@ class start extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            MyButton().buildElevatedButton("Let's Start", context),
+            InkWell(
+              child: buttonContainer("Let's Start", screenHeight, screenWidth),
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => (SignIn())),
+                );
+              },
+            ),
             const Text(
               "version 1.0",
               style: TextStyle(
@@ -56,9 +73,17 @@ class start extends StatelessWidget {
       ),
     );
   }
+}
 
 
-  }
+
+
+
+
+
+
+
+
 class MyButton {
   ElevatedButton buildElevatedButton(String text, BuildContext context) {
     return ElevatedButton(

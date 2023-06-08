@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:booking/Information/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:booking/Information/colors.dart';
+
+
 ClipRRect buildNavigationBar(BuildContext context) {
   final screenWidth = MediaQuery.of(context).size.width;
   final screenHeight = MediaQuery.of(context).size.height;
