@@ -8,22 +8,22 @@ Container PassengerInformation(BuildContext context){
   final screenHeight = MediaQuery.of(context).size.height;
   return Container(
     width: screenWidth * 0.83,
-    height: screenHeight * 0.32,
+    height: screenHeight * 0.35,
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(15),
+      borderRadius: BorderRadius.circular(40),
       color: grey3,
     ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          height: screenHeight * 0.06,
-          padding: EdgeInsets.only(right: screenWidth * 0.13, left:screenWidth * 0.13, top: screenHeight * 0.02 ),
+          //height: screenHeight * 0.06,
+          padding: EdgeInsets.only(right: screenWidth * 0.13, left:screenWidth * 0.13, top: screenHeight * 0.006),
           child: TextField(
             decoration: InputDecoration(
               labelText: 'First Name',
               hintStyle: TextStyle(
-                fontSize: 25,
+                fontSize: screenHeight * 0.026,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w400,
               ),
@@ -31,8 +31,9 @@ Container PassengerInformation(BuildContext context){
 
           ),
         ),
+       // SizedBox(height: screenHeight * 0.008,),
         Container(
-          height: screenHeight * 0.06,
+          //height: screenHeight * 0.06,
           padding: EdgeInsets.only(right: screenWidth * 0.13, left:screenWidth * 0.13 ),
           child: TextField(
             style: TextStyle(
@@ -40,7 +41,7 @@ Container PassengerInformation(BuildContext context){
             decoration: InputDecoration(
               labelText: 'Last Name',
               hintStyle: TextStyle(
-                fontSize: 25,
+                fontSize: screenHeight * 0.026,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w400,
               ),
@@ -48,14 +49,15 @@ Container PassengerInformation(BuildContext context){
 
           ),
         ),
+       // SizedBox(height: screenHeight * 0.005,),
         Container(
-          height: screenHeight * 0.06,
+          //height: screenHeight * 0.06,
           padding: EdgeInsets.only(right: screenWidth * 0.13, left:screenWidth * 0.13 ),
           child: TextField(
             decoration: InputDecoration(
               labelText: 'Passport Number',
               hintStyle: TextStyle(
-                fontSize: 25,
+                fontSize: screenHeight * 0.026,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w400,
               ),
@@ -63,11 +65,12 @@ Container PassengerInformation(BuildContext context){
 
           ),
         ),
+        //SizedBox(height: screenHeight * 0.005,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              margin: EdgeInsets.only(left: screenWidth * 0.14, bottom: screenHeight * 0.02),
+              margin: EdgeInsets.only(left: screenWidth * 0.14, bottom: screenHeight * 0.018),
               width: screenWidth * 0.19,
               child: DropdownSearch<String> (
                 popupProps: const PopupProps.menu(
@@ -81,7 +84,8 @@ Container PassengerInformation(BuildContext context){
                     labelStyle: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 12,
-                        color: grey2
+                        color: grey2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     //contentPadding: EdgeInsets.only(bottom: 5),
                   ),
@@ -90,7 +94,7 @@ Container PassengerInformation(BuildContext context){
               ),
             ),
             Container(
-              margin: EdgeInsets.only( bottom: screenHeight * 0.02),
+              margin: EdgeInsets.only(bottom: screenHeight * 0.018),
               width: screenWidth * 0.18,
               child: DropdownSearch<String> (
                 popupProps: const PopupProps.menu(
@@ -113,7 +117,7 @@ Container PassengerInformation(BuildContext context){
               ),
             ),
             Container(
-              margin: EdgeInsets.only(right: screenWidth * 0.14,  bottom: screenHeight * 0.02),
+              margin: EdgeInsets.only(right: screenWidth * 0.14,bottom: screenHeight * 0.018  ),
               width: screenWidth * 0.18,
               child: DropdownSearch<String> (
                 popupProps: const PopupProps.menu(
