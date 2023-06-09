@@ -286,7 +286,8 @@ class _MainPageState extends State<MainPage> {
               ],
             ),
             Container(
-              padding: EdgeInsets.only(left:screenWidth * 0.06,right: screenWidth * 0.39),
+              alignment: Alignment.bottomLeft,
+              padding: EdgeInsets.only(left:screenWidth * 0.06,),
               child: Text(
                 "Recommended",
                 style: TextStyle(

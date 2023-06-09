@@ -1,4 +1,5 @@
 import 'package:booking/Database/company.dart';
+import 'package:booking/Information/buildBottomNavigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dotted_line/dotted_line.dart';
@@ -92,7 +93,7 @@ class _TicketPageState extends State<TicketPage> {
           children: [
             Container(
                 // color: Colors.red,
-                margin: const EdgeInsets.only(top: 19,right:33,left: 33),
+                margin:  EdgeInsets.only(top: screenHeight * 0.02,right:screenWidth * 0.076,left: screenWidth * 0.076),
 
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,6 +104,8 @@ class _TicketPageState extends State<TicketPage> {
                       },
                       child: SvgPicture.asset(
                         "assets/images/arrow_back.svg",
+                        width: screenWidth * 0.06,
+                        height: screenHeight * 0.04,
                       ),
                     ),
                     InkWell(
@@ -110,14 +113,16 @@ class _TicketPageState extends State<TicketPage> {
                         Navigator.pop(context);
                       },
                       child: SvgPicture.asset(
-                        "assets/images/search_yellow.svg"
+                        "assets/images/search_yellow.svg",
+                        width: screenWidth * 0.11,
+                        height: screenHeight * 0.053,
                       ),
                     )
                   ],
                 ),
               ),
             Container(
-              width: 335,
+              width: screenWidth * 0.779,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -129,18 +134,18 @@ class _TicketPageState extends State<TicketPage> {
                             fontFamily: 'Poppins',
                             color: Colors.black,
                             fontWeight: FontWeight.w400,
-                            fontSize: 26
+                            fontSize: screenHeight * 0.027
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(left: 20),
+                        margin:  EdgeInsets.only(left: screenWidth * 0.046),
                         child: Text(
                           widget.origin,
                           style: TextStyle(
                               fontFamily: 'Poppins',
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
-                              fontSize: 15
+                              fontSize:  screenHeight * 0.016
                           ),
                         ),
                       )
@@ -179,18 +184,18 @@ class _TicketPageState extends State<TicketPage> {
                             fontFamily: 'Poppins',
                             color: Colors.black,
                             fontWeight: FontWeight.w400,
-                            fontSize: 26
+                            fontSize:  screenHeight * 0.027
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(right: 20),
+                        margin:  EdgeInsets.only(right: screenWidth * 0.046),
                         child: Text(
                           widget.destination,
                           style: TextStyle(
                               fontFamily: 'Poppins',
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
-                              fontSize: 15
+                              fontSize:  screenHeight * 0.016
                           ),
                         ),
                       )
@@ -200,7 +205,7 @@ class _TicketPageState extends State<TicketPage> {
               ),
             ),
             Container(
-              height: 75,
+              height:  screenHeight * 0.08,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -228,15 +233,15 @@ class _TicketPageState extends State<TicketPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      padding: const EdgeInsets.only(left: 35,right: 35,top: 17),
+                      padding:  EdgeInsets.only(left: screenWidth * 0.081,right: screenWidth * 0.081,top: screenHeight * 0.018),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(12),
                             child: Container(
-                              height: 30,
-                              width: 132,
+                              height: screenHeight * 0.032,
+                              width: screenWidth * 0.3,
                               color: Colors.white,
                               child: DropdownSearch<String> (
                                 popupProps: const PopupProps.menu(
@@ -247,13 +252,13 @@ class _TicketPageState extends State<TicketPage> {
                                 dropdownDecoratorProps: DropDownDecoratorProps(
                                   dropdownSearchDecoration: InputDecoration(
                                     hintText: "Sort By :",
-                                    hintStyle: const TextStyle(
+                                    hintStyle:  TextStyle(
                                       fontFamily: 'Poppins',
-                                      fontSize: 13,
+                                      fontSize: screenHeight * 0.0139,
                                       color: Colors.black,
                                     ),
                                     suffixIconColor: yellow2,
-                                    contentPadding: const EdgeInsets.only(bottom: 3),
+                                    contentPadding:  EdgeInsets.only(bottom: screenHeight * 0.005),
                                   ),
                                   textAlign: TextAlign.center,
 
@@ -265,25 +270,27 @@ class _TicketPageState extends State<TicketPage> {
                             borderRadius: BorderRadius.circular(12),
                             child: Container(
                               color: Colors.white,
-                              height: 30,
-                              width: 103,
+                              height: screenHeight * 0.032,
+                              width: screenWidth * 0.239,
                               child: InkWell(
                                 child: Container(
-                                  padding: const EdgeInsets.only(left: 17,right: 5),
+                                  padding:  EdgeInsets.only(left: screenWidth * 0.039,right: screenWidth * 0.01),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      const Text(
+                                       Text(
                                         "Filter",
                                         style: TextStyle(
-                                            fontSize: 16,
+                                            fontSize: screenHeight * 0.017,
                                             fontWeight: FontWeight.w700,
                                             fontFamily: 'Poppins',
                                             color: Colors.black
                                         ),
                                       ),
                                       SvgPicture.asset(
-                                        "assets/images/Filter.svg"
+                                        "assets/images/Filter.svg",
+                                        width: screenWidth * 0.053,
+                                        height: screenHeight * 0.026,
                                       )
                                     ],
                                   ),
@@ -301,8 +308,8 @@ class _TicketPageState extends State<TicketPage> {
                       ),
                     ),
                     Container(
-                      height: 500,
-                      width: 360,
+                      height: screenHeight * 0.53,
+                      width: screenWidth * 0.83,
                       child: ListView.builder(
                         scrollDirection: Axis.vertical,
                         itemCount: travelsList.length,
@@ -349,41 +356,43 @@ class _TicketPageState extends State<TicketPage> {
             )
           ],
         ),
-        bottomNavigationBar: buildNavigationBar(context),
+        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "home", currentUser:widget.currentUser ),
       )
 
     );
   }
 
   Padding buildDateItem(String dayInMonth, String dayInWeek) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Padding(
-                  padding: const EdgeInsets.only(right: 3,left: 3),
+                  padding:  EdgeInsets.only(right:screenWidth * 0.006 ,left: screenWidth * 0.006),
                   child: InkWell(
                     onTap: (){print("click on InkWell");},
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: Container(
-                        padding: const EdgeInsets.only(top: 2),
-                        height: 70,
-                        width: 63,
+                        padding:  EdgeInsets.only(top: screenHeight * 0.002),
+                        height: screenHeight * 0.075,
+                        width: screenWidth * 0.146,
                         color: green2,
 
                         child: Column(
                           children: [
                             Text(
                               dayInWeek,
-                              style: const TextStyle(
+                              style:  TextStyle(
                                 color: Colors.white,
-                                fontSize: 24,
+                                fontSize: screenHeight * 0.025,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'Poppins',
                               ),
                             ),
                             Text(
                               dayInMonth,
-                              style: const TextStyle(
+                              style:  TextStyle(
                                 color: Colors.white,
-                                fontSize: 25,
+                                fontSize: screenHeight * 0.025,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'Poppins',
                               ),

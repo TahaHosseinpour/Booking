@@ -85,10 +85,10 @@ class _BuildBottomNavigationBarState extends State<BuildBottomNavigationBar> {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return ClipRRect(
-      borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(25),
-          topRight: Radius.circular(25)
-      ),
+      // borderRadius: const BorderRadius.only(
+      //     topLeft: Radius.circular(25),
+      //     topRight: Radius.circular(25)
+      // ),
       child: Container(
         color: green2,
         padding:  EdgeInsets.only(top: screenHeight * 0.025,bottom: screenHeight * 0.025),

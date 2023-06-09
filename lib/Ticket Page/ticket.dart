@@ -8,7 +8,7 @@ import 'package:booking/Database/company.dart';
 import 'package:booking/Database/country.dart';
 import 'package:booking/Database/user.dart';
 
-Padding ticket(BuildContext context,User currentUser ,int passengersNumber,double screenHeight ,double screenWidth,DateTime departureTime , DateTime arrivalTime, String travelTime, String origin, String destination,int cost , String travelClass , String companyName , int id){
+Padding ticket(BuildContext context,User currentUser ,int passengersNumber,double screenWidth ,double screenHeight,DateTime departureTime , DateTime arrivalTime, String travelTime, String origin, String destination,int cost , String travelClass , String companyName , int id){
   String companyLogoPath = "";
   for(Company company in companiesList){
     if(company.name == companyName){
@@ -31,15 +31,15 @@ Padding ticket(BuildContext context,User currentUser ,int passengersNumber,doubl
     child: Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(35),
       ),
-      width: 358,
-      height: 212,
+      width: screenWidth * 0.83,
+      height: screenHeight * 0.23,
       child: Column(
         children: [
           Container(
-            height: 30,
-            margin: EdgeInsets.only(top: 12),
+            height: screenHeight * 0.032 ,
+            margin: EdgeInsets.only(top:  screenHeight * 0.012),
             child:  Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -47,42 +47,42 @@ Padding ticket(BuildContext context,User currentUser ,int passengersNumber,doubl
                   child: Text(companyName,
                     style: TextStyle(
                         fontFamily: 'Poppins',
-                        fontSize: 18,
+                        fontSize:  screenHeight * 0.019,
                         color: Colors.black,
                         decoration: TextDecoration.none
 
                     ),
                   ),
                 ),
-                SizedBox(width: 6,),
+                SizedBox(width: screenWidth * 0.013,),
                 Container(
                   child: Image.asset(companyLogoPath,
-                    height: 30,
-                    width: 30,
+                    height:  screenHeight * 0.032,
+                    width: screenWidth * 0.069,
                   ),
                 ),
               ],
             ),
           ),
-          SizedBox(height: 24,),
+          SizedBox(height:  screenHeight * 0.025,),
           Container(
-            height: 61,
-            width: 334,
-            padding: EdgeInsets.only(bottom: 10),
+            height:  screenHeight * 0.065,
+            width: screenWidth * 0.77,
+            padding: EdgeInsets.only(bottom:  screenHeight * 0.01),
             child: Column(
               children: [
                 Container(
-                  height: 20,
+                  height:  screenHeight * 0.02,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                         // height: 20,
-                        margin: EdgeInsets.only(left: 14),
+                        margin: EdgeInsets.only(left:  screenHeight * 0.032),
                         alignment: Alignment.centerLeft,
                         child: Text(ori,
                           style: TextStyle(
-                              fontSize: 15,
+                              fontSize:  screenHeight * 0.016,
                               fontFamily: 'Poppins',
                               color: grey2,
                               fontWeight: FontWeight.w400,
@@ -92,11 +92,11 @@ Padding ticket(BuildContext context,User currentUser ,int passengersNumber,doubl
                       ),
                       Container(
                         // height: 20,
-                        margin: EdgeInsets.only(right: 14),
+                        margin: EdgeInsets.only(right: screenWidth * 0.032),
                         alignment: Alignment.centerRight,
                         child: Text(des,
                           style: TextStyle(
-                              fontSize: 15,
+                              fontSize:  screenHeight * 0.016,
                               fontFamily: 'Poppins',
                               color:grey2,
                               fontWeight: FontWeight.w400,
@@ -109,17 +109,17 @@ Padding ticket(BuildContext context,User currentUser ,int passengersNumber,doubl
                   ),
                 ),
                 Container(
-                  height: 31,
+                  height:  screenHeight * 0.033,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                         // height: 21,
-                        margin:  EdgeInsets.only(left: 14),
+                        margin:  EdgeInsets.only(left: screenWidth * 0.032),
                         alignment: Alignment.centerLeft,
                         child:  Text('${departureTime.hour}:${departureTime.minute}',
                           style: TextStyle(
-                              fontSize: 28,
+                              fontSize:  screenHeight * 0.03,
                               fontFamily: 'Poppins',
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
@@ -132,7 +132,7 @@ Padding ticket(BuildContext context,User currentUser ,int passengersNumber,doubl
                         // height: 21,
                         child: Text(travelTime,
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize:  screenHeight * 0.019,
                               fontFamily: 'Poppins',
                               color: grey2,
                               fontWeight: FontWeight.w400,
@@ -142,12 +142,12 @@ Padding ticket(BuildContext context,User currentUser ,int passengersNumber,doubl
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(right: 14),
+                        margin:  EdgeInsets.only(right: screenWidth * 0.032),
                         // height: 21,
                         alignment: Alignment.centerRight,
                         child: Text('${arrivalTime.hour}:${arrivalTime.minute}',
                           style: TextStyle(
-                              fontSize: 28,
+                              fontSize:  screenHeight * 0.03,
                               fontFamily: 'Poppins',
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
@@ -166,18 +166,18 @@ Padding ticket(BuildContext context,User currentUser ,int passengersNumber,doubl
             color: yellow1,
             thickness: 1,
             height: 0,
-            indent: 15.5,
-            endIndent: 15.5,
+            indent: screenWidth * 0.036,
+            endIndent: screenWidth * 0.036,
           ),
-          SizedBox(height: 5,),
+          SizedBox(height:  screenHeight * 0.005,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.only(left: 15.5),
-                padding: EdgeInsets.only(top: 2),
-                width: 75,
-                height: 17,
+                margin: EdgeInsets.only(left: screenWidth * 0.036),
+                padding: EdgeInsets.only(top:  screenHeight * 0.002),
+                width: screenWidth * 0.17,
+                height:  screenHeight * 0.018,
                 decoration: BoxDecoration(
                   color: yellow1,
                   borderRadius: BorderRadius.circular(5),
@@ -186,7 +186,7 @@ Padding ticket(BuildContext context,User currentUser ,int passengersNumber,doubl
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 9,
+                      fontSize: screenHeight * 0.009,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                       decoration: TextDecoration.none
@@ -200,11 +200,11 @@ Padding ticket(BuildContext context,User currentUser ,int passengersNumber,doubl
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                margin: EdgeInsets.only(bottom: 3, left: 15.5),
+                margin: EdgeInsets.only(bottom: screenHeight * 0.003, left: screenWidth * 0.036),
                 alignment: Alignment.centerLeft,
                 child: Text("${cost}\$",
                   style: TextStyle(
-                      fontSize: 40,
+                      fontSize: screenHeight * 0.042,
                       fontFamily: 'Poppins',
                       color: Colors.black,
                       decoration: TextDecoration.none
@@ -213,7 +213,7 @@ Padding ticket(BuildContext context,User currentUser ,int passengersNumber,doubl
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 3, right: 15.5),
+                margin: EdgeInsets.only(bottom: screenHeight * 0.003, right: screenWidth * 0.036),
                 alignment: Alignment.centerRight,
                 child: ElevatedButton(
                   onPressed: (){
@@ -226,14 +226,14 @@ Padding ticket(BuildContext context,User currentUser ,int passengersNumber,doubl
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: yellow1,
-                    fixedSize: Size(152, 52),
+                    fixedSize: Size(screenWidth * 0.35, screenHeight * 0.055),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(70),
                     ),
                   ),
                   child: Text("Buy",
                     style: TextStyle(
-                        fontSize: 34,
+                        fontSize: screenHeight * 0.036,
                         fontFamily: 'Poppins',
                         color: Colors.black,
                         decoration: TextDecoration.none

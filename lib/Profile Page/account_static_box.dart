@@ -25,6 +25,7 @@ class _AccountStaticBoxState extends State<AccountStaticBox> {
       final screenWidth = MediaQuery.of(context).size.width;
 
       return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
             child: Row(
@@ -81,7 +82,7 @@ class _AccountStaticBoxState extends State<AccountStaticBox> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        height: screenHeight * 0.04,
+                        height: screenHeight * 0.025,
                         child: FittedBox(
                           child:  Text(widget.password,
                             style: TextStyle(
@@ -98,7 +99,7 @@ class _AccountStaticBoxState extends State<AccountStaticBox> {
 
                         },
                         child: Container(
-                          height: screenHeight * 0.025,
+                          //height: screenHeight * 0.025,
                           alignment: Alignment.topCenter,
                           child: SvgPicture.asset('assets/images/visible.svg',
                             width: screenWidth * 0.07,

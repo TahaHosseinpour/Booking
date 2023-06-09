@@ -26,6 +26,7 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
           child: Row(

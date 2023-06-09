@@ -103,20 +103,20 @@ class _SearchPageState extends State<SearchPage> {
 
                         Container(
                           width: screenWidth * 0.69,
-                          margin: EdgeInsets.only(left: 30,right: 30),
+                          margin: EdgeInsets.only(left:screenWidth * 0.069,right: screenWidth * 0.069),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                width:45,
-                                padding: EdgeInsets.only(top: 20),
+                                width:screenWidth * 0.1,
+                                padding: EdgeInsets.only(top: screenHeight * 0.02),
                                 child: SvgPicture.asset(
                                     'assets/images/From.svg'
                                 ),
                               ),
                               Container(
                                 width: screenWidth * 0.553,
-                                padding: EdgeInsets.only(top: 3.5),
+                                padding: EdgeInsets.only(top: screenHeight * 0.003),
                                 child: DropdownSearch<String> (
                                   popupProps: PopupProps.menu(
                                     showSelectedItems: true,
@@ -128,10 +128,10 @@ class _SearchPageState extends State<SearchPage> {
                                       labelText: "From",
                                       labelStyle: TextStyle(
                                           fontFamily: 'Poppins',
-                                          fontSize: 12,
+                                          fontSize: screenHeight * 0.0128,
                                           color: grey2
                                       ),
-                                      contentPadding: EdgeInsets.only(bottom: 5),
+                                      contentPadding: EdgeInsets.only(bottom: screenHeight * 0.005),
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -148,20 +148,20 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                         Container(
                           width: screenWidth * 0.69,
-                          margin: EdgeInsets.only(left: 30,right: 30),
+                          margin: EdgeInsets.only(left:screenWidth * 0.069,right: screenWidth * 0.069),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                width:45,
-                                padding: EdgeInsets.only(top: 20),
+                                width:screenWidth * 0.1,
+                                padding: EdgeInsets.only(top: screenHeight * 0.02),
                                 child: SvgPicture.asset(
                                     'assets/images/To.svg'
                                 ),
                               ),
                               Container(
                                 width: screenWidth * 0.553,
-                                padding: EdgeInsets.only(top: 3.5),
+                                padding: EdgeInsets.only(top: screenHeight * 0.003),
                                 child: DropdownSearch<String> (
                                   popupProps: const PopupProps.menu(
                                     showSelectedItems: true,
@@ -173,10 +173,10 @@ class _SearchPageState extends State<SearchPage> {
                                       labelText: "To",
                                       labelStyle: TextStyle(
                                           fontFamily: 'Poppins',
-                                          fontSize: 12,
+                                          fontSize: screenHeight * 0.0128,
                                           color: grey2
                                       ),
-                                      contentPadding: EdgeInsets.only(bottom: 5),
+                                      contentPadding: EdgeInsets.only(bottom: screenHeight * 0.005),
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -202,7 +202,7 @@ class _SearchPageState extends State<SearchPage> {
                                     Container(
                                       child: Text("Adult",
                                         style: TextStyle(
-                                          fontSize: 12,
+                                          fontSize: screenHeight * 0.012,
                                           fontFamily: 'Poppins',
                                           color: grey2,
                                         ),
@@ -213,7 +213,7 @@ class _SearchPageState extends State<SearchPage> {
                                     Container(
                                       child: Text("child",
                                         style: TextStyle(
-                                          fontSize: 12,
+                                          fontSize: screenHeight * 0.012,
                                           fontFamily: 'Poppins',
                                           color: grey2,
                                         ),
@@ -231,8 +231,8 @@ class _SearchPageState extends State<SearchPage> {
                                   children: [
                                     Container(
                                       child: SvgPicture.asset('assets/images/Passengers.svg',
-                                        height: 30,
-                                        width: 30,
+                                        height: screenHeight * 0.032,
+                                        width: screenWidth * 0.069,
                                       ),
                                       margin: EdgeInsets.only(left: screenWidth * 0.075),
                                     ),
@@ -242,8 +242,8 @@ class _SearchPageState extends State<SearchPage> {
                                           borderRadius: BorderRadius.circular(10),
                                           color: Colors.white,
                                         ),
-                                        height: 30,
-                                        width: 90,
+                                        height: screenHeight * 0.032,
+                                        width: screenWidth * 0.2,
                                         child:Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
@@ -257,8 +257,8 @@ class _SearchPageState extends State<SearchPage> {
                                                   });
                                                 },
                                                 child:  SvgPicture.asset('assets/images/minus.svg',
-                                                  height: 20,
-                                                  width: 20,
+                                                  height: screenHeight * 0.021,
+                                                  width: screenWidth * 0.046,
                                                 ),
                                               ),
                                               margin: EdgeInsets.only(left: 2.22),
@@ -266,7 +266,7 @@ class _SearchPageState extends State<SearchPage> {
                                             Container(
                                               child: Text(adultPassengersNumber.toString(),
                                                 style: TextStyle(
-                                                  fontSize: 16,
+                                                  fontSize: screenHeight * 0.017,
                                                   fontFamily: 'Poppins',
                                                 ),
                                               ),
@@ -279,8 +279,8 @@ class _SearchPageState extends State<SearchPage> {
                                                   });
                                                 },
                                                 child:  SvgPicture.asset('assets/images/plus.svg',
-                                                  height: 20,
-                                                  width: 20,
+                                                  height: screenHeight * 0.021,
+                                                  width: screenWidth * 0.046,
                                                 ),
                                             ),
                                               margin: EdgeInsets.only(right: 2.22),
@@ -294,8 +294,8 @@ class _SearchPageState extends State<SearchPage> {
                                           borderRadius: BorderRadius.circular(10),
                                           color: Colors.white,
                                         ),
-                                        height: 30,
-                                        width: 90,
+                                        height: screenHeight * 0.032,
+                                        width: screenWidth * 0.2,
                                         child:Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
@@ -309,8 +309,8 @@ class _SearchPageState extends State<SearchPage> {
                                                   });
                                                 },
                                                 child:  SvgPicture.asset('assets/images/minus.svg',
-                                                  height: 20,
-                                                  width: 20,
+                                                  height: screenHeight * 0.021,
+                                                  width: screenWidth * 0.046,
                                                 ),
                                               ),
                                               margin: EdgeInsets.only(left: 2.22),
@@ -318,7 +318,7 @@ class _SearchPageState extends State<SearchPage> {
                                             Container(
                                               child: Text(childPassengersNumber.toString(),
                                                 style: TextStyle(
-                                                  fontSize: 16,
+                                                  fontSize:screenHeight * 0.017 ,
                                                   fontFamily: 'Poppins',
                                                 ),
                                               ),
@@ -331,11 +331,11 @@ class _SearchPageState extends State<SearchPage> {
                                                   });
                                                 },
                                                 child:  SvgPicture.asset('assets/images/plus.svg',
-                                                  height: 20,
-                                                  width: 20,
+                                                  height: screenHeight * 0.021,
+                                                  width: screenWidth * 0.046,
                                                 ),
                                               ),
-                                              margin: EdgeInsets.only(right: 2.22),
+                                              margin: EdgeInsets.only(right: screenWidth * 0.005),
                                             ),
                                           ],
                                         )
@@ -349,77 +349,75 @@ class _SearchPageState extends State<SearchPage> {
 
                         ),
                         Container(
-                          child: Column(
+                          alignment: Alignment.center,
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Container(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                        margin: EdgeInsets.only(left: screenWidth * 0.16),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Container(
-                                              child: SvgPicture.asset('assets/images/Departure.svg',
-                                                width: 16,
-                                                height: 17,
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        margin :EdgeInsets.only(left: screenWidth * 0.08),
+                                        child: SvgPicture.asset('assets/images/Departure.svg',
+                                          width: screenWidth * 0.037,
+                                          height: screenHeight * 0.018,
+                                        ),
+                                      ),
+                                      SizedBox(width: screenWidth * 0.01,),
+                                      Container(
+                                          height: screenHeight * 0.017,
+                                          child:FittedBox(
+                                            child:  Text("Departure",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontFamily: 'Poppins',
                                               ),
                                             ),
-                                            SizedBox(width: 5,),
-                                            Container(
-                                              child: Text("Departure",
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontFamily: 'Poppins',
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                    ),
-                                    Container(
-                                        margin: EdgeInsets.only(right: screenWidth * 0.27),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              child: SvgPicture.asset('assets/images/Departure.svg',
-                                                width: 16,
-                                                height: 17,
-                                              ),
-                                            ),
-                                            SizedBox(width: 5,),
-                                            Container(
-                                              child: Text("Back",
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontFamily: 'Poppins',
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                    ),
-                                  ],
-                                ),
+                                          )
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: screenHeight * 0.0096,),
+                                  Container(
+                                    child:   MyDatePickerTextField(),
+                                    margin: EdgeInsets.only(left: screenWidth * 0.15),
+                                  ),
+                                ],
                               ),
-                              SizedBox(height:screenHeight * 0.009 ,),
-                              Container(
-                                width: 239,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      child: MyDatePickerTextField(),
-                                      margin: EdgeInsets.only(left: screenWidth * 0.02),
-                                    ),
-                                    Container(
-                                      child: MyDatePickerTextField(),
-                                      margin: EdgeInsets.only(left: screenWidth * 0.01),
-                                    )
-                                  ],
-                                ),
+                              Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Container(
+                                        child: SvgPicture.asset('assets/images/Departure.svg',
+                                          width: screenWidth * 0.037,
+                                          height: screenHeight * 0.018,
+                                        ),
+                                      ),
+                                      SizedBox(width: screenWidth * 0.01,),
+                                      Container(
+                                          margin: EdgeInsets.only(right: screenWidth * 0.25),
+                                          height: screenHeight * 0.017,
+                                          child: FittedBox(
+                                            child: Text("Back",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontFamily: 'Poppins',
+                                              ),
+                                            ),
+                                          )
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: screenHeight * 0.0096,),
+                                  Container(
+                                    child: MyDatePickerTextField(),
+                                    margin: EdgeInsets.only(right: screenWidth * 0.118),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -459,23 +457,27 @@ class _SearchPageState extends State<SearchPage> {
   }
 }
 Widget Back(BuildContext context , String imagePath){
+  final screenHeight = MediaQuery.of(context).size.height;
+  final screenWidth = MediaQuery.of(context).size.width;
   return Stack(
       alignment: Alignment.topLeft,
       children: <Widget>[
   Image(
+    fit: BoxFit.fill,
     height: MediaQuery.of(context).size.height * 0.375,
     width:  MediaQuery.of(context).size.width,
-  image: new AssetImage(imagePath),
+  image: new AssetImage(imagePath,
+  ),
   ),
         Padding(
-          padding: EdgeInsets.only(top: 30, left: 40),
+          padding: EdgeInsets.only(top: screenHeight * 0.032, left: screenWidth * 0.093),
           child:InkWell(
             onTap: (){
               Navigator.pop(context);
             },
             child: SvgPicture.asset('assets/images/arrow_back.svg',
-              width: 26,
-              height: 38,
+              width: screenWidth * 0.06,
+              height: screenHeight * 0.04,
             ),
           )
         ),
