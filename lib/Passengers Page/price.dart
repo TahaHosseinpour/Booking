@@ -62,10 +62,10 @@ Container Price(BuildContext context,String button_name ,Travel futureTravel , U
         InkWell(
           child: buttonContainer(button_name, screenHeight, screenWidth),
           onTap: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ConfirmPage(currentUser: currentUser,futureTravel: futureTravel,passengersNumber: passengersNumber,)),
-            );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => ConfirmPage(currentUser: currentUser,futureTravel: futureTravel,passengersNumber: passengersNumber,)),
+            // );
           },
         ),
         BuildBottomNavigationBar(activeIcon: "home",currentUser: currentUser,)

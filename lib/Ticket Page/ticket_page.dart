@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+
 
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Ticket Page/ticket.dart';
@@ -12,6 +14,7 @@ import 'package:booking/Database/user.dart';
 import 'package:booking/Database/country.dart';
 import 'package:booking/Filter Page/filter.dart';
 import 'package:booking/Database/travel.dart';
+import 'package:booking/Ticket Page/dateItem.dart';
 
 class TicketPage extends StatefulWidget {
 
@@ -41,11 +44,27 @@ class _TicketPageState extends State<TicketPage> {
   String des = "";
   String ori = "";
   String iconPath = "";
+  late DateTime currentDate = widget.date;
 
 
-  List<Travel> searchedTravels = [];
+
   @override
   Widget build(BuildContext context) {
+    ItemScrollController _scrollController = ItemScrollController();
+
+    setState(() {
+      print(currentDate);
+      widget.date = currentDate;
+      getTicketList();
+
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        int middleIndex = 2;
+        _scrollController.scrollTo(
+          index: middleIndex,
+          duration: Duration(milliseconds: 500),
+        );
+      });
+    });
     setState(() {
       for(Country country in countriesList){
         if(widget.origin == country.fullName){
@@ -67,20 +86,24 @@ class _TicketPageState extends State<TicketPage> {
 
     });
 
-    setState(() {
-      for(Travel travel in travelsList){
-        for(Company company in companiesList){
-          if(travel.companyName == company){
-            if(company.vehicle == widget.vehicle && travel.origin == widget.origin && travel.destination == widget.destination && travel.departureTime.day == widget.date.day){
-              searchedTravels.add(travel);
-              print(travel);
-            }
-          }
-        }
-      }
-      print(searchedTravels);
-    });
+    // در متد initState
+    @override
+    void initState() {
+      super.initState();
 
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        int middleIndex = 1;
+        _scrollController.scrollTo(
+          index: middleIndex,
+          duration: Duration(milliseconds: 500),
+        );
+      });
+    }
+
+      List <DateTime> dateList = [];
+    for(int i = 5 ; i >= -5 ; i--){
+      dateList.add(currentDate.subtract(Duration(days: i)));
+    }
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
@@ -206,19 +229,35 @@ class _TicketPageState extends State<TicketPage> {
             ),
             Container(
               height:  screenHeight * 0.08,
-              child: ListView(
+              child: ScrollablePositionedList.builder(
+                itemScrollController:  _scrollController,
                 scrollDirection: Axis.horizontal,
-                children: [
-                  buildDateItem("Fri","13"),
-                  buildDateItem("Sat","14"),
-                  buildDateItem("Sun","15"),
-                  buildDateItem("Mon","16"),
-                  buildDateItem("Tue","17"),
-                  buildDateItem("Wed","18"),
-                  buildDateItem("Thu","19"),
-                  buildDateItem("Fri","20"),
-                  buildDateItem("Sat","21"),
-                ],
+                itemCount: dateList.length,
+                itemBuilder: (context,index) {
+                  final item = dateList[index];
+                  bool flag = (currentDate == item);
+                  DateTime currentDate1 = DateTime(2000);
+
+                  return StatefulBuilder(
+                    builder: (BuildContext context, StateSetter setState2) {
+
+                      // setState(() {
+                      //   currentDate = currentDate1;
+                      // });
+                      print(currentDate);
+
+                      return DateItem(
+                          date: item,
+                          isActive :(flag) ? true : false,
+                          onDateChanged: (copyFlag) {
+                            setState(() {
+                              currentDate = copyFlag; // تغییر مقدار flag با مقدار جدید
+                            });
+                          }
+                      );
+                    }
+                  );
+                },
               ),
             ),
             ClipRRect(
@@ -332,21 +371,6 @@ class _TicketPageState extends State<TicketPage> {
                             item.id
                           );
                         },
-                        // children: [
-                        //   Padding(
-                        //     padding: const EdgeInsets.only(bottom: 18),
-                        //     child: ticket(),
-                        //   ),
-                        //   Padding(
-                        //     padding: const EdgeInsets.only(bottom: 18),
-                        //     child: ticket(),
-                        //   ),
-                        //   Padding(
-                        //     padding: const EdgeInsets.only(bottom: 18),
-                        //     child: ticket(),
-                        //   ),
-                        //
-                        // ],
                       ),
                     )
                   ],
@@ -361,47 +385,9 @@ class _TicketPageState extends State<TicketPage> {
 
     );
   }
+}
 
-  Padding buildDateItem(String dayInMonth, String dayInWeek) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
-    return Padding(
-                  padding:  EdgeInsets.only(right:screenWidth * 0.006 ,left: screenWidth * 0.006),
-                  child: InkWell(
-                    onTap: (){print("click on InkWell");},
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: Container(
-                        padding:  EdgeInsets.only(top: screenHeight * 0.002),
-                        height: screenHeight * 0.075,
-                        width: screenWidth * 0.146,
-                        color: green2,
-
-                        child: Column(
-                          children: [
-                            Text(
-                              dayInWeek,
-                              style:  TextStyle(
-                                color: Colors.white,
-                                fontSize: screenHeight * 0.025,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Poppins',
-                              ),
-                            ),
-                            Text(
-                              dayInMonth,
-                              style:  TextStyle(
-                                color: Colors.white,
-                                fontSize: screenHeight * 0.025,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Poppins',
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-  }
+void getTicketList(){
+  /* by using gotten information form user , request to server and
+  and get fill travelsList in Database directory inside travel.dart*/
 }

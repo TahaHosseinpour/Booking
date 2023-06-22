@@ -1,16 +1,36 @@
-import 'package:booking/Information/colors.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-class PassengerInformation extends StatelessWidget{
-  final ValueChanged<String> onTextChanged;
+
+import 'package:booking/Information/colors.dart';
+import 'package:booking/Confirm Page/confirm_page.dart';
+import 'package:booking/Information/buildBottomNavigationBar.dart';
+import 'package:booking/Database/passenger.dart';
+
+class PassengerInformation extends StatefulWidget{
+
+  final Function(Passenger passenger) onTextChanged;
 
   PassengerInformation({required this.onTextChanged});
+
+  @override
+  State<PassengerInformation> createState() => _PassengerInformationState();
+}
+
+class _PassengerInformationState extends State<PassengerInformation> {
+  Passenger? person;
+
+  TextEditingController _firstnameController = TextEditingController();
+  TextEditingController _lastnameController = TextEditingController();
+  TextEditingController _passportNumberController = TextEditingController();
+  String year = "";
+  String month = "";
+  String day = "";
+
 
   Widget build(context){
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-
 
     return Padding(
       padding: EdgeInsets.only(bottom: screenHeight * 0.017),
@@ -28,6 +48,7 @@ class PassengerInformation extends StatelessWidget{
               //height: screenHeight * 0.06,
               padding: EdgeInsets.only(right: screenWidth * 0.13, left:screenWidth * 0.13, top: screenHeight * 0.006),
               child: TextField(
+                controller: _firstnameController,
                 decoration: InputDecoration(
                   labelText: 'First Name',
                   hintStyle: TextStyle(
@@ -44,7 +65,7 @@ class PassengerInformation extends StatelessWidget{
               //height: screenHeight * 0.06,
               padding: EdgeInsets.only(right: screenWidth * 0.13, left:screenWidth * 0.13 ),
               child: TextField(
-                onChanged: onTextChanged,
+                controller: _lastnameController,
                 style: TextStyle(
                 ),
                 decoration: InputDecoration(
@@ -63,6 +84,7 @@ class PassengerInformation extends StatelessWidget{
               //height: screenHeight * 0.06,
               padding: EdgeInsets.only(right: screenWidth * 0.13, left:screenWidth * 0.13 ),
               child: TextField(
+                controller: _passportNumberController,
                 decoration: InputDecoration(
                   labelText: 'Passport Number',
                   hintStyle: TextStyle(
@@ -100,6 +122,11 @@ class PassengerInformation extends StatelessWidget{
                       ),
                       textAlign: TextAlign.center,
                     ),
+                    onChanged: (String? selectItem){
+                      setState((){
+                        year = selectItem!;
+                      });
+                    },
                   ),
                 ),
                 Container(
@@ -123,6 +150,11 @@ class PassengerInformation extends StatelessWidget{
                       ),
                       textAlign: TextAlign.center,
                     ),
+                    onChanged: (String? selectItem){
+                      setState((){
+                        month = selectItem!;
+                      });
+                    },
                   ),
                 ),
                 Container(
@@ -133,7 +165,7 @@ class PassengerInformation extends StatelessWidget{
                       showSelectedItems: true,
                       showSearchBox: true,
                     ),
-                    items: const ["1", "2", "3", "4", "5",],
+                    items: const ["1", "2", "3", "4", "5","6","7","8","9","10","11", "12", "13", "14", "15","16","17","18","19","20","21", "22", "23", "24", "25","26","27","28","29","30",],
                     dropdownDecoratorProps: DropDownDecoratorProps(
                       dropdownSearchDecoration: InputDecoration(
                         labelText: "Day",
@@ -146,6 +178,15 @@ class PassengerInformation extends StatelessWidget{
                       ),
                       textAlign: TextAlign.center,
                     ),
+                    onChanged: (String? selectItem){
+                      setState((){
+                        day = selectItem!;
+                        setState(() {
+                          person = Passenger(firstname: _firstnameController.text,lastname: _lastnameController.text,passportNumber: _passportNumberController.text,birthday: DateTime(int.parse(year),int.parse(month),int.parse(day)));
+                          widget.onTextChanged(person!);
+                        });
+                      });
+                    },
                   ),
                 ),
               ],
@@ -154,5 +195,9 @@ class PassengerInformation extends StatelessWidget{
         ),
       ),
     );
+    // setState(() {
+    //   person = Passenger(firstname: _firstnameController.text,lastname: _lastnameController.text,passportNumber: _passportNumberController.text,birthday: DateTime(int.parse(year),int.parse(month),int.parse(day)));
+    //   widget.onTextChanged(person!);
+    // });
   }
 }

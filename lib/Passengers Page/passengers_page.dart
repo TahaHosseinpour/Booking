@@ -1,14 +1,19 @@
 import 'dart:math';
-import 'package:booking/Information/widgets.dart';
-import 'package:booking/Passengers%20Page/passenger_information.dart';
-import 'package:booking/Passengers%20Page/price.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Database/country.dart';
 import 'package:booking/Database/travel.dart';
 import 'package:booking/Database/user.dart';
+import 'package:booking/Database/company.dart';
+import 'package:booking/Confirm Page/confirm_page.dart';
+import 'package:booking/Information/buildBottomNavigationBar.dart';
+import 'package:booking/Information/widgets.dart';
+import 'package:booking/Database/passenger.dart';
+import 'package:booking/Passengers%20Page/passenger_information.dart';
 
 class PassengersPage extends StatefulWidget{
 
@@ -28,7 +33,8 @@ class PassengersPage extends StatefulWidget{
 }
 
 class _PassengersPageState extends State<PassengersPage>{
-  List<String> textFieldValues = ['Value 1',];
+
+  List<Passenger> passengerList = [];
 
   String des = "";
   String ori = "";
@@ -44,7 +50,12 @@ class _PassengersPageState extends State<PassengersPage>{
         des = country.shortName;
       }
     }
-
+    String? companyLogoPath;
+    for(Company company in companiesList){
+      if(company.name == widget.futureTravel.companyName){
+        companyLogoPath = company.logoPath;
+      }
+    }
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -180,7 +191,7 @@ class _PassengersPageState extends State<PassengersPage>{
                       children: [
                         Container(
                           margin: EdgeInsets.only(top: screenHeight * 0.01),
-                          child: SvgPicture.asset('assets/images/ticket_icon.svg',
+                          child: Image.asset(companyLogoPath!,
                           width: screenWidth * 0.15,
                             height: screenHeight * 0.07,
                           ),
@@ -286,15 +297,17 @@ class _PassengersPageState extends State<PassengersPage>{
           scrollDirection: Axis.vertical,
           itemCount: widget.passengersNumber,
           itemBuilder: (BuildContext context, int index) {
-            return PassengerInformation(
-              onTextChanged: (String value) {
-                setState(() {
-                  textFieldValues[index] = value;
-                  setState(() {
-                    print(textFieldValues);
-                  });
-                });
-              },
+            return StatefulBuilder(
+                builder: (BuildContext context, StateSetter setState2) {
+                  return PassengerInformation(
+                    onTextChanged: (copyPassenger) {
+                    setState(() {
+                      passengerList.add(copyPassenger);
+                      print(copyPassenger);
+                    });
+                  },);
+                }
+
             );
 
           },
@@ -303,11 +316,69 @@ class _PassengersPageState extends State<PassengersPage>{
       ),
           ],
         ),
-        bottomNavigationBar: Price(context, "Continue",widget.futureTravel,widget.currentUser,widget.passengersNumber),
+        bottomNavigationBar: Container(
+          height:screenHeight * 0.29,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
+            color: yellow2,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: screenWidth * 0.22,
+                      height: screenHeight * 0.048,
+                      child: FittedBox(
+                        child: Text('Price :',
+                          style: TextStyle(
+                            fontSize: 34,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w700,
+                            color:grey2,
+                          ),
+                        ),
+                      ),
+                      margin: EdgeInsets.only(left: screenWidth * 0.17),
+                    ),
+                    Container(
+                      width: screenWidth * 0.26,
+                      height: screenHeight * 0.07,
+                      child: FittedBox(
+                        child: Text('${widget.futureTravel.cost}\$',
+                          style: TextStyle(
+                            fontSize: 50,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                      margin: EdgeInsets.only(right: screenWidth * 0.17),
+                    ),
+                  ],
+                ),
+              ),
+              InkWell(
+                child: buttonContainer("Continue", screenHeight, screenWidth),
+                onTap: (){
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ConfirmPage(currentUser: widget.currentUser,futureTravel: widget.futureTravel,passengerList: passengerList,)),
+                  );
+                },
+              ),
+              BuildBottomNavigationBar(activeIcon: "home",currentUser: widget.currentUser,)
+            ],
+          ),
+        ),
       ),
     );
     throw UnimplementedError();
 
   }
 }
-
+// Price(context, "Continue",widget.futureTravel,widget.currentUser,widget.passengersNumber),
