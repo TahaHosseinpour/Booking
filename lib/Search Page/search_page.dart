@@ -32,6 +32,17 @@ class SearchPage extends StatefulWidget{
 
 class _SearchPageState extends State<SearchPage> {
 
+  late MyDatePickerTextField backDateButton ;
+  late MyDatePickerTextField departureDateButton;
+
+  @override
+  void initState() {
+    super.initState();
+    backDateButton = MyDatePickerTextField();
+    departureDateButton = MyDatePickerTextField();
+  }
+
+
   List<String> originList = countriesList.map((country) => country.fullName).toList();
   List<String> destinationList = countriesList.map((country) => country.fullName).toList();
   int adultPassengersNumber = 0;
@@ -39,14 +50,12 @@ class _SearchPageState extends State<SearchPage> {
   String origin = "";
   String destination = "";
 
-  DateTime backDate = DateTime(2023,11,10);
-  DateTime departureDate = DateTime(2023,11,10);
+  DateTime? backDate = DateTime(2023,11,10);
+  DateTime? departureDate = DateTime(2023,11,10);
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-
-
 
 
 
@@ -382,7 +391,7 @@ class _SearchPageState extends State<SearchPage> {
                                   ),
                                   SizedBox(height: screenHeight * 0.0096,),
                                   Container(
-                                    child:   MyDatePickerTextField(),
+                                    child: departureDateButton,
                                     margin: EdgeInsets.only(left: screenWidth * 0.15),
                                   ),
                                 ],
@@ -414,7 +423,7 @@ class _SearchPageState extends State<SearchPage> {
                                   ),
                                   SizedBox(height: screenHeight * 0.0096,),
                                   Container(
-                                    child: MyDatePickerTextField(),
+                                    child: backDateButton,
                                     margin: EdgeInsets.only(right: screenWidth * 0.118),
                                   ),
                                 ],
@@ -425,12 +434,21 @@ class _SearchPageState extends State<SearchPage> {
                         InkWell(
                           child: buttonContainer(buttonText, screenHeight, screenWidth),
                           onTap: (){
+                            setState(() {
+                              backDate = backDateButton.pickDate;
+                              departureDate = departureDateButton.pickDate;
+                              print("this is back time");
+                              print(backDate);
+
+                              print("this is depature time");
+                              print(departureDate);
+                            });
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => TicketPage(
                                   currentUser: widget.currentUser,
                                 vehicle: widget.vehicle,
-                                date: departureDate,
+                                date: departureDate!,
                                 origin: origin,
                                 destination: destination,
                                 passengersNumber: childPassengersNumber + adultPassengersNumber,

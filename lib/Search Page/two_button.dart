@@ -40,6 +40,7 @@ class _TwoButtonState extends State<TwoButton> {
     return ClipRRect(
 
       borderRadius: BorderRadius.circular(40),
+
       child: Container(
         width: screenWidth * 0.83,
         height: widget.height,
@@ -57,8 +58,10 @@ class _TwoButtonState extends State<TwoButton> {
                 },
                 style: ElevatedButton.styleFrom(
                     primary: widget.leftButtonIsActive ? yellow1 : yellow2,
+                    elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(40),
+
 
                     ),
                     side: BorderSide.none
@@ -85,6 +88,7 @@ class _TwoButtonState extends State<TwoButton> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
+                  elevation: 0,
                   primary: widget.rightButtonIsActive ? yellow1 : yellow2,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40),

@@ -6,6 +6,10 @@ import 'package:booking/Search Page/search_page.dart';
 
 class MyDatePickerTextField extends StatefulWidget {
 
+  DateTime? pickDate;
+
+  MyDatePickerTextField({this.pickDate});
+
 
   @override
   _MyDatePickerTextFieldState createState() => _MyDatePickerTextFieldState();
@@ -14,16 +18,13 @@ class MyDatePickerTextField extends StatefulWidget {
 class _MyDatePickerTextFieldState extends State<MyDatePickerTextField> {
   TextEditingController _textEditingController = TextEditingController();
   String _selectedDate = '';
-  static DateTime pickDate = DateTime.utc(1,3,15);
 
   static GlobalKey<_MyDatePickerTextFieldState> key1 = GlobalKey<_MyDatePickerTextFieldState>();
   static GlobalKey<_MyDatePickerTextFieldState> key2 = GlobalKey<_MyDatePickerTextFieldState>();
 
 
 
-  DateTime getter(){
-    return pickDate;
-  }
+
   @override
   void dispose() {
     _textEditingController.dispose();
@@ -45,10 +46,9 @@ class _MyDatePickerTextFieldState extends State<MyDatePickerTextField> {
           _selectedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
           _textEditingController.text = _selectedDate;
           setState(() {
-            pickDate = pickedDate;
+            widget.pickDate = pickedDate;
           });
-          print(pickedDate);
-          print(pickDate);
+
         });
       }
     }
@@ -59,13 +59,17 @@ class _MyDatePickerTextFieldState extends State<MyDatePickerTextField> {
       width: screenWidth * 0.255,
       height:screenHeight * 0.04,
 
-      child:TextField(
-        controller: _textEditingController,
-        readOnly: true,
-        onTap: () {
-          _selectDate(context);
-        },
-        decoration: InputDecoration(
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.yellow),
+        ),
+        child:TextField(
+          controller: _textEditingController,
+          readOnly: true,
+          onTap: () {
+            _selectDate(context);
+          },
+          decoration: InputDecoration(
             hintText: 'Seclect',
             hintStyle: TextStyle(
                 fontFamily: 'Poppins',
@@ -81,6 +85,7 @@ class _MyDatePickerTextFieldState extends State<MyDatePickerTextField> {
           fillColor: Colors.white,
         ),
       ),
+    ),
     );
   }
 }
