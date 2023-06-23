@@ -7,8 +7,9 @@ import 'package:booking/Information/colors.dart';
 import 'package:booking/Database/company.dart';
 import 'package:booking/Database/country.dart';
 import 'package:booking/Database/user.dart';
+import 'package:booking/Database/ticket.dart';
 
-Padding ticket(BuildContext context,User currentUser ,int passengersNumber,double screenWidth ,double screenHeight,DateTime departureTime , DateTime arrivalTime, String travelTime, String origin, String destination,int cost , String travelClass , String companyName , int id){
+Padding ticketItem(BuildContext context,User currentUser ,int passengersNumber,double screenWidth ,double screenHeight,DateTime departureTime , DateTime arrivalTime, String travelTime, String origin, String destination,int cost , String travelClass , String companyName , int id){
   String companyLogoPath = "";
   for(Company company in companiesList){
     if(company.name == companyName){
@@ -218,7 +219,7 @@ Padding ticket(BuildContext context,User currentUser ,int passengersNumber,doubl
                 child: ElevatedButton(
                   onPressed: (){
                     print("click");
-                    Travel futureTravel = Travel(companyName: companyName, origin: origin, destination: destination, remainingPassengers: 0, departureTime: departureTime, arrivalTime: arrivalTime, travelTime: travelTime, cost: cost, travelClass: travelClass, id: id);
+                    Ticket futureTravel = Ticket(companyName: companyName, origin: origin, destination: destination, departureTime: departureTime, arrivalTime: arrivalTime, travelTime: travelTime, cost: cost, travelClass: travelClass, id: id);
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => PassengersPage(futureTravel: futureTravel,currentUser: currentUser,passengersNumber: passengersNumber,)),

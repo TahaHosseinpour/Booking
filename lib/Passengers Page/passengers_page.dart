@@ -14,10 +14,11 @@ import 'package:booking/Information/buildBottomNavigationBar.dart';
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Database/passenger.dart';
 import 'package:booking/Passengers%20Page/passenger_information.dart';
+import 'package:booking/Database/ticket.dart';
 
 class PassengersPage extends StatefulWidget{
 
-  Travel futureTravel;
+  Ticket futureTravel;
   User currentUser;
   int passengersNumber;
 

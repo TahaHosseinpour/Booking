@@ -5,9 +5,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:booking/Database/user.dart';
 import 'package:booking/Database/travel.dart';
 import 'package:booking/Database/company.dart';
+import 'package:booking/Database/ticket.dart';
 
 
-Container TravelInformation(BuildContext context , User currentUser , Travel futureTravel ,int passengersNumber){
+Container TravelInformation(BuildContext context , User currentUser , Ticket futureTravel ,int passengersNumber){
   String? companyLogoPath;
   for(Company company in companiesList){
     if(company.name == futureTravel.companyName){

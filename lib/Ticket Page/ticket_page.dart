@@ -8,8 +8,7 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 
 import 'package:booking/Information/colors.dart';
-import 'package:booking/Ticket Page/ticket.dart';
-import 'package:booking/Information/widgets.dart';
+import 'package:booking/Ticket Page/ticketItem.dart';
 import 'package:booking/Database/user.dart';
 import 'package:booking/Database/country.dart';
 import 'package:booking/Filter Page/filter.dart';
@@ -354,7 +353,7 @@ class _TicketPageState extends State<TicketPage> {
                         itemCount: travelsList.length,
                         itemBuilder: (context, index) {
                           final item = travelsList[index];
-                          return ticket(
+                          return ticketItem(
                             context,
                             widget.currentUser,
                             widget.passengersNumber,
