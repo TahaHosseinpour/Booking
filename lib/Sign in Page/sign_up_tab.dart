@@ -4,6 +4,8 @@ import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Main Page/main_page.dart';
 import 'package:booking/Database/user.dart';
+import 'package:booking/Database/transaction.dart';
+import 'package:booking/Database/ticket.dart';
 
 
 class SignUpTab extends StatefulWidget{
@@ -241,7 +243,9 @@ class _SignUpTabState extends State<SignUpTab> {
                           phone: "Null",
                           id: "Null",
                           birthday: "Null",
-                          walletBalance: "0"
+                          walletBalance: "0",
+                        transactionsList: [],
+                        ticketsList: []
                       );
 
                       usersList.add(currnetUser);
