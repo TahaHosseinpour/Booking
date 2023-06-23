@@ -1,11 +1,16 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'package:booking/Database/user.dart';
 import 'package:booking/Information/buildBottomNavigationBar.dart';
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Travels%20Page/search_box.dart';
 import 'package:booking/Travels%20Page/travel_info.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:booking/Database/user.dart';
+import 'package:booking/Database/ticket.dart';
+
+
+
 
 class TravelsPage extends StatefulWidget{
   User currentUser;
@@ -17,7 +22,32 @@ class TravelsPage extends StatefulWidget{
 }
 
 class _TravelsPageState extends State<TravelsPage> {
-  bool isChecked = false;
+  List<Ticket>? ticketsList = [];
+  DateTime? departureDate = DateTime(1000,10,10);
+  DateTime? backDate = DateTime(1000,10,10);
+  String? ticketNumber = "0";
+
+  @override
+  void initState() {
+    super.initState();
+    ticketsList = widget.currentUser.ticketsList;
+  }
+
+  void changeTicketList(DateTime departure, DateTime back, String number){
+    // setState(() {
+    //   //change ticketsList by Filters
+    // });
+  }
+
+  void _handleSearch(DateTime departure, DateTime back, String number) {
+    setState(() {
+      departureDate = departure;
+      backDate = back;
+      ticketNumber = number;
+      print(" ticketNumber : $ticketNumber \n backDate : ${backDate.toString()}\n departureDate : ${departureDate.toString()}");
+      changeTicketList(departure, back, number);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +59,7 @@ class _TravelsPageState extends State<TravelsPage> {
         .of(context)
         .size
         .height;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -62,31 +93,19 @@ class _TravelsPageState extends State<TravelsPage> {
               ),
             )
           ),
-              SearchBox(context),
+          SearchBox(onSearch: _handleSearch),
              Container(
                margin: EdgeInsets.only(top: screenHeight * 0.01),
                height: screenHeight * 0.58,
                width: screenWidth * 0.83,
-               child: ListView(
+               child: ListView.builder(
                  scrollDirection: Axis.vertical,
-                 children: [
-                   Padding(
-                     padding: const EdgeInsets.only(bottom: 12),
-                     child: TravelInfo(context),
-                   ),
-                   Padding(
-                     padding: const EdgeInsets.only(bottom: 12),
-                     child: TravelInfo(context),
-                   ),
-                   Padding(
-                     padding: const EdgeInsets.only(bottom: 12),
-                     child: TravelInfo(context),
-                   ),
-                   Padding(
-                     padding: const EdgeInsets.only(bottom: 12),
-                     child: TravelInfo(context),
-                   ),
-                 ],
+                 itemCount: ticketsList?.length,
+                 itemBuilder: (context,indext){
+                   final item = ticketsList?[indext];
+
+                   return TravelInfo(ticket: item!);
+                 },
                ),
              )
 
@@ -98,3 +117,4 @@ class _TravelsPageState extends State<TravelsPage> {
     );
   }
 }
+

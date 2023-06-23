@@ -438,7 +438,6 @@ class _SearchPageState extends State<SearchPage> {
                               backDate = backDateButton.pickDate;
                               departureDate = departureDateButton.pickDate;
                             });
-                            getTicketList();
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => TicketPage(
@@ -499,7 +498,3 @@ Widget Back(BuildContext context , String imagePath){
   );
 }
 
-void getTicketList(){
-  /* by using gotten information form user , request to server and
-  and get fill travelsList in Database directory inside travel.dart*/
-}

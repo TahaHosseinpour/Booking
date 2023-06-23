@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
          primarySwatch: Colors.yellow,
 
        ),
-       home: SearchPage(currentUser: usersList.first, vehicle: "train"),
+       home: Start(),
     );
   }
 }

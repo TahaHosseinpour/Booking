@@ -6,9 +6,9 @@ import 'package:booking/Search Page/search_page.dart';
 
 class MyDatePickerTextField extends StatefulWidget {
 
-  DateTime? pickDate;
+  DateTime pickDate = DateTime(1000,10,10);
 
-  MyDatePickerTextField({this.pickDate});
+  // MyDatePickerTextField({this.pickDate});
 
 
   @override

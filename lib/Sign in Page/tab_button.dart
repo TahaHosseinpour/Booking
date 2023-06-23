@@ -65,6 +65,7 @@ class _TabButtonState extends State<TabButton> {
                 }
               },
               style: ElevatedButton.styleFrom(
+                elevation: 0,
                 primary: widget.leftButtonIsActive ? yellow1 : yellow2,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40),
@@ -94,6 +95,7 @@ class _TabButtonState extends State<TabButton> {
                   }
                   },
                   style: ElevatedButton.styleFrom(
+                    elevation: 0,
                     primary: widget.rightButtonIsActive ? yellow1 : yellow2,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(40),

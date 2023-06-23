@@ -15,6 +15,12 @@ class SignIn extends StatefulWidget{
 }
 
 class _SignInState extends State<SignIn> {
+  Widget? tab;
+  @override
+  void initState(){
+    super.initState();
+    tab = LogInTab();
+  }
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -24,7 +30,8 @@ class _SignInState extends State<SignIn> {
     SignInSignUp.fontSize = 30;
     SignInSignUp.fontWeight = FontWeight.w400;
 
-    Widget tab = LogInTab();
+
+
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
