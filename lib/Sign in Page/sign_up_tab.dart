@@ -43,7 +43,7 @@ class _SignUpTabState extends State<SignUpTab> {
     final contextWidth = MediaQuery.of(context).size.width;
     final contextHeight = MediaQuery.of(context).size.height;
 
-    User currnetUser;
+    User currentUser;
 
 
 
@@ -235,7 +235,7 @@ class _SignUpTabState extends State<SignUpTab> {
                     }
                     if(isUsernameValid && isPasswordValid && isEmailValid){
 
-                      currnetUser = User(
+                      currentUser = User(
                           username: _usernameController.text,
                           password: _passwordController.text,
                           email: _emailController.text,
@@ -248,14 +248,13 @@ class _SignUpTabState extends State<SignUpTab> {
                         ticketsList: []
                       );
 
-                      usersList.add(currnetUser);
+                      if(createUser(currentUser)){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MainPage(currentUser: currentUser,)),
+                        );
+                      }
 
-                      print(usersList);
-
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MainPage(currentUser: currnetUser,)),
-                      );
                     }
                   });
                   setState(() {
@@ -280,4 +279,9 @@ class _SignUpTabState extends State<SignUpTab> {
       ),
     );
   }
+}
+
+bool createUser(User user){
+  //request to server and add user to usersList in Database
+  return true;
 }

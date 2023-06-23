@@ -11,6 +11,6 @@ class Passenger{
     required this.firstname,
     required this.lastname,
     required this.passportNumber,
-    required this.birthday
+    required this.birthday,
   });
 }

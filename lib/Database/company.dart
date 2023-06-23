@@ -14,11 +14,7 @@ class Company{
   });
 }
 
-// Company Delta = Company(name: "Delta", logoPath: "assets/images/company/delta.png");
-// Company Delta = Company(name: "Delta", logoPath: "assets/images/company/delta.png");
-// Company Delta = Company(name: "Delta", logoPath: "assets/images/company/delta.png");
-// Company Delta = Company(name: "Delta", logoPath: "assets/images/company/delta.png");
-// Company Delta = Company(name: "Delta", logoPath: "assets/images/company/delta.png");
+
 
 List<Company> companiesList = [
   Company(

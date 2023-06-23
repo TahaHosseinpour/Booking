@@ -169,29 +169,19 @@ class _LogInTabState extends State<LogInTab> {
               child: InkWell(
                 child: buttonContainer("Submit",contextHeight , contextWidth),
                 onTap: (){
-                  setState(() {
-                    isUsernameValid = false;
-                    isPasswordValid = false;
-                  });
-                  for(var user in usersList){
-                    if(_usernameController.text == user.username){
-                      setState(() {
-                        isUsernameValid = true;
-                      });
-                      if(_passwordController.text == user.password){
-                        setState(() {
-                          isPasswordValid = true;
-                        });
-                        currnetUser = user;
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => MainPage(currentUser: currnetUser,)),
-                        );
-                        break;
-                      }
-                    }
+                  late User currentUser = checkPasswordAndUsername(_usernameController.text,_passwordController.text);
+                  if(currentUser != null){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MainPage(currentUser: currentUser)),
+                    );
+                  }else{
+                    setState(() {
+                      isUsernameValid = false;
+                      isPasswordValid = false;
+                    });
                   }
-                },
+                }
               ),
             )
           ],
@@ -199,4 +189,9 @@ class _LogInTabState extends State<LogInTab> {
       ),
     );
   }
+}
+
+User checkPasswordAndUsername(String username,String password){
+  //request to server and chceck is username exist? or is password correct?
+  return usersList.first;
 }

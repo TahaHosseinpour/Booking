@@ -126,91 +126,23 @@ class _TransactionsPageState extends State<TransactionsPage> {
                     SizedBox(
                       width: screenWidth * 0.825,
                       height: screenHeight * 0.582,
-                      child: ListView(
+                      child: ListView.builder(
                         scrollDirection: Axis.vertical,
-                        children: [
-                          Padding(
+                        itemCount: widget.currentUser.transactionsList.length,
+                        itemBuilder: (context,index){
+                          final item = widget.currentUser.transactionsList[index];
+                          int amnt = item.amount;
+                          return Padding(
                             padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.14.07",color: green1,amount: "340\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "784676", date: "22.14.07",color: yellow2,amount: "40\$",type: "Buy",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "764643", date: "22.14.07",color: green1,amount: "340\$",type: "Buy",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "02865443", date: "22.14.07",color: yellow2,amount: "98\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0342343", date: "22.13.07",color: green1,amount: "340\$",type: "Buy",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.14.02",color: yellow2,amount: "26\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.14.06",color: green1,amount: "76\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.14.08",color: yellow2,amount: "240\$",type: "Buy",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.14.07",color: green1,amount: "340\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.15.07",color: yellow2,amount: "20\$",type: "Buy",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.13.09",color: green1,amount: "340\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.14.07",color: yellow2,amount: "340\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.13.09",color: green1,amount: "340\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.14.07",color: yellow2,amount: "340\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.13.09",color: green1,amount: "340\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.14.07",color: yellow2,amount: "340\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.13.09",color: green1,amount: "340\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.14.07",color: yellow2,amount: "340\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.13.09",color: green1,amount: "340\$",type: "Income",),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.002),
-                            child: TransactionItem(id: "0200043", date: "22.14.07",color: yellow2,amount: "340\$",type: "Income",),
-                          ),
-
-                        ],
+                            child: TransactionItem(
+                              id: item.id,
+                              date: item.date,
+                              color: (index%2 == 1)? yellow2 : green1,
+                              amount: "$amnt\$",
+                              type: item.type,
+                            ),
+                          );
+                        },
                       ),
                     )
                   ],
