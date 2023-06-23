@@ -5,7 +5,7 @@ import 'package:booking/Start Page/start.dart';
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Search Page/search_page.dart';
 import 'package:booking/Main Page/main_page.dart';
-import 'package:booking/Transactions Page/transactions.dart';
+import 'package:booking/Transactions Page/transactions_page.dart';
 import 'package:booking/Transactions Page/transaction_item.dart';
 import 'package:booking/Profile Page/profile_page.dart';
 

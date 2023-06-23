@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Profile Page/profile_page.dart';
-import 'package:booking/Transactions Page/transactions.dart';
+import 'package:booking/Transactions Page/transactions_page.dart';
 import 'package:booking/Main Page/main_page.dart';
 import 'package:booking/Travels Page/travels_page.dart';
 import 'package:booking/Database/user.dart';
@@ -126,7 +126,7 @@ class _BuildBottomNavigationBarState extends State<BuildBottomNavigationBar> {
                 });
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Transactions(currentUser: widget.currentUser,),
+                    MaterialPageRoute(builder: (context) => TransactionsPage(currentUser: widget.currentUser,),
                     ));
               },
             ),

@@ -6,16 +6,16 @@ import 'package:booking/Information/wallet.dart';
 import 'package:booking/Transactions Page/transaction_item.dart';
 import 'package:booking/Database/user.dart';
 
-class Transactions extends StatefulWidget{
+class TransactionsPage extends StatefulWidget{
 
   User currentUser;
 
-  Transactions({required this.currentUser});
+  TransactionsPage({required this.currentUser});
   @override
-  State<Transactions> createState() => _TransactionsState();
+  State<TransactionsPage> createState() => _TransactionsPageState();
 }
 
-class _TransactionsState extends State<Transactions> {
+class _TransactionsPageState extends State<TransactionsPage> {
   Widget build(context){
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
