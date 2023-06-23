@@ -13,10 +13,13 @@ import 'package:booking/Passengers%20Page/price.dart';
 import 'package:booking/Database/passenger.dart';
 import 'package:booking/Information/buildBottomNavigationBar.dart';
 import 'package:booking/Database/company.dart';
+import 'package:booking/Main Page/main_page.dart';
+import 'package:booking/Database/ticket.dart';
+
 
 class ConfirmPage extends StatefulWidget{
 
-  Travel futureTravel;
+  Ticket futureTravel;
   User currentUser;
   List<Passenger> passengerList;
 
@@ -235,11 +238,16 @@ class _ConfirmPage extends State<ConfirmPage> {
               InkWell(
                 child: buttonContainer("Payment", screenHeight, screenWidth),
                 onTap: (){
+                  changeWalletBalanceAndCreateTransaction(widget.currentUser, widget.futureTravel.cost);
 
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => ConfirmPage(currentUser: widget.currentUser,futureTravel: widget.futureTravel,passengerList: passengerList,)),
-                  // );
+                  changeRemainPassengersOfTravel(widget.futureTravel, widget.passengerList.length);
+
+                  addFutureTravelToTicketsList(widget.currentUser, widget.futureTravel);
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MainPage(currentUser: widget.currentUser)),
+                  );
                 },
               ),
               BuildBottomNavigationBar(activeIcon: "home",currentUser: widget.currentUser,)
@@ -249,4 +257,18 @@ class _ConfirmPage extends State<ConfirmPage> {
       ),
     );
   }
+}
+
+changeWalletBalanceAndCreateTransaction(User user , int amount){
+  /** request to server and change wallet balance in Database and
+  create a transaction and add it to transactionsList of user **/
+}
+
+changeRemainPassengersOfTravel(Ticket futureTravel ,int passengersCount){
+  /** request to server and change remain passenger of travel's
+  that equals futureTravel ticket in Database **/
+}
+
+addFutureTravelToTicketsList(User user , Ticket futureTravel){
+  //request to server and add futureTravel to ticketsList of user
 }
