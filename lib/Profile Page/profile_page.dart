@@ -84,7 +84,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ],
                       ),
                     ),
-                    Wallet(balance: int.parse(widget.currentUser.walletBalance)),
+                    Wallet(currentUser: widget.currentUser,),
                   ],
                 )
               ),
