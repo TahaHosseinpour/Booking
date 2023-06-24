@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'dart:io';
+import 'dart:convert';
 
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Database/user.dart';
 import 'package:booking/Main Page/main_page.dart';
+
+import '../ServerMethods/userToJson.dart';
 
 class LogInTab extends StatefulWidget{
   const LogInTab({super.key});
@@ -106,11 +110,11 @@ class _LogInTabState extends State<LogInTab> {
                             fontWeight: FontWeight.w400,
                           ),
                           controller: _passwordController,
-                          decoration:  InputDecoration(
-                              border: UnderlineInputBorder(
+                          decoration: InputDecoration(
+                              border: const UnderlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Color.fromRGBO(198, 198, 198, 1),  // رنگ بوردر پایینی
-                                  width: 0.5,  // عرض بوردر پایینی
+                                  color: Color.fromRGBO(198, 198, 198, 1),
+                                  width: 0.5,
                                 ),
                               ),
 
@@ -119,7 +123,7 @@ class _LogInTabState extends State<LogInTab> {
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
                                 fontSize: contextHeight * 0.016,
-                                color: Color.fromARGB(255, 135, 135, 135),
+                                color: const Color.fromARGB(255, 135, 135, 135),
                               )
                           ),
                         ),
@@ -130,7 +134,7 @@ class _LogInTabState extends State<LogInTab> {
                               fontFamily: 'Poppins',
                               fontSize: contextHeight * 0.011,
                               fontWeight: FontWeight.w400,
-                              color: Color.fromRGBO(202, 44, 44, 1)
+                              color: const Color.fromRGBO(202, 44, 44, 1)
                           ),
                         )
                       ],
@@ -148,7 +152,7 @@ class _LogInTabState extends State<LogInTab> {
                               fontSize: contextHeight * 0.016,
                               fontWeight: FontWeight.w400,
                               decoration: TextDecoration.underline,
-                              color: Color.fromRGBO(93, 154, 224, 1),
+                              color: const Color.fromRGBO(93, 154, 224, 1),
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
@@ -171,10 +175,7 @@ class _LogInTabState extends State<LogInTab> {
                 onTap: (){
                   late User currentUser = checkPasswordAndUsername(_usernameController.text,_passwordController.text);
                   if(currentUser != null){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MainPage(currentUser: currentUser)),
-                    );
+                    socketTest(context, currentUser);
                   }else{
                     setState(() {
                       isUsernameValid = false;
@@ -194,4 +195,27 @@ class _LogInTabState extends State<LogInTab> {
 User checkPasswordAndUsername(String username,String password){
   //request to server and chceck is username exist? or is password correct?
   return usersList.first;
+}
+
+void socketTest(context,User user) async {
+  //request to server and add user to usersList in Database
+  print("in create user");
+  Map<String, dynamic> jsonRequest = {
+    'requestType': "createUser",
+    'requestData': userToJson(user),
+  };
+  print("jsonRequest created");
+  await Socket.connect('192.168.1.9',8080).then((serverSocket) {
+    print("socket connected");
+    serverSocket.write(jsonRequest.toString());
+    print("data write");
+
+    serverSocket.flush();
+    print("data flush");
+  });
+  print("next page");
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => MainPage(currentUser: user,)),
+  );
 }
