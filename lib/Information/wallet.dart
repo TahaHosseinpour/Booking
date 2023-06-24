@@ -20,14 +20,8 @@ class _WalletState extends State<Wallet> {
   final TextEditingController _controller = TextEditingController();
 
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   editingMode = false;
-  // }
   @override
   Widget build(context){
-    print("editindMode1 is : $editingMode");
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     Widget editBox = Padding(
@@ -37,13 +31,13 @@ class _WalletState extends State<Wallet> {
         height: screenHeight * 0.1,
         child:  TextField(
           controller: _controller,
-          style:TextStyle(
+          style: const TextStyle(
             fontSize: 18,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w400,
             color:Colors.black,
           ),
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             border: UnderlineInputBorder(
               borderSide: BorderSide(
                 color: Color.fromRGBO(198, 198, 198, 1),
@@ -85,7 +79,7 @@ class _WalletState extends State<Wallet> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
+                      SizedBox(
                         height: screenHeight * 0.042,
                         child: FittedBox(
                           child: SvgPicture.asset(
@@ -94,7 +88,7 @@ class _WalletState extends State<Wallet> {
                         ),
                       ),
 
-                      Container(
+                      SizedBox(
                         height: screenHeight * 0.037,
                         child: const FittedBox(
                           child: Text("Wallet",
@@ -110,7 +104,7 @@ class _WalletState extends State<Wallet> {
                     ],
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: screenHeight * 0.072,
                   child: FittedBox(
                     child: Text( balance.toString() + "\$" ,
@@ -146,7 +140,7 @@ class _WalletState extends State<Wallet> {
                   borderRadius: BorderRadius.circular(45),
                   color: yellow1,
                 ),
-                child:  Container(
+                child:  SizedBox(
                   height: screenHeight * 0.04,
                   child: FittedBox(
                     child: Text(
@@ -162,7 +156,6 @@ class _WalletState extends State<Wallet> {
                 )
             ),
           onTap: (){
-            print("editingMode2 is : $editingMode");
 
             if(editingMode) {
               changeWalletBalanceAndCreateTransaction(widget.currentUser, int.parse(_controller.text));
