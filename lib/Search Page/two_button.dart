@@ -3,22 +3,32 @@ import 'package:booking/Information/colors.dart';
 
 
 class TwoButton extends StatefulWidget {
+  String leftText;
+  String rightText;
+  double height;
+  FontWeight fontWeight = FontWeight.w700;
+  double fontSize = 20;
+  bool leftButtonIsActive = true;
+  bool rightButtonIsActive = false;
+
+
+  TwoButton({required this.leftText ,required this.rightText ,required this.height });
+
   @override
   _TwoButtonState createState() => _TwoButtonState();
 }
 
 class _TwoButtonState extends State<TwoButton> {
-  bool leftButtonIsActive = true;
-  bool rightButtonIsActive = false;
+
 
   void setActiveButton(String button) {
     setState(() {
       if (button == 'left') {
-        leftButtonIsActive = true;
-        rightButtonIsActive = false;
+        widget.leftButtonIsActive = true;
+        widget.rightButtonIsActive = false;
       } else if (button == 'right') {
-        leftButtonIsActive = false;
-        rightButtonIsActive = true;
+        widget.leftButtonIsActive = false;
+        widget.rightButtonIsActive = true;
       }
     });
   }
@@ -27,79 +37,78 @@ class _TwoButtonState extends State<TwoButton> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
-    return Container(
+    return ClipRRect(
 
-      // decoration: BoxDecoration(
-      //   // borderRadius: BorderRadius.circular(40)
-      // ),
-      child: ClipRRect(
+      borderRadius: BorderRadius.circular(40),
 
-        borderRadius: BorderRadius.circular(40),
-        child: Container(
-          width: screenWidth * 0.83,
-          height: screenHeight * 0.053,
-            color: yellow2,
-          child: Row(
-            children: [
-              Container(
-                width: screenWidth * 0.415,
-                height: screenHeight * 0.053,
-                child: ElevatedButton(
-                  onPressed: () {
-                    if(!leftButtonIsActive){
-                      setActiveButton("left");
-                    }
-                  },
-                  child: Text(
-                    "Round Trip",
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20,
-                        color: leftButtonIsActive ? Colors.black : grey2
+      child: Container(
+        width: screenWidth * 0.83,
+        height: widget.height,
+          color: yellow2,
+        child: Row(
+          children: [
+            SizedBox(
+              width: screenWidth * 0.415,
+              height: widget.height,
+              child: ElevatedButton(
+                onPressed: () {
+                  if(!widget.leftButtonIsActive){
+                    setActiveButton("left");
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: widget.leftButtonIsActive ? yellow1 : yellow2,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40),
+
+
                     ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      primary: leftButtonIsActive ? yellow1 : yellow2,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40),
-
-                      ),
-                      side: BorderSide.none
+                    side: BorderSide.none
+                ),
+                child: Text(
+                  widget.leftText,
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: widget.fontWeight,
+                      fontSize: widget.fontSize,
+                      color: widget.leftButtonIsActive ? Colors.black : grey2
                   ),
                 ),
               ),
-              Container(
-                width: screenWidth * 0.415,
-                height: screenHeight * 0.053,
-                child: ElevatedButton(
-                  onPressed: () {
-                    if(!rightButtonIsActive){
-                      setActiveButton("right");
-                    }
-                  },
-                  child: Text(
-                    "One Way",
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20,
-                        color: rightButtonIsActive ? Colors.black : grey2
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: rightButtonIsActive ? yellow1 : yellow2,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40),
-                      side: BorderSide.none,
-                    ),
+            ),
+            SizedBox(
+              width: screenWidth * 0.415,
+              height: widget.height,
+              child: ElevatedButton(
+                onPressed: () {
+                  if(!widget.rightButtonIsActive){
+                    setActiveButton("right");
+
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  primary: widget.rightButtonIsActive ? yellow1 : yellow2,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40),
+                    side: BorderSide.none,
                   ),
                 ),
-              )
-            ],
-          ),
+                child: Text(
+                  widget.rightText,
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: widget.fontWeight,
+                      fontSize: widget.fontSize,
+                      color: widget.rightButtonIsActive ? Colors.black : grey2
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
-      )
+      ),
     );
   }
   

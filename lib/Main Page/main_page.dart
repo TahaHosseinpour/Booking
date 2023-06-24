@@ -3,13 +3,30 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
+import 'package:booking/Database/user.dart';
+import 'package:booking/Search Page/search_page.dart';
+import 'package:booking/Database/place.dart';
+import 'package:booking/Information/buildBottomNavigationBar.dart';
 
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
+
+  User currentUser;
+
+  MainPage({required this.currentUser});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+
+    String selectVehicle;
+
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -18,7 +35,7 @@ class MainPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           // centerTitle: true,
-            toolbarHeight: 92,
+            toolbarHeight: screenHeight * 0.098,
             title: Container(
               padding: EdgeInsets.all(0),
             margin: EdgeInsets.all(0),
@@ -27,25 +44,25 @@ class MainPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Image.asset(
-                  'assets/images/avatar.png',
-                  height: 50,
-                  width: 50,
+                  widget.currentUser.avatarPath,
+                  height: screenHeight * 0.053,
+                  width: screenWidth * 0.11,
                 ),
                 Container(
-                  margin: EdgeInsets.only(bottom: 15),
+                  margin: EdgeInsets.only(bottom: screenHeight * 0.016),
 
                   child: Text(
                       'Logo',
                       style: TextStyle(
                           fontFamily: 'Poppins',
-                          fontSize: 35,
+                          fontSize: screenHeight * 0.037,
                           color: Colors.black
                       )),
                 ),
                 SvgPicture.asset(
                   'assets/images/menu.svg',
-                  height: 50,
-                  width: 50,
+                  height: screenHeight * 0.053,
+                  width: screenWidth * 0.11,
                 )
               ],
             ),
@@ -55,13 +72,13 @@ class MainPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 45,right: 45),
+              padding: EdgeInsets.only(left: screenWidth * 0.1,right: screenWidth * 0.1),
               child: Column(
                 children: [
                    Text("Hi Taha",
                     style: TextStyle(
                       fontFamily: 'Poppins',
-                      fontSize: 35,
+                      fontSize: screenHeight * 0.037,
                       fontWeight: FontWeight.w400,
                       color: Colors.black
                     ),
@@ -69,7 +86,7 @@ class MainPage extends StatelessWidget {
                   Text("Let's Go Travel",
                     style: TextStyle(
                         fontFamily: 'Poppins',
-                        fontSize: 35,
+                        fontSize: screenHeight * 0.037,
                         fontWeight: FontWeight.w400,
                         color: Colors.black
                     ),
@@ -79,15 +96,15 @@ class MainPage extends StatelessWidget {
             ),
             //Add Search Box
             Container(
-              padding: EdgeInsets.only(left: 45,right: 45),
+              padding: EdgeInsets.only(left: screenWidth * 0.1,right: screenWidth * 0.1),
               child: TextField(decoration: new InputDecoration(
                   prefixIcon: Icon(
                     Icons.search_rounded,
-                    size: 35,
+                    size: screenHeight * 0.037,
                   ),
                   hintText: "Explore",
                   hintStyle: TextStyle(
-                      fontSize: 25,
+                      fontSize: screenHeight * 0.026,
                       fontFamily: 'Poppins',
                       color: grey1
                   )
@@ -97,9 +114,9 @@ class MainPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  height: 87,
-                  width: 82,
-                  padding: const EdgeInsets.only(top: 3,bottom: 4),
+                  height: screenHeight * 0.093,
+                  width: screenWidth * 0.19,
+                  padding:  EdgeInsets.only(top: screenHeight * 0.002,bottom: screenHeight * 0.004),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       border: Border.all(
@@ -110,16 +127,26 @@ class MainPage extends StatelessWidget {
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      InkWell(child: SvgPicture.asset('assets/images/bus.svg',
-                        height: 60,
-                        width: 50,
-                      ),),
+                      InkWell(
+                        child: SvgPicture.asset(
+                          'assets/images/bus.svg',
+                          height: screenHeight * 0.064,
+                          width: screenWidth * 0.11,
+                        ),
+                        onTap: (){
+                          selectVehicle = "bus";
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SearchPage(currentUser: widget.currentUser, vehicle: selectVehicle,)),
+                          );
+                        },
+                      ),
                       Container(
-                        height: 18,
-                        child: const Text("Bus",
+                        height: screenHeight * 0.019,
+                        child:  Text("Bus",
                           style: TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 15,
+                              fontSize: screenHeight * 0.016,
                               fontWeight: FontWeight.w600,
                               color: Colors.black
                           ),
@@ -129,9 +156,9 @@ class MainPage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 87,
-                  width: 82,
-                  padding: const EdgeInsets.only(top: 8,bottom: 3.97),
+                  height: screenHeight * 0.093,
+                  width: screenWidth * 0.19,
+                  padding:  EdgeInsets.only(top: screenHeight * 0.008,bottom: screenHeight * 0.004),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(
@@ -143,16 +170,26 @@ class MainPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                     children: [
-                      InkWell(child: SvgPicture.asset('assets/images/international.svg',
-                      height: 50,
-                          width: 50,
-                          ),),
+                      InkWell(
+                        child: SvgPicture.asset(
+                          'assets/images/international.svg',
+                          height: screenHeight * 0.053,
+                          width: screenWidth * 0.11,
+                          ),
+                        onTap: (){
+                          selectVehicle = "international";
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SearchPage(currentUser: widget.currentUser, vehicle: selectVehicle,)),
+                          );
+                        },
+                      ),
                       Container(
-                        height: 17,
-                        child: const Text("International",
+                        height: screenHeight * 0.018,
+                        child: Text("International",
                           style: TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 11,
+                              fontSize: screenHeight * 0.011,
                               fontWeight: FontWeight.w600,
                               color: Colors.black
                           ),
@@ -162,9 +199,9 @@ class MainPage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 87,
-                  width: 82,
-                  padding: const EdgeInsets.only(top: 8,bottom: 4),
+                  height: screenHeight * 0.093,
+                  width: screenWidth * 0.19,
+                  padding: EdgeInsets.only(top:screenHeight * 0.008 ,bottom: screenHeight * 0.004),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       border: Border.all(
@@ -175,16 +212,26 @@ class MainPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      InkWell(child: SvgPicture.asset('assets/images/local.svg',
-                        height: 50,
-                        width: 50,
-                      ),),
+                      InkWell(
+                        child: SvgPicture.asset(
+                          'assets/images/local.svg',
+                          height: screenHeight * 0.053,
+                          width: screenWidth * 0.11,
+                        ),
+                        onTap: (){
+                          selectVehicle = "local";
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SearchPage(currentUser: widget.currentUser, vehicle: selectVehicle,)),
+                          );
+                        },
+                      ),
                       Container(
-                        height: 19,
-                        child: const Text("Local",
+                        height: screenHeight * 0.02,
+                        child: Text("Local",
                           style: TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 15,
+                              fontSize: screenHeight * 0.016,
                               fontWeight: FontWeight.w600,
                               color: Colors.black,
                           ),
@@ -194,9 +241,9 @@ class MainPage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 87,
-                  width: 82,
-                  padding: EdgeInsets.only(top: 3,bottom: 5),
+                  height: screenHeight * 0.093,
+                  width: screenWidth * 0.19,
+                  padding: EdgeInsets.only(top: screenHeight * 0.003,bottom: screenHeight * 0.005),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       border: Border.all(
@@ -207,16 +254,26 @@ class MainPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      InkWell(child: SvgPicture.asset('assets/images/train.svg',
-                        height: 60,
-                        width: 50,
-                      ),),
+                      InkWell(
+                        child: SvgPicture.asset(
+                          'assets/images/train.svg',
+                          height: screenHeight * 0.06,
+                          width: screenWidth * 0.11,
+                        ),
+                        onTap: (){
+                          selectVehicle = "train";
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SearchPage(currentUser: widget.currentUser, vehicle: selectVehicle,)),
+                          );
+                        },
+                      ),
                       Container(
-                        height: 15,
-                        child: const Text("Train",
+                        height: screenHeight * 0.016,
+                        child: Text("Train",
                           style: TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 15,
+                              fontSize: screenHeight * 0.016,
                               fontWeight: FontWeight.w600,
                               color: Colors.black
                           ),
@@ -229,69 +286,96 @@ class MainPage extends StatelessWidget {
               ],
             ),
             Container(
-              padding: EdgeInsets.only(left:28,right: 168),
+              alignment: Alignment.bottomLeft,
+              padding: EdgeInsets.only(left:screenWidth * 0.06,),
               child: Text(
                 "Recommended",
                 style: TextStyle(
                     fontFamily: 'Poppins',
-                    fontSize: 30,
+                    fontSize: screenHeight * 0.032,
                     fontWeight: FontWeight.w400,
                     color: Colors.black
                 ),
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 60,bottom:30,left: 27),
-              height: 350,
+              padding: EdgeInsets.only(top: screenHeight * 0.064,bottom:screenHeight * 0.032,left: screenWidth * 0.062),
+              height: screenHeight * 0.39,
               color: green1,
-              child: ListView(
+              child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                
-                children: [
+                itemCount: placesList.length,
+                itemBuilder: (context, index) {
+                  final item = placesList[index];
+                  return buildPlaceItem(
+                    screenWidth,
+                    screenHeight,
+                    item.title,
+                    item.text,
+                    item.imagePath,
+                  );
+                },
 
-
-
-
-                  Padding(padding: EdgeInsets.only(right: 18),
-                    child:
-                    Container(
-                      height: 260,
-                      width: 170,
-
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 90,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(25),
-                                    topRight: Radius.circular(25)
-                                )
-                            ),
-                            child: Text("Yazd is the Best"),
-                          ),
-                          Container(
-                            height: 170,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(25),
-                                    bottomRight: Radius.circular(25)
-                                )
-                            ),
-                            child: Image.asset(
-                              "assets/images/landscape.png"
-                            ),
-                          )
-                        ],
-                      ),
-                    ),),
-                ],
               ),
             )
           ],
         ),
-        bottomNavigationBar: buildNavigationBar(),
+        bottomNavigationBar: BuildBottomNavigationBar(activeIcon: "home",currentUser: widget.currentUser,),
       ),
     );
+  }
+
+
+  Padding buildPlaceItem(double screenWidth, double screenHeight , String title, String text , String imagePath) {
+    return Padding(
+                  padding: EdgeInsets.only(right: screenWidth * 0.041),
+                  child:
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(screenHeight * 0.026),
+                      child: Container(
+                        height: screenHeight * 0.276,
+                        width: screenHeight * 0.182,
+                        child: Column(
+                          children: [
+                            Container(
+                              color: yellow1,
+                              height: screenHeight * 0.094,
+                              width: screenHeight * 0.182,
+                              padding: EdgeInsets.only(left: screenHeight * 0.023, right: screenHeight * 0.023),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    title,
+                                    style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: screenHeight * 0.016
+                                    ),
+                                  ),
+                                  Text(
+                                    text,
+                                    style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: screenHeight * 0.010
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ),
+                            Container(
+                              height: screenHeight * 0.182,
+                              width: screenHeight * 0.182,
+                              child: Image.asset(
+                                  imagePath
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                );
   }
 }
