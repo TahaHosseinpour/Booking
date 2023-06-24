@@ -290,8 +290,12 @@ void createUser(context,User user) async {
   await Socket.connect('192.168.1.9',8080).then((serverSocket) {
     print("socket connected");
     serverSocket.write(jsonRequest.toString());
+    print("data write");
+
     serverSocket.flush();
+    print("data flush");
   });
+  print("next page");
   Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => MainPage(currentUser: user,)),
