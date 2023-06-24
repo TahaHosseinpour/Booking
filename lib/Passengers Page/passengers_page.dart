@@ -291,7 +291,7 @@ class _PassengersPageState extends State<PassengersPage>{
                 height: screenHeight * 0.04,
               ),
             ),
-      Container(
+      SizedBox(
         height: screenHeight * 0.37,
         width: screenWidth * 0.83,
         child: ListView.builder(
@@ -320,47 +320,45 @@ class _PassengersPageState extends State<PassengersPage>{
         bottomNavigationBar: Container(
           height:screenHeight * 0.29,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
+            borderRadius: const BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
             color: yellow2,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: screenWidth * 0.22,
-                      height: screenHeight * 0.048,
-                      child: FittedBox(
-                        child: Text('Price :',
-                          style: TextStyle(
-                            fontSize: 34,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w700,
-                            color:grey2,
-                          ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: screenWidth * 0.22,
+                    height: screenHeight * 0.048,
+                    margin: EdgeInsets.only(left: screenWidth * 0.17),
+                    child: FittedBox(
+                      child: Text('Price :',
+                        style: TextStyle(
+                          fontSize: 34,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w700,
+                          color:grey2,
                         ),
                       ),
-                      margin: EdgeInsets.only(left: screenWidth * 0.17),
                     ),
-                    Container(
-                      width: screenWidth * 0.26,
-                      height: screenHeight * 0.07,
-                      child: FittedBox(
-                        child: Text('${widget.futureTravel.cost}\$',
-                          style: TextStyle(
-                            fontSize: 50,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w700,
-                          ),
+                  ),
+                  Container(
+                    width: screenWidth * 0.26,
+                    height: screenHeight * 0.07,
+                    margin: EdgeInsets.only(right: screenWidth * 0.17),
+                    child: FittedBox(
+                      child: Text('${widget.futureTravel.cost}\$',
+                        style: const TextStyle(
+                          fontSize: 50,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
-                      margin: EdgeInsets.only(right: screenWidth * 0.17),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               InkWell(
                 child: buttonContainer("Continue", screenHeight, screenWidth),
