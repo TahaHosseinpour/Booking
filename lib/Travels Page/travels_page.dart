@@ -11,7 +11,6 @@ import 'package:booking/Database/ticket.dart';
 
 
 
-
 class TravelsPage extends StatefulWidget{
   User currentUser;
 
@@ -75,14 +74,14 @@ class _TravelsPageState extends State<TravelsPage> {
             width: screenWidth * 0.62,
           decoration:  BoxDecoration(
           color: yellow2,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(100),
               bottomRight: Radius.circular(100),
             ),
           ),
-            child: Container(
+            child: SizedBox(
               height: screenHeight * 0.06,
-              child: FittedBox(
+              child: const FittedBox(
                 child: Text("Travels",
                   style: TextStyle(
                       fontSize: 34,

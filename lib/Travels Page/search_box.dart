@@ -80,9 +80,9 @@ class _SearchBoxState extends State<SearchBox> {
                               ),
                             ),
                             SizedBox(width: screenWidth * 0.01,),
-                            Container(
+                            SizedBox(
                                 height: screenHeight * 0.017,
-                                child:FittedBox(
+                                child: const FittedBox(
                                   child:  Text("Departure",
                                     style: TextStyle(
                                       fontSize: 12,

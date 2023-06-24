@@ -75,7 +75,7 @@ class _MainPageState extends State<MainPage> {
               padding: EdgeInsets.only(left: screenWidth * 0.1,right: screenWidth * 0.1),
               child: Column(
                 children: [
-                   Text("Hi Taha",
+                   Text("Hi ${widget.currentUser.username}",
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: screenHeight * 0.037,
