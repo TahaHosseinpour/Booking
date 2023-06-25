@@ -65,7 +65,7 @@ class _LogInTabState extends State<LogInTab> {
                           ),
                           controller: _usernameController,
                           decoration:  InputDecoration(
-                              border: UnderlineInputBorder(
+                              border: const UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color.fromRGBO(198, 198, 198, 1),
                                   width: 0.5,
@@ -76,7 +76,7 @@ class _LogInTabState extends State<LogInTab> {
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
                                 fontSize: contextHeight * 0.016,
-                                color: Color.fromARGB(255, 135, 135, 135),
+                                color: const Color.fromARGB(255, 135, 135, 135),
                               )
                           ),
                         ),
@@ -87,7 +87,7 @@ class _LogInTabState extends State<LogInTab> {
                               fontFamily: 'Poppins',
                               fontSize: contextHeight * 0.011,
                               fontWeight: FontWeight.w400,
-                              color: Color.fromRGBO(202, 44, 44, 1)
+                              color: const Color.fromRGBO(202, 44, 44, 1)
                           ),
                         )
                       ],
@@ -204,14 +204,17 @@ void socketTest(context,User user) async {
     'requestType': "createUser",
     'requestData': userToJson(user),
   };
+  String jsonString = json.encode(jsonRequest);
+  List<int> bytes = utf8.encode(jsonString);
   print("jsonRequest created");
-  await Socket.connect('192.168.1.9',8080).then((serverSocket) {
+  await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
     print("socket connected");
-    serverSocket.write(jsonRequest.toString());
+    serverSocket.add(bytes);
     print("data write");
 
-    serverSocket.flush();
+    await serverSocket.flush();
     print("data flush");
+    await serverSocket.close();
   });
   print("next page");
   Navigator.push(
