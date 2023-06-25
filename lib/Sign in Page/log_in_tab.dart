@@ -172,10 +172,18 @@ class _LogInTabState extends State<LogInTab> {
               width: contextWidth *  0.832,
               child: InkWell(
                 child: buttonContainer("Submit",contextHeight , contextWidth),
-                onTap: (){
+                onTap: () async{
                   late User currentUser = checkPasswordAndUsername(_usernameController.text,_passwordController.text);
+                  // ignore: unnecessary_null_comparison
                   if(currentUser != null){
-                    socketTest(context, currentUser);
+                    if(await createUser(currentUser)){
+                      // ignore: use_build_context_synchronously
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MainPage(currentUser: currentUser)),
+                      );
+                    }
+
                   }else{
                     setState(() {
                       isUsernameValid = false;
@@ -197,28 +205,20 @@ User checkPasswordAndUsername(String username,String password){
   return usersList.first;
 }
 
-void socketTest(context,User user) async {
+Future<bool> createUser(User user) async {
   //request to server and add user to usersList in Database
-  print("in create user");
   Map<String, dynamic> jsonRequest = {
     'requestType': "createUser",
     'requestData': userToJson(user),
   };
+
   String jsonString = json.encode(jsonRequest);
   List<int> bytes = utf8.encode(jsonString);
-  print("jsonRequest created");
-  await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
-    print("socket connected");
-    serverSocket.add(bytes);
-    print("data write");
 
+  await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+    serverSocket.add(bytes);
     await serverSocket.flush();
-    print("data flush");
     await serverSocket.close();
   });
-  print("next page");
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => MainPage(currentUser: user,)),
-  );
+  return true;
 }

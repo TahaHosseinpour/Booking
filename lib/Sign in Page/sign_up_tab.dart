@@ -250,7 +250,7 @@ class _SignUpTabState extends State<SignUpTab> {
                         ticketsList: []
                       );
 
-                      createUser(context,currentUser);
+                      // createUser(context,currentUser);
 
 
                     }
@@ -278,25 +278,25 @@ class _SignUpTabState extends State<SignUpTab> {
     );
   }
 }
-
-void createUser(context,User user) async {
-  //request to server and add user to usersList in Database
-  print("in create user");
-  Map<String, dynamic> jsonRequest = {
-    'requestType': "createUser",
-    'requestData': userToJson(user),
-  };
-  print("jsonRequest created");
-  await Socket.connect('192.168.1.9',8080).then((serverSocket) {
-    print("socket connected");
-    serverSocket.write(jsonRequest.toString());
-    print("data write");
-
-    serverSocket.flush();
-    print("data flush");
-  });
-  print("next page");
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => MainPage(currentUser: user,)),
-  );}
+//
+// void createUser(context,User user) async {
+//   //request to server and add user to usersList in Database
+//   print("in create user");
+//   Map<String, dynamic> jsonRequest = {
+//     'requestType': "createUser",
+//     'requestData': userToJson(user),
+//   };
+//   print("jsonRequest created");
+//   await Socket.connect('192.168.1.9',8080).then((serverSocket) {
+//     print("socket connected");
+//     serverSocket.write(jsonRequest.toString());
+//     print("data write");
+//
+//     serverSocket.flush();
+//     print("data flush");
+//   });
+//   print("next page");
+//   Navigator.push(
+//     context,
+//     MaterialPageRoute(builder: (context) => MainPage(currentUser: user,)),
+//   );}
