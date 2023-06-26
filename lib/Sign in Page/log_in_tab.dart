@@ -176,7 +176,10 @@ class _LogInTabState extends State<LogInTab> {
                   late User currentUser = checkPasswordAndUsername(_usernameController.text,_passwordController.text);
                   // ignore: unnecessary_null_comparison
                   if(currentUser != null){
-                    if(await createUser(currentUser)){
+
+                    bool isUserCreated = await createUser(currentUser);
+                    print("is user created");
+                    if(isUserCreated){
                       // ignore: use_build_context_synchronously
                       Navigator.push(
                         context,
@@ -202,11 +205,12 @@ class _LogInTabState extends State<LogInTab> {
 
 User checkPasswordAndUsername(String username,String password){
   //request to server and chceck is username exist? or is password correct?
-  return usersList.first;
+  return usersList[1];
 }
 
 Future<bool> createUser(User user) async {
   //request to server and add user to usersList in Database
+  bool result = false;
   Map<String, dynamic> jsonRequest = {
     'requestType': "createUser",
     'requestData': userToJson(user),
@@ -216,9 +220,32 @@ Future<bool> createUser(User user) async {
   List<int> bytes = utf8.encode(jsonString);
 
   await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+    serverSocket.encoding = utf8;
     serverSocket.add(bytes);
     await serverSocket.flush();
-    await serverSocket.close();
+
+
+    // serverSocket.listen((socket) {
+    //   print(String.fromCharCodes(socket));
+    //   print("data gotten");
+    // });
+    String receivedData = "";
+    await serverSocket.listen(
+          (List<int> data) {
+        receivedData += utf8.decode(data);
+      },
+      onDone: () {
+        Map<String, dynamic> jsonData = json.decode(receivedData);
+        result = jsonData["result"];
+        print(result);
+      },
+      onError: (error) {
+        result = false;
+      },
+    );
+
+    serverSocket.close();
   });
-  return true;
+
+  return result;
 }
