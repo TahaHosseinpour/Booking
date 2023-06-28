@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'dart:io';
+import 'dart:convert';
 
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Database/user.dart';
@@ -7,6 +9,7 @@ import 'package:booking/Database/user.dart';
 class Wallet extends StatefulWidget{
 
   User currentUser;
+  static bool result = false;
   Wallet({super.key, required this.currentUser});
 
   @override
@@ -155,16 +158,18 @@ class _WalletState extends State<Wallet> {
                   ),
                 )
             ),
-          onTap: (){
+          onTap: () async{
 
             if(editingMode) {
-              changeWalletBalanceAndCreateTransaction(widget.currentUser, int.parse(_controller.text));
-
-              setState(() {
-                balance = (balance + int.parse(_controller.text));
-                _controller.text = "";
-                widget.currentUser.walletBalance = balance.toString();
-                print("balance is : $balance , walletBalance is : ${widget.currentUser.walletBalance} --|");
+              changeWalletBalance(widget.currentUser.username, int.parse(_controller.text)).then((isBalanceChanged){
+                if(isBalanceChanged){
+                  setState(() {
+                    balance = (balance + int.parse(_controller.text));
+                    _controller.text = "";
+                    widget.currentUser.walletBalance = balance.toString();
+                    print("balance is : $balance , walletBalance is : ${widget.currentUser.walletBalance} --|");
+                  });
+                }
               });
             }
             setState(() {
@@ -178,9 +183,47 @@ class _WalletState extends State<Wallet> {
       ],
     );
   }
-}
 
-changeWalletBalanceAndCreateTransaction(User user , int amount){
-  /** request to server and change wallet balance in Database and
-      create a transaction and add it to transactionsList of user **/
+  changeWalletBalance(String username , int amount) async{
+    bool result = Wallet.result;
+
+    Map<String, dynamic> requestDataMap = {
+      'username': username,
+      'amount': amount,
+    };
+    Map<String, dynamic> jsonRequest = {
+      'requestType': "changeWalletBalance",
+      'requestData': json.encode(requestDataMap),
+    };
+
+    String jsonString = json.encode(jsonRequest);
+    List<int> bytes = utf8.encode(jsonString);
+
+    await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+      serverSocket.encoding = utf8;
+      serverSocket.add(bytes);
+      await serverSocket.flush();
+
+      String receivedData = "";
+      await serverSocket.listen(
+            (List<int> data) {
+          receivedData += utf8.decode(data);
+        },
+        onDone: () {
+          Map<String, dynamic> jsonData = json.decode(receivedData);
+          setState(() {
+            Wallet.result = jsonData["result"];
+          });
+
+        },
+        onError: (error) {
+          Wallet.result = false;
+        },
+      );
+
+      serverSocket.close();
+    });
+
+    return result;
+  }
 }

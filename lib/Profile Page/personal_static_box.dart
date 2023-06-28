@@ -28,101 +28,95 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: screenHeight * 0.03,
-                child: FittedBox(
-                  child:  Text("Phone",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      color:green3,
-                    ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: screenHeight * 0.03,
+              child: FittedBox(
+                child:  Text("Phone",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color:green3,
                   ),
                 ),
               ),
-              Container(
-                height: screenHeight * 0.025,
-                child: FittedBox(
-                  child:  Text(widget.phone,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                    ),
+            ),
+            Container(
+              height: screenHeight * 0.025,
+              child: FittedBox(
+                child:  Text(widget.phone,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: screenHeight * 0.03,
-                child: FittedBox(
-                  child:  Text("ID",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      color:green3,
-                    ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: screenHeight * 0.03,
+              child: FittedBox(
+                child:  Text("ID",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color:green3,
                   ),
                 ),
               ),
-              Container(
-                height: screenHeight * 0.025,
-                child: FittedBox(
-                  child:  Text(widget.id,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                    ),
+            ),
+            Container(
+              height: screenHeight * 0.025,
+              child: FittedBox(
+                child:  Text(widget.id,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: screenHeight * 0.03,
-                child: FittedBox(
-                  child:  Text("Birthday",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      color:green3,
-                    ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: screenHeight * 0.03,
+              child: FittedBox(
+                child:  Text("Birthday",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color:green3,
                   ),
                 ),
               ),
-              Container(
-                height: screenHeight * 0.025,
-                child: FittedBox(
-                  child:  Text(widget.birthday,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                    ),
+            ),
+            Container(
+              height: screenHeight * 0.025,
+              child: FittedBox(
+                child:  Text(widget.birthday,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );

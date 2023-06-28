@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'dart:math';
+import 'dart:io';
+import 'dart:convert';
 
 import '../Information/colors.dart';
 import 'package:booking/Database/travel.dart';
@@ -21,6 +23,7 @@ class ConfirmPage extends StatefulWidget{
 
   Ticket futureTravel;
   User currentUser;
+  static bool result = false;
   List<Passenger> passengerList;
 
 
@@ -238,7 +241,9 @@ class _ConfirmPage extends State<ConfirmPage> {
               InkWell(
                 child: buttonContainer("Payment", screenHeight, screenWidth),
                 onTap: (){
-                  changeWalletBalanceAndCreateTransaction(widget.currentUser, widget.futureTravel.cost);
+                  createTransaction(widget.currentUser, widget.futureTravel.cost);
+
+                  changeWalletBalance(widget.currentUser.username,widget.futureTravel.cost);
 
                   changeRemainPassengersOfTravel(widget.futureTravel, widget.passengerList.length);
 
@@ -257,9 +262,51 @@ class _ConfirmPage extends State<ConfirmPage> {
       ),
     );
   }
+  changeWalletBalance(String username , int amount) async{
+    bool result = ConfirmPage.result;
+
+    Map<String, dynamic> requestDataMap = {
+      'username': username,
+      'amount': amount,
+    };
+    Map<String, dynamic> jsonRequest = {
+      'requestType': "changeWalletBalance",
+      'requestData': json.encode(requestDataMap),
+    };
+
+    String jsonString = json.encode(jsonRequest);
+    List<int> bytes = utf8.encode(jsonString);
+
+    await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+      serverSocket.encoding = utf8;
+      serverSocket.add(bytes);
+      await serverSocket.flush();
+
+      String receivedData = "";
+      await serverSocket.listen(
+            (List<int> data) {
+          receivedData += utf8.decode(data);
+        },
+        onDone: () {
+          Map<String, dynamic> jsonData = json.decode(receivedData);
+          setState(() {
+            ConfirmPage.result = jsonData["result"];
+          });
+
+        },
+        onError: (error) {
+          ConfirmPage.result = false;
+        },
+      );
+
+      serverSocket.close();
+    });
+
+    return result;
+  }
 }
 
-changeWalletBalanceAndCreateTransaction(User user , int amount){
+createTransaction(User user , int amount){
   /** request to server and change wallet balance in Database and
   create a transaction and add it to transactionsList of user **/
 }

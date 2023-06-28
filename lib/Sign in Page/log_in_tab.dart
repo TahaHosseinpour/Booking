@@ -181,7 +181,11 @@ class _LogInTabState extends State<LogInTab> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => MainPage(currentUser: currentUser)),
-                      );
+                      ).then((value) {
+                        setState(() {
+                          LogInTab.result = usersList.first;
+                        });
+                      });
                     }else{
                       setState(() {
                         isUsernameValid = false;
