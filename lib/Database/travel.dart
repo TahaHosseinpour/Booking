@@ -5,6 +5,7 @@ class Travel{
   String origin;
   String destination;
   int remainingPassengers;
+  int capacity;
   DateTime departureTime;
   DateTime arrivalTime;
   String travelTime;
@@ -18,6 +19,7 @@ class Travel{
     required this.origin,
     required this.destination,
     required this.remainingPassengers,
+    required this.capacity,
     required this.departureTime,
     required this.arrivalTime,
     required this.travelTime,
@@ -34,6 +36,7 @@ List<Travel> travelsList = [
     origin: "Barcelona",
     destination: "London",
     remainingPassengers: 150,
+    capacity: 150,
     departureTime: DateTime(2023,11,10,11,40),
     arrivalTime:DateTime(2023,11,10,13,55),
     travelTime: "2h 15min",
@@ -46,6 +49,7 @@ List<Travel> travelsList = [
       origin: "Seoul",
       destination: "New York",
       remainingPassengers: 70,
+      capacity: 70,
       departureTime: DateTime(2023,11,11,19,00),
       arrivalTime:DateTime(2023,11,11,23,15),
       travelTime: "4h 15min",
@@ -58,6 +62,7 @@ List<Travel> travelsList = [
       origin: "Barcelona",
       destination: "London",
       remainingPassengers: 300,
+      capacity: 300,
       departureTime: DateTime(2023,11,10,5,20),
       arrivalTime:DateTime(2023,11,10,11,30),
       travelTime: "5h 10min",
@@ -70,6 +75,7 @@ List<Travel> travelsList = [
       origin: "Barcelona",
       destination: "Paris",
       remainingPassengers: 40,
+      capacity: 40,
       departureTime: DateTime(2023,11,13,11,40),
       arrivalTime:DateTime(2023,11,13,13,55),
       travelTime: "2h 15min",
@@ -82,6 +88,7 @@ List<Travel> travelsList = [
       origin: "Sydney",
       destination: "Tokyo",
       remainingPassengers: 18,
+      capacity: 18,
       departureTime: DateTime(2023,11,13,11,40),
       arrivalTime:DateTime(2023,11,13,13,55),
       travelTime: "2h 15min",
