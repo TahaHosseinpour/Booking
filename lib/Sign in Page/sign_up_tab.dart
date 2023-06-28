@@ -278,25 +278,46 @@ class _SignUpTabState extends State<SignUpTab> {
     );
   }
 }
-//
-// void createUser(context,User user) async {
-//   //request to server and add user to usersList in Database
-//   print("in create user");
-//   Map<String, dynamic> jsonRequest = {
-//     'requestType': "createUser",
-//     'requestData': userToJson(user),
-//   };
-//   print("jsonRequest created");
-//   await Socket.connect('192.168.1.9',8080).then((serverSocket) {
-//     print("socket connected");
-//     serverSocket.write(jsonRequest.toString());
-//     print("data write");
-//
-//     serverSocket.flush();
-//     print("data flush");
-//   });
-//   print("next page");
-//   Navigator.push(
-//     context,
-//     MaterialPageRoute(builder: (context) => MainPage(currentUser: user,)),
-//   );}
+
+
+Future<bool> createUser(User user) async {
+  //request to server and add user to usersList in Database
+  bool result = false;
+  Map<String, dynamic> jsonRequest = {
+    'requestType': "createUser",
+    'requestData': userToJson(user),
+  };
+
+  String jsonString = json.encode(jsonRequest);
+  List<int> bytes = utf8.encode(jsonString);
+
+  await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+    serverSocket.encoding = utf8;
+    serverSocket.add(bytes);
+    await serverSocket.flush();
+
+
+    // serverSocket.listen((socket) {
+    //   print(String.fromCharCodes(socket));
+    //   print("data gotten");
+    // });
+    String receivedData = "";
+    await serverSocket.listen(
+          (List<int> data) {
+        receivedData += utf8.decode(data);
+      },
+      onDone: () {
+        Map<String, dynamic> jsonData = json.decode(receivedData);
+        result = jsonData["result"];
+        print(result);
+      },
+      onError: (error) {
+        result = false;
+      },
+    );
+
+    serverSocket.close();
+  });
+
+  return result;
+}

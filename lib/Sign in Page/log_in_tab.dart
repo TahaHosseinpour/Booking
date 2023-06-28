@@ -3,14 +3,16 @@ import 'package:flutter/gestures.dart';
 import 'dart:io';
 import 'dart:convert';
 
+
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Database/user.dart';
 import 'package:booking/Main Page/main_page.dart';
 
-import '../ServerMethods/userToJson.dart';
+import '../ServerMethods/parseUserFromJson.dart';
 
 class LogInTab extends StatefulWidget{
+  static User result = usersList.first;
   const LogInTab({super.key});
 
   @override
@@ -173,26 +175,21 @@ class _LogInTabState extends State<LogInTab> {
               child: InkWell(
                 child: buttonContainer("Submit",contextHeight , contextWidth),
                 onTap: () async{
-                  late User currentUser = checkPasswordAndUsername(_usernameController.text,_passwordController.text);
-                  // ignore: unnecessary_null_comparison
-                  if(currentUser != null){
-
-                    bool isUserCreated = await createUser(currentUser);
-                    print("is user created");
-                    if(isUserCreated){
+                  checkPasswordAndUsername(_usernameController.text, _passwordController.text).then((currentUser) {
+                    if(currentUser != usersList.first){
                       // ignore: use_build_context_synchronously
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => MainPage(currentUser: currentUser)),
                       );
+                    }else{
+                      setState(() {
+                        isUsernameValid = false;
+                        isPasswordValid = false;
+                      });
                     }
+                  });
 
-                  }else{
-                    setState(() {
-                      isUsernameValid = false;
-                      isPasswordValid = false;
-                    });
-                  }
                 }
               ),
             )
@@ -201,51 +198,60 @@ class _LogInTabState extends State<LogInTab> {
       ),
     );
   }
+  Future<User> checkPasswordAndUsername(String username,String password) async{
+
+    print("checkPasswordAnd Username");
+    //request to server and chceck is username exist? or is password correct?
+    User result = LogInTab.result;
+    Map<String, dynamic> requestDataMap = {
+      'username': username,
+      'password': password,
+    };
+    Map<String, dynamic> jsonRequest = {
+      'requestType': "checkPasswordAndUsername",
+      'requestData': json.encode(requestDataMap),
+    };
+
+    String jsonString = json.encode(jsonRequest);
+    List<int> bytes = utf8.encode(jsonString);
+
+
+    // تاخیر زمانی 3 ثانیه
+    await Future.delayed(Duration(seconds: 5));
+
+    await Socket.connect('192.168.1.9',8000).then((serverSocket) async {
+      print("conected to server");
+      serverSocket.encoding = utf8;
+      serverSocket.add(bytes);
+      await serverSocket.flush();
+
+      String receivedData = "";
+      await serverSocket.listen(
+            (List<int> data) {
+          receivedData += utf8.decode(data);
+        },
+        onDone: () {
+          setState(() {
+            LogInTab.result = parseUserFromJson(receivedData);
+          });
+          print(result.username);
+          print(result.transactionsList[0].id);
+          print(result.ticketsList[0].origin);
+          print(result.ticketsList[1].departureTime);
+
+        },
+        onError: (error) {
+          result = usersList.first;
+        },
+      );
+
+      serverSocket.close();
+    });
+
+    print("user name result : " + result.username);
+    return result;
+
+  }
 }
 
-User checkPasswordAndUsername(String username,String password){
-  //request to server and chceck is username exist? or is password correct?
-  return usersList[1];
-}
 
-Future<bool> createUser(User user) async {
-  //request to server and add user to usersList in Database
-  bool result = false;
-  Map<String, dynamic> jsonRequest = {
-    'requestType': "createUser",
-    'requestData': userToJson(user),
-  };
-
-  String jsonString = json.encode(jsonRequest);
-  List<int> bytes = utf8.encode(jsonString);
-
-  await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
-    serverSocket.encoding = utf8;
-    serverSocket.add(bytes);
-    await serverSocket.flush();
-
-
-    // serverSocket.listen((socket) {
-    //   print(String.fromCharCodes(socket));
-    //   print("data gotten");
-    // });
-    String receivedData = "";
-    await serverSocket.listen(
-          (List<int> data) {
-        receivedData += utf8.decode(data);
-      },
-      onDone: () {
-        Map<String, dynamic> jsonData = json.decode(receivedData);
-        result = jsonData["result"];
-        print(result);
-      },
-      onError: (error) {
-        result = false;
-      },
-    );
-
-    serverSocket.close();
-  });
-
-  return result;
-}
