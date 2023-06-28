@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:io';
 import 'dart:convert';
+import 'package:intl/intl.dart';
+import 'dart:math';
 
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Database/user.dart';
+import 'package:booking/Database/transaction.dart';
 
 class Wallet extends StatefulWidget{
 
@@ -160,9 +163,16 @@ class _WalletState extends State<Wallet> {
             ),
           onTap: () async{
 
+            String id = generateRandomNumber();
+            String date = formatDate();
             if(editingMode) {
-              changeWalletBalance(widget.currentUser.username, int.parse(_controller.text)).then((isBalanceChanged){
+              changeWalletBalanceAndCreateTransaction(widget.currentUser.username, int.parse(_controller.text),id).then((isBalanceChanged){
                 if(isBalanceChanged){
+
+                  widget.currentUser.transactionsList.add(Transaction(date:date,type:"Income",amount:int.parse(_controller.text),id:id));
+                  int walletBalance = (int.parse(widget.currentUser.walletBalance) + int.parse(_controller.text));
+                  widget.currentUser.walletBalance = walletBalance.toString();
+
                   setState(() {
                     balance = (balance + int.parse(_controller.text));
                     _controller.text = "";
@@ -184,15 +194,16 @@ class _WalletState extends State<Wallet> {
     );
   }
 
-  changeWalletBalance(String username , int amount) async{
+  changeWalletBalanceAndCreateTransaction(String username , int amount , String id) async{
     bool result = Wallet.result;
 
     Map<String, dynamic> requestDataMap = {
       'username': username,
       'amount': amount,
+      'id' : id,
     };
     Map<String, dynamic> jsonRequest = {
-      'requestType': "changeWalletBalance",
+      'requestType': "changeWalletBalanceAndCreateTransaction",
       'requestData': json.encode(requestDataMap),
     };
 
@@ -226,4 +237,18 @@ class _WalletState extends State<Wallet> {
 
     return result;
   }
+}
+
+
+String formatDate() {
+  DateTime currentDate = DateTime.now();
+  DateFormat formatter = DateFormat('yy.MM.dd');
+  String formattedDate = formatter.format(currentDate);
+  return formattedDate;
+}
+
+String generateRandomNumber() {
+  Random random = Random();
+  int randomNumber = random.nextInt(900000000) + 100000000;
+  return randomNumber.toString();
 }

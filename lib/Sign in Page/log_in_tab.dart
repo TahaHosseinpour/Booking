@@ -220,9 +220,6 @@ class _LogInTabState extends State<LogInTab> {
     List<int> bytes = utf8.encode(jsonString);
 
 
-    // تاخیر زمانی 3 ثانیه
-    await Future.delayed(Duration(seconds: 5));
-
     await Socket.connect('192.168.1.9',8000).then((serverSocket) async {
       print("conected to server");
       serverSocket.encoding = utf8;

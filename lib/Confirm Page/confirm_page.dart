@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'dart:math';
+
 import 'dart:io';
 import 'dart:convert';
-
+import 'package:intl/intl.dart';
+import 'dart:math';
 import '../Information/colors.dart';
 import 'package:booking/Database/travel.dart';
 import 'package:booking/Database/user.dart';
@@ -17,6 +18,8 @@ import 'package:booking/Information/buildBottomNavigationBar.dart';
 import 'package:booking/Database/company.dart';
 import 'package:booking/Main Page/main_page.dart';
 import 'package:booking/Database/ticket.dart';
+import 'package:booking/ServerMethods/random10Digit.dart';
+import 'package:booking/Database/transaction.dart';
 
 
 class ConfirmPage extends StatefulWidget{
@@ -24,6 +27,7 @@ class ConfirmPage extends StatefulWidget{
   Ticket futureTravel;
   User currentUser;
   static bool result = false;
+  static bool createTransactionResult = false;
   List<Passenger> passengerList;
 
 
@@ -69,41 +73,39 @@ class _ConfirmPage extends State<ConfirmPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: screenWidth * 0.06,
-                      height: screenHeight * 0.04,
-                      margin: EdgeInsets.only(left: screenWidth * 0.08, top: screenHeight * 0.018),
-                      child:  InkWell(
-                        onTap: (){
-                          Navigator.pop(context);
-                        },
-                        child: SvgPicture.asset(
-                          "assets/images/arrow_back.svg",
-                          width: screenWidth * 0.06,
-                          height: screenHeight * 0.04,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: screenWidth * 0.06,
+                    height: screenHeight * 0.04,
+                    margin: EdgeInsets.only(left: screenWidth * 0.08, top: screenHeight * 0.018),
+                    child:  InkWell(
+                      onTap: (){
+                        Navigator.pop(context);
+                      },
+                      child: SvgPicture.asset(
+                        "assets/images/arrow_back.svg",
+                        width: screenWidth * 0.06,
+                        height: screenHeight * 0.04,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(right: screenWidth * 0.48, top: screenHeight * 0.012),
+                    width: screenWidth * 0.38,
+                    height: screenHeight * 0.048,
+                    child: const FittedBox(
+                      child: Text("Confirm",
+                        style: TextStyle(
+                          fontSize: 34,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(right: screenWidth * 0.48, top: screenHeight * 0.012),
-                      width: screenWidth * 0.38,
-                      height: screenHeight * 0.048,
-                      child: FittedBox(
-                        child: Text("Confirm",
-                          style: TextStyle(
-                            fontSize: 34,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               Container(
                 height: screenHeight * 0.05,
@@ -112,67 +114,47 @@ class _ConfirmPage extends State<ConfirmPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      child: SvgPicture.asset('assets/images/local.svg',
-                        height: screenHeight * 0.03,
-                        width: screenWidth * 0.06,
-                      ),
-                      margin: EdgeInsets.only(left: screenWidth * 0.07),
+                    SvgPicture.asset('assets/images/local.svg',
+                      height: screenHeight * 0.03,
+                      width: screenWidth * 0.06,
                     ),
-                    Container(
-                      child: SvgPicture.asset('assets/images/arrow_back_right.svg',
-                        height: screenHeight * 0.02,
-                        width: screenWidth * 0.02,
-                      ),
+                    SvgPicture.asset('assets/images/arrow_back_right.svg',
+                      height: screenHeight * 0.02,
+                      width: screenWidth * 0.02,
                     ),
-                    Container(
-                      child: SvgPicture.asset('assets/images/people.svg',
-                        height: screenHeight * 0.03,
-                        width: screenWidth * 0.13,
-                      ),
+                    SvgPicture.asset('assets/images/people.svg',
+                      height: screenHeight * 0.03,
+                      width: screenWidth * 0.13,
                     ),
-                    Container(
-                      child: SvgPicture.asset('assets/images/arrow_back_right.svg',
-                        height: screenHeight * 0.02,
-                        width: screenWidth * 0.02,
-                      ),
+                    SvgPicture.asset('assets/images/arrow_back_right.svg',
+                      height: screenHeight * 0.02,
+                      width: screenWidth * 0.02,
                     ),
-                    Container(
-                      child: SvgPicture.asset('assets/images/like_yellow.svg',
-                        height: screenHeight * 0.03,
-                        width: screenWidth * 0.06,
-                      ),
+                    SvgPicture.asset('assets/images/like_yellow.svg',
+                      height: screenHeight * 0.03,
+                      width: screenWidth * 0.06,
                     ),
-                    Container(
-                      child: SvgPicture.asset('assets/images/arrow_back_right.svg',
-                        height: screenHeight * 0.02,
-                        width: screenWidth * 0.02,
-                      ),
+                    SvgPicture.asset('assets/images/arrow_back_right.svg',
+                      height: screenHeight * 0.02,
+                      width: screenWidth * 0.02,
                     ),
-                    Container(
-                      child: SvgPicture.asset('assets/images/credit_card.svg',
-                        height: screenHeight * 0.03,
-                        width: screenWidth * 0.09,
-                      ),
+                    SvgPicture.asset('assets/images/credit_card.svg',
+                      height: screenHeight * 0.03,
+                      width: screenWidth * 0.09,
                     ),
-                    Container(
-                      child: SvgPicture.asset('assets/images/arrow_right_black.svg',
-                        height: screenHeight * 0.02,
-                        width: screenWidth * 0.02,
-                      ),
+                    SvgPicture.asset('assets/images/arrow_right_black.svg',
+                      height: screenHeight * 0.02,
+                      width: screenWidth * 0.02,
                     ),
-                    Container(
-                      child: SvgPicture.asset('assets/images/confirmation_number.svg',
-                        height: screenHeight * 0.03,
-                        width: screenWidth * 0.09,
-                      ),
-                      margin: EdgeInsets.only(right: screenWidth * 0.11),
+                    SvgPicture.asset('assets/images/confirmation_number.svg',
+                      height: screenHeight * 0.03,
+                      width: screenWidth * 0.09,
                     ),
                   ],
                 ),
               ),
               TravelInformation(context , widget.currentUser,widget.futureTravel, widget.passengerList.length),
-              Container(
+              SizedBox(
                 height: screenHeight * 0.22,
                 width: screenWidth * 0.83,
                 child: ListView.builder(
@@ -196,63 +178,71 @@ class _ConfirmPage extends State<ConfirmPage> {
         bottomNavigationBar: Container(
           height:screenHeight * 0.29,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
+            borderRadius: const BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
             color: yellow2,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: screenWidth * 0.22,
-                      height: screenHeight * 0.048,
-                      child: FittedBox(
-                        child: Text('Price :',
-                          style: TextStyle(
-                            fontSize: 34,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w700,
-                            color:grey2,
-                          ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: screenWidth * 0.22,
+                    height: screenHeight * 0.048,
+                    child: FittedBox(
+                      child: Text('Price :',
+                        style: TextStyle(
+                          fontSize: 34,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w700,
+                          color: grey2,
                         ),
                       ),
-                      margin: EdgeInsets.only(left: screenWidth * 0.17),
                     ),
-                    Container(
-                      width: screenWidth * 0.26,
-                      height: screenHeight * 0.07,
-                      child: FittedBox(
-                        child: Text('${widget.futureTravel.cost}\$',
-                          style: TextStyle(
-                            fontSize: 50,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w700,
-                          ),
+                    margin: EdgeInsets.only(left: screenWidth * 0.17),
+                  ),
+                  Container(
+                    width: screenWidth * 0.26,
+                    height: screenHeight * 0.07,
+                    child: FittedBox(
+                      child: Text('${widget.futureTravel.cost}\$',
+                        style: TextStyle(
+                          fontSize: 50,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
-                      margin: EdgeInsets.only(right: screenWidth * 0.17),
                     ),
-                  ],
-                ),
+                    margin: EdgeInsets.only(right: screenWidth * 0.17),
+                  ),
+                ],
               ),
               InkWell(
                 child: buttonContainer("Payment", screenHeight, screenWidth),
                 onTap: (){
-                  createTransaction(widget.currentUser, widget.futureTravel.cost);
+                  String id = generateRandomNumber();
+                  String date = formatDate();
 
-                  changeWalletBalance(widget.currentUser.username,widget.futureTravel.cost);
+                  changeWalletBalanceAndCreateTransaction(widget.currentUser.username,widget.futureTravel.cost * -1,id).then((isWalletBalanceChanged){
+                    if(isWalletBalanceChanged){
+                      widget.currentUser.transactionsList.add(Transaction(date:date,type:"Buy",amount:widget.futureTravel.cost,id:id));
+                      int walletBalance = (int.parse(widget.currentUser.walletBalance) + (widget.futureTravel.cost * -1));
+                      widget.currentUser.walletBalance = walletBalance.toString();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MainPage(currentUser: widget.currentUser)),
+                      );
+                    }
+                  });
+
+
 
                   changeRemainPassengersOfTravel(widget.futureTravel, widget.passengerList.length);
 
                   addFutureTravelToTicketsList(widget.currentUser, widget.futureTravel);
 
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MainPage(currentUser: widget.currentUser)),
-                  );
+
                 },
               ),
               BuildBottomNavigationBar(activeIcon: "home",currentUser: widget.currentUser,)
@@ -262,15 +252,16 @@ class _ConfirmPage extends State<ConfirmPage> {
       ),
     );
   }
-  changeWalletBalance(String username , int amount) async{
+  changeWalletBalanceAndCreateTransaction(String username , int amount , String id) async{
     bool result = ConfirmPage.result;
 
     Map<String, dynamic> requestDataMap = {
       'username': username,
       'amount': amount,
+      'id' : id,
     };
     Map<String, dynamic> jsonRequest = {
-      'requestType': "changeWalletBalance",
+      'requestType': "changeWalletBalanceAndCreateTransaction",
       'requestData': json.encode(requestDataMap),
     };
 
@@ -304,11 +295,20 @@ class _ConfirmPage extends State<ConfirmPage> {
 
     return result;
   }
+
 }
 
-createTransaction(User user , int amount){
-  /** request to server and change wallet balance in Database and
-  create a transaction and add it to transactionsList of user **/
+String formatDate() {
+  DateTime currentDate = DateTime.now();
+  DateFormat formatter = DateFormat('yy.MM.dd');
+  String formattedDate = formatter.format(currentDate);
+  return formattedDate;
+}
+
+String generateRandomNumber() {
+  Random random = Random();
+  int randomNumber = random.nextInt(900000000) + 100000000;
+  return randomNumber.toString();
 }
 
 changeRemainPassengersOfTravel(Ticket futureTravel ,int passengersCount){
