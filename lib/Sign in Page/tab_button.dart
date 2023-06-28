@@ -12,10 +12,9 @@ class TabButton extends StatefulWidget {
   double height;
   FontWeight fontWeight = FontWeight.w700;
   double fontSize = 20;
-  bool leftButtonIsActive = true;
-  bool rightButtonIsActive = false;
 
-  Widget tab = LogInTab();
+
+
 
 
   TabButton({required this.leftText ,required this.rightText ,required this.height });
@@ -25,18 +24,21 @@ class TabButton extends StatefulWidget {
 }
 
 class _TabButtonState extends State<TabButton> {
+  Widget tab = LogInTab();
+  bool leftButtonIsActive = true;
+  bool rightButtonIsActive = false;
 
 
   void setActiveButton(String button) {
     setState(() {
       if (button == 'left') {
-        widget.leftButtonIsActive = true;
-        widget.rightButtonIsActive = false;
-        widget.tab = LogInTab();
+        leftButtonIsActive = true;
+        rightButtonIsActive = false;
+        tab = LogInTab();
       } else if (button == 'right') {
-        widget.leftButtonIsActive = false;
-        widget.rightButtonIsActive = true;
-        widget.tab = SignUpTab();
+        leftButtonIsActive = false;
+        rightButtonIsActive = true;
+        tab = SignUpTab();
       }
     });
   }
@@ -60,13 +62,13 @@ class _TabButtonState extends State<TabButton> {
               height: widget.height,
               child: ElevatedButton(
                 onPressed: () {
-                  if(!widget.leftButtonIsActive){
+                  if(!leftButtonIsActive){
                   setActiveButton("left");
                 }
               },
               style: ElevatedButton.styleFrom(
                 elevation: 0,
-                primary: widget.leftButtonIsActive ? yellow1 : yellow2,
+                primary: leftButtonIsActive ? yellow1 : yellow2,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40),
 
@@ -79,7 +81,7 @@ class _TabButtonState extends State<TabButton> {
                     fontFamily: 'Poppins',
                     fontWeight: widget.fontWeight,
                     fontSize: screenHeight * 0.03,
-                    color: widget.leftButtonIsActive ? Colors.black : grey2
+                    color: leftButtonIsActive ? Colors.black : grey2
                   ),
                 ),
               ),
@@ -89,14 +91,14 @@ class _TabButtonState extends State<TabButton> {
                 height: widget.height,
                 child: ElevatedButton(
                   onPressed: () {
-                    if(!widget.rightButtonIsActive){
+                    if(!rightButtonIsActive){
                     setActiveButton("right");
 
                   }
                   },
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    primary: widget.rightButtonIsActive ? yellow1 : yellow2,
+                    primary: rightButtonIsActive ? yellow1 : yellow2,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(40),
                       side: BorderSide.none,
@@ -108,7 +110,7 @@ class _TabButtonState extends State<TabButton> {
                         fontFamily: 'Poppins',
                         fontWeight: widget.fontWeight,
                         fontSize: screenHeight * 0.03,
-                        color: widget.rightButtonIsActive ? Colors.black : grey2
+                        color: rightButtonIsActive ? Colors.black : grey2
                       ),
                     ),
                 ),
@@ -117,14 +119,10 @@ class _TabButtonState extends State<TabButton> {
             ),
           ),
         ),
-        widget.tab
+        tab
       ],
     );
   }
 
 }
-ElevatedButtonThemeData customButtonTheme = ElevatedButtonThemeData(
-  style: ElevatedButton.styleFrom().copyWith(
-    elevation: MaterialStateProperty.all<double>(0),
-  ),
-);
+

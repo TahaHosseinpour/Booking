@@ -11,6 +11,7 @@ import 'package:booking/Database/ticket.dart';
 import 'package:booking/ServerMethods/userToJson.dart';
 
 class SignUpTab extends StatefulWidget{
+  static bool result = false;
   const SignUpTab({super.key});
 
   @override
@@ -219,7 +220,7 @@ class _SignUpTabState extends State<SignUpTab> {
               width: contextWidth *  0.832,
               child: InkWell(
                 child: buttonContainer("Submit",contextHeight , contextWidth),
-                onTap: () {
+                onTap: () async {
                   setState((){
                     isUsernameValid = !(_usernameController.text == "");
                     isPasswordValid = passwordRegex.hasMatch(_passwordController.text);
@@ -249,9 +250,15 @@ class _SignUpTabState extends State<SignUpTab> {
                         transactionsList: [],
                         ticketsList: []
                       );
-
-                      // createUser(context,currentUser);
-
+                      createUser(currentUser).then((isUserCreated){
+                        if(isUserCreated){
+                          // ignore: use_build_context_synchronously
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MainPage(currentUser: currentUser)),
+                          );
+                        }
+                      });
 
                     }
                   });
@@ -266,9 +273,7 @@ class _SignUpTabState extends State<SignUpTab> {
                       emailError = "";
                     }
                   });
-                  // print(isUsernameValid);
-                  // print(isPasswordValid);
-                  // print(isEmailValid);
+
                 },
               ),
             )
@@ -277,47 +282,44 @@ class _SignUpTabState extends State<SignUpTab> {
       ),
     );
   }
+  Future<bool> createUser(User user) async {
+    //request to server and add user to usersList in Database
+    bool result = SignUpTab.result;
+    Map<String, dynamic> jsonRequest = {
+      'requestType': "createUser",
+      'requestData': userToJson(user),
+    };
+
+    String jsonString = json.encode(jsonRequest);
+    List<int> bytes = utf8.encode(jsonString);
+
+    await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+      serverSocket.encoding = utf8;
+      serverSocket.add(bytes);
+      await serverSocket.flush();
+
+      String receivedData = "";
+      await serverSocket.listen(
+            (List<int> data) {
+          receivedData += utf8.decode(data);
+        },
+        onDone: () {
+          Map<String, dynamic> jsonData = json.decode(receivedData);
+          setState(() {
+            SignUpTab.result = jsonData["result"];
+          });
+
+        },
+        onError: (error) {
+          SignUpTab.result = false;
+        },
+      );
+
+      serverSocket.close();
+    });
+
+    return result;
+  }
 }
 
 
-Future<bool> createUser(User user) async {
-  //request to server and add user to usersList in Database
-  bool result = false;
-  Map<String, dynamic> jsonRequest = {
-    'requestType': "createUser",
-    'requestData': userToJson(user),
-  };
-
-  String jsonString = json.encode(jsonRequest);
-  List<int> bytes = utf8.encode(jsonString);
-
-  await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
-    serverSocket.encoding = utf8;
-    serverSocket.add(bytes);
-    await serverSocket.flush();
-
-
-    // serverSocket.listen((socket) {
-    //   print(String.fromCharCodes(socket));
-    //   print("data gotten");
-    // });
-    String receivedData = "";
-    await serverSocket.listen(
-          (List<int> data) {
-        receivedData += utf8.decode(data);
-      },
-      onDone: () {
-        Map<String, dynamic> jsonData = json.decode(receivedData);
-        result = jsonData["result"];
-        print(result);
-      },
-      onError: (error) {
-        result = false;
-      },
-    );
-
-    serverSocket.close();
-  });
-
-  return result;
-}
