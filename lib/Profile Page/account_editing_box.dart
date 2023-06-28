@@ -206,7 +206,7 @@ class _AccountEditingBoxState extends State<AccountEditingBox> {
                           email = value;
                         });
                       },
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 13,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,

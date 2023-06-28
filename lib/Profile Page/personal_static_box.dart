@@ -21,6 +21,7 @@ class PersonalStaticBox extends StatefulWidget{
 }
 
 class _PersonalStaticBoxState extends State<PersonalStaticBox> {
+  @override
   Widget build(context){
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
@@ -31,7 +32,7 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
+            SizedBox(
               height: screenHeight * 0.03,
               child: FittedBox(
                 child:  Text("Phone",
@@ -44,11 +45,11 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: screenHeight * 0.025,
               child: FittedBox(
                 child:  Text(widget.phone,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
@@ -61,7 +62,7 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
+            SizedBox(
               height: screenHeight * 0.03,
               child: FittedBox(
                 child:  Text("ID",
@@ -74,11 +75,11 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: screenHeight * 0.025,
               child: FittedBox(
                 child:  Text(widget.id,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
@@ -91,7 +92,7 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
+            SizedBox(
               height: screenHeight * 0.03,
               child: FittedBox(
                 child:  Text("Birthday",
@@ -104,11 +105,11 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: screenHeight * 0.025,
               child: FittedBox(
                 child:  Text(widget.birthday,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,

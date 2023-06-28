@@ -863,26 +863,30 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   personalColumn,
                   InkWell(
-                    child:  Container(
+                    child: Container(
                       alignment: Alignment.centerRight,
                       child: SvgPicture.asset(personalIcon,
                         width: screenHeight * 0.042,
                         height: screenHeight * 0.042,
                       ),
                     ),
-                    onTap: (){
+                    onTap: () async{
                       if(isPersonalEditing){
                         String phn = (_phoneController.text != "") ? _phoneController.text : widget.currentUser.phone;
                         String idd = (_idController.text != "") ? _idController.text : widget.currentUser.id;
                         String brt = (_birthdayController.text != "") ? _birthdayController.text : widget.currentUser.birthday;
-                        if(changePersonalInformation(widget.currentUser, phn, idd, brt)){
-                          setState(() {
-                            widget.currentUser.phone = phn;
-                            widget.currentUser.id = idd;
-                            widget.currentUser.birthday = brt;
-                          });
-                        }
-                        print("phone : ${widget.currentUser.phone} , id : ${widget.currentUser.id} , birthday : ${widget.currentUser.birthday}");
+                        changePersonalInformation(widget.currentUser, phn, idd, brt).then((isPersonalInformationChanged){
+                          if(isPersonalInformationChanged){
+                            setState(() {
+                              widget.currentUser.phone = phn;
+                              widget.currentUser.id = idd;
+                              widget.currentUser.birthday = brt;
+                            });
+                            print("phone : ${widget.currentUser.phone} , id : ${widget.currentUser.id} , birthday : ${widget.currentUser.birthday}");
+                          }
+                        });
+
+
                       }
                       setState(() {
                         isPersonalEditing = !isPersonalEditing;
@@ -938,7 +942,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
   Future<bool> changeAccountInformation(User user,String newUsername , String newPassword , String newEmail) async{
     //request to server and change username of user. if change was successful , returns true else returns false
-    bool result = Wallet.result;
+    bool result = ProfilePage.accountResult;
 
     Map<String, dynamic> requestDataMap = {
       'username': user.username,
@@ -967,12 +971,60 @@ class _ProfilePageState extends State<ProfilePage> {
         onDone: () {
           Map<String, dynamic> jsonData = json.decode(receivedData);
           setState(() {
-            Wallet.result = jsonData["result"];
+            ProfilePage.accountResult = jsonData["result"];
           });
 
         },
         onError: (error) {
-          Wallet.result = false;
+          ProfilePage.accountResult = false;
+        },
+      );
+
+      serverSocket.close();
+    });
+
+    return result;
+  }
+
+
+
+  Future<bool> changePersonalInformation(User user,String newPhone, String newId, String newBirthday) async{
+    //request to server and change username of user. if change was successful , returns true else returns false
+    bool result = ProfilePage.personalResult;
+
+    Map<String, dynamic> requestDataMap = {
+      'username': user.username,
+      'newPhone': newPhone,
+      'newId': newId,
+      'newBirthday': newBirthday,
+    };
+    Map<String, dynamic> jsonRequest = {
+      'requestType': "changePersonalInformation",
+      'requestData': json.encode(requestDataMap),
+    };
+
+    String jsonString = json.encode(jsonRequest);
+    List<int> bytes = utf8.encode(jsonString);
+
+    await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+      serverSocket.encoding = utf8;
+      serverSocket.add(bytes);
+      await serverSocket.flush();
+
+      String receivedData = "";
+      await serverSocket.listen(
+            (List<int> data) {
+          receivedData += utf8.decode(data);
+        },
+        onDone: () {
+          Map<String, dynamic> jsonData = json.decode(receivedData);
+          setState(() {
+            ProfilePage.personalResult = jsonData["result"];
+          });
+
+        },
+        onError: (error) {
+          ProfilePage.personalResult = false;
         },
       );
 
@@ -986,7 +1038,3 @@ class _ProfilePageState extends State<ProfilePage> {
 
 
 
-bool changePersonalInformation(User user,String newPhone, String newId, String newBirthday){
-  //request to server and change username of user. if change was successful , returns true else returns false
-  return true;
-}
