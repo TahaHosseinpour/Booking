@@ -8,12 +8,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:booking/Profile Page/personal_editing_box.dart';
 import 'package:booking/Database/user.dart';
+import 'dart:io';
+import 'dart:convert';
 
 import '../Information/colors.dart';
 
 class ProfilePage extends StatefulWidget{
 
   User currentUser;
+  static bool accountResult = false;
+  static bool personalResult = false;
   ProfilePage({super.key , required this.currentUser});
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -803,20 +807,22 @@ class _ProfilePageState extends State<ProfilePage> {
                         height: screenHeight * 0.042,
                       ),
                     ),
-                    onTap: (){
+                    onTap: () async{
                       if(isAccountEditing){
                         String usr = (_usernameController.text != "") ? _usernameController.text : widget.currentUser.username;
                         String pas = (_passwordController.text != "") ? _passwordController.text : widget.currentUser.password;
                         String eml = (_emailController.text != "") ? _emailController.text : widget.currentUser.email;
 
-                        if(changeAccountInformation(widget.currentUser, usr , pas, eml)) {
-                          setState(() {
-                            widget.currentUser.username = usr;
-                            widget.currentUser.password = pas;
-                            widget.currentUser.email = eml;
-                          });
-                          print("username : ${widget.currentUser.username} , password : ${widget.currentUser.password}, email : ${widget.currentUser.email}");
-                        }
+                        changeAccountInformation(widget.currentUser, usr , pas, eml).then((isAccountInformationChanged) {
+                          if(isAccountInformationChanged){
+                            setState(() {
+                              widget.currentUser.username = usr;
+                              widget.currentUser.password = pas;
+                              widget.currentUser.email = eml;
+                            });
+                            print("username : ${widget.currentUser.username} , password : ${widget.currentUser.password}, email : ${widget.currentUser.email}");
+                          }
+                        });
                       }
                       setState(() {
                         isAccountEditing = !isAccountEditing;
@@ -930,14 +936,55 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
+  Future<bool> changeAccountInformation(User user,String newUsername , String newPassword , String newEmail) async{
+    //request to server and change username of user. if change was successful , returns true else returns false
+    bool result = Wallet.result;
+
+    Map<String, dynamic> requestDataMap = {
+      'username': user.username,
+      'newUsername': newUsername,
+      'newPassword': newPassword,
+      'newEmail': newEmail,
+    };
+    Map<String, dynamic> jsonRequest = {
+      'requestType': "changeAccountInformation",
+      'requestData': json.encode(requestDataMap),
+    };
+
+    String jsonString = json.encode(jsonRequest);
+    List<int> bytes = utf8.encode(jsonString);
+
+    await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+      serverSocket.encoding = utf8;
+      serverSocket.add(bytes);
+      await serverSocket.flush();
+
+      String receivedData = "";
+      await serverSocket.listen(
+            (List<int> data) {
+          receivedData += utf8.decode(data);
+        },
+        onDone: () {
+          Map<String, dynamic> jsonData = json.decode(receivedData);
+          setState(() {
+            Wallet.result = jsonData["result"];
+          });
+
+        },
+        onError: (error) {
+          Wallet.result = false;
+        },
+      );
+
+      serverSocket.close();
+    });
+
+    return result;
+  }
 }
 
 
-bool changeAccountInformation(User user,String newUsername , String newPassword , String newEmail){
-  //request to server and change username of user. if change was successful , returns true else returns false
-  print("request has sent");
-  return true;
-}
+
 
 bool changePersonalInformation(User user,String newPhone, String newId, String newBirthday){
   //request to server and change username of user. if change was successful , returns true else returns false
