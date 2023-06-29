@@ -6,6 +6,7 @@ class Travel{
   String destination;
   String vehicle;
   int remainingPassengers;
+  int capacity;
   DateTime departureTime;
   DateTime arrivalTime;
   String travelTime;
@@ -20,6 +21,7 @@ class Travel{
     required this.destination,
     required this.vehicle,
     required this.remainingPassengers,
+    required this.capacity,
     required this.departureTime,
     required this.arrivalTime,
     required this.travelTime,
