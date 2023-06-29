@@ -229,10 +229,15 @@ class _ConfirmPage extends State<ConfirmPage> {
                       widget.currentUser.transactionsList.add(Transaction(date:date,type:"Buy",amount:widget.futureTravel.cost,id:id));
                       int walletBalance = (int.parse(widget.currentUser.walletBalance) + (widget.futureTravel.cost * -1));
                       widget.currentUser.walletBalance = walletBalance.toString();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MainPage(currentUser: widget.currentUser)),
-                      );
+                      addFutureTravelToTicketsList(widget.currentUser, widget.futureTravel).then((isDone) {
+                        if(isDone){
+                          widget.currentUser.ticketsList.add(widget.futureTravel);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MainPage(currentUser: widget.currentUser)),
+                          );
+                        }
+                      });
                     }
                   });
 
@@ -240,7 +245,7 @@ class _ConfirmPage extends State<ConfirmPage> {
 
                   changeRemainPassengersOfTravel(widget.futureTravel, widget.passengerList.length);
 
-                  addFutureTravelToTicketsList(widget.currentUser, widget.futureTravel);
+
 
 
                 },
@@ -262,6 +267,59 @@ class _ConfirmPage extends State<ConfirmPage> {
     };
     Map<String, dynamic> jsonRequest = {
       'requestType': "changeWalletBalanceAndCreateTransaction",
+      'requestData': json.encode(requestDataMap),
+    };
+
+    String jsonString = json.encode(jsonRequest);
+    List<int> bytes = utf8.encode(jsonString);
+
+    await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+      serverSocket.encoding = utf8;
+      serverSocket.add(bytes);
+      await serverSocket.flush();
+
+      String receivedData = "";
+      await serverSocket.listen(
+            (List<int> data) {
+          receivedData += utf8.decode(data);
+        },
+        onDone: () {
+          Map<String, dynamic> jsonData = json.decode(receivedData);
+          setState(() {
+            ConfirmPage.result = jsonData["result"];
+          });
+
+        },
+        onError: (error) {
+          ConfirmPage.result = false;
+        },
+      );
+
+      serverSocket.close();
+    });
+
+    return result;
+  }
+
+
+  addFutureTravelToTicketsList(User user , Ticket futureTravel) async{
+    //request to server and add futureTravel to ticketsList of user
+    bool result = ConfirmPage.result;
+
+    Map<String, dynamic> requestDataMap = {
+      'username': user.username,
+      'companyName': futureTravel.companyName,
+      'origin' : futureTravel.origin,
+      'destination': futureTravel.destination,
+      'departureTime': futureTravel.departureTime.toString(),
+      'arrivalTime' : futureTravel.arrivalTime.toString(),
+      'travelTime' : futureTravel.travelTime,
+      'cost': futureTravel.cost,
+      'travelClass': futureTravel.travelClass,
+      'id' : futureTravel.id,
+    };
+    Map<String, dynamic> jsonRequest = {
+      'requestType': "addFutureTravelToTicketsList",
       'requestData': json.encode(requestDataMap),
     };
 

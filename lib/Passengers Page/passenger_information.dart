@@ -108,7 +108,7 @@ class _PassengerInformationState extends State<PassengerInformation> {
                       showSelectedItems: true,
                       showSearchBox: true,
                     ),
-                    items: const ["2019", "2020", "2021", "2022", "2023",],
+                    items : listBuilder(),
                     dropdownDecoratorProps: DropDownDecoratorProps(
                       dropdownSearchDecoration: InputDecoration(
                         labelText: "Year",
@@ -137,7 +137,7 @@ class _PassengerInformationState extends State<PassengerInformation> {
                       showSelectedItems: true,
                       showSearchBox: true,
                     ),
-                    items: const ["01", "02", "03", "04", "05",],
+                    items: const ["01", "02", "03", "04", "05","06", "07", "08", "09", "10","11","12"],
                     dropdownDecoratorProps: DropDownDecoratorProps(
                       dropdownSearchDecoration: InputDecoration(
                         labelText: "Month",
@@ -200,4 +200,14 @@ class _PassengerInformationState extends State<PassengerInformation> {
     //   widget.onTextChanged(person!);
     // });
   }
+}
+
+List<String> listBuilder(){
+  List<String> dateList = [];
+  int currentYear = DateTime.now().year;
+  for (int i = 0 ; i >= -100 ; i--){
+    int date = (currentYear + i);
+    dateList.add(date.toString());
+  }
+  return dateList;
 }

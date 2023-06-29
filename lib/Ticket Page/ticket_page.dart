@@ -1,10 +1,13 @@
-import 'package:booking/Database/company.dart';
 import 'package:booking/Information/buildBottomNavigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import 'dart:io';
+import 'dart:convert';
+import 'package:booking/Database/ticket.dart';
+import 'package:booking/ServerMethods/parseTravelFromJson.dart';
 
 
 import 'package:booking/Information/colors.dart';
@@ -33,7 +36,7 @@ class TicketPage extends StatefulWidget {
   String origin;
   String destination;
   int passengersNumber;
-
+  static List<Travel> travelsList = [];
   @override
   State<TicketPage> createState() => _TicketPageState();
 }
@@ -54,7 +57,7 @@ class _TicketPageState extends State<TicketPage> {
     setState(() {
       print(currentDate);
       widget.date = currentDate;
-      getTicketList();
+      getTicketList(widget.origin,widget.destination,widget.date,widget.vehicle,widget.passengersNumber,"empty");
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
         int middleIndex = 2;
@@ -85,10 +88,11 @@ class _TicketPageState extends State<TicketPage> {
 
     });
 
-    // در متد initState
+
     @override
     void initState() {
       super.initState();
+      getTicketList(widget.origin,widget.destination,widget.date,widget.vehicle,widget.passengersNumber,"empty");
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
         int middleIndex = 1;
@@ -114,7 +118,7 @@ class _TicketPageState extends State<TicketPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-                // color: Colors.red,
+
                 margin:  EdgeInsets.only(top: screenHeight * 0.02,right:screenWidth * 0.076,left: screenWidth * 0.076),
 
                 child: Row(
@@ -239,10 +243,6 @@ class _TicketPageState extends State<TicketPage> {
 
                   return StatefulBuilder(
                     builder: (BuildContext context, StateSetter setState2) {
-
-                      // setState(() {
-                      //   currentDate = currentDate1;
-                      // });
                       print(currentDate);
 
                       return DateItem(
@@ -299,8 +299,10 @@ class _TicketPageState extends State<TicketPage> {
                                     contentPadding:  EdgeInsets.only(bottom: screenHeight * 0.005),
                                   ),
                                   textAlign: TextAlign.center,
-
                                 ),
+                                onChanged: (String? selectItem){
+                                  getTicketList(widget.origin,widget.destination,widget.date,widget.vehicle,widget.passengersNumber,selectItem!);
+                                },
                               ),
                             ),
                           ),
@@ -350,9 +352,9 @@ class _TicketPageState extends State<TicketPage> {
                       width: screenWidth * 0.83,
                       child: ListView.builder(
                         scrollDirection: Axis.vertical,
-                        itemCount: travelsList.length,
+                        itemCount: TicketPage.travelsList.length,
                         itemBuilder: (context, index) {
-                          final item = travelsList[index];
+                          final item = TicketPage.travelsList[index];
                           return ticketItem(
                             context,
                             widget.currentUser,
@@ -384,9 +386,61 @@ class _TicketPageState extends State<TicketPage> {
 
     );
   }
+
+
+
+
+  void getTicketList(String origin,String destination,DateTime date,String vehicle,int passengersNumber,String sort) async{
+    /* by using gotten information form user , request to server and
+  and get fill travelsList in Database directory inside travel.dart*/
+    List<Travel> result = TicketPage.travelsList;
+
+    Map<String, dynamic> travelInfo = {
+      'origin' : origin,
+      'destination': destination,
+      'date': date.toString(),
+      'vehicle' : vehicle,
+      'passengersNumber' : passengersNumber,
+    };
+
+    Map<String, dynamic> requestDataMap = {
+      'travel' : json.encode(travelInfo),
+      'sort': sort,
+      'filter': "empty",
+    };
+    Map<String, dynamic> jsonRequest = {
+      'requestType': "getTicketList",
+      'requestData': json.encode(requestDataMap),
+    };
+
+    String jsonString = json.encode(jsonRequest);
+    List<int> bytes = utf8.encode(jsonString);
+
+    await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+      serverSocket.encoding = utf8;
+      serverSocket.add(bytes);
+      await serverSocket.flush();
+
+      String receivedData = "";
+      await serverSocket.listen(
+            (List<int> data) {
+          receivedData += utf8.decode(data);
+        },
+        onDone: () {
+          Map<String, dynamic> jsonData = json.decode(receivedData);
+          setState(() {
+            TicketPage.travelsList = parseTravelFromJson(receivedData);
+          });
+
+        },
+        onError: (error) {
+          TicketPage.travelsList = [];
+        },
+      );
+
+      serverSocket.close();
+    });
+
+  }
 }
 
-void getTicketList(){
-  /* by using gotten information form user , request to server and
-  and get fill travelsList in Database directory inside travel.dart*/
-}
