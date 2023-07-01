@@ -9,6 +9,8 @@ import 'package:booking/Database/user.dart';
 import 'package:booking/Database/transaction.dart';
 import 'package:booking/Database/ticket.dart';
 import 'package:booking/ServerMethods/userToJson.dart';
+import 'package:booking/global.dart';
+
 
 class SignUpTab extends StatefulWidget{
   static bool result = false;
@@ -51,7 +53,7 @@ class _SignUpTabState extends State<SignUpTab> {
 
 
     return ClipRRect(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(contextHeight * 0.032),
       child: Container(
         height: contextHeight * 0.385,
         width: contextWidth * 0.828,
@@ -293,7 +295,7 @@ class _SignUpTabState extends State<SignUpTab> {
     String jsonString = json.encode(jsonRequest);
     List<int> bytes = utf8.encode(jsonString);
 
-    await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+    await Socket.connect(Global.ip,Global.port).then((serverSocket) async{
       serverSocket.encoding = utf8;
       serverSocket.add(bytes);
       await serverSocket.flush();

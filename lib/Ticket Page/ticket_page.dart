@@ -9,6 +9,7 @@ import 'dart:convert';
 import 'package:booking/Database/ticket.dart';
 import 'package:booking/ServerMethods/parseTravelFromJson.dart';
 
+import 'package:booking/global.dart';
 
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Ticket Page/ticketItem.dart';
@@ -148,7 +149,7 @@ class _TicketPageState extends State<TicketPage> {
                 ),
               ),
             Container(
-              width: screenWidth * 0.779,
+              width: screenWidth * 0.799,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -180,11 +181,11 @@ class _TicketPageState extends State<TicketPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const DottedLine(
+                      DottedLine(
                         direction: Axis.horizontal,
-                        lineLength: 60,
-                          lineThickness: 3.0,
-                          dashLength: 3.5
+                        lineLength: screenWidth * 0.138,
+                          lineThickness: screenWidth * 0.007,
+                          dashLength: screenWidth * 0.008
                       ),
                       Container(
                         margin: EdgeInsets.only(left: screenWidth * 0.011,right: screenWidth * 0.011),
@@ -194,11 +195,11 @@ class _TicketPageState extends State<TicketPage> {
                           width: screenWidth * 0.081,
                         ),
                       ),
-                      const DottedLine(
+                      DottedLine(
                           direction: Axis.horizontal,
-                          lineLength: 60,
-                          lineThickness: 3.0,
-                          dashLength: 3.5
+                          lineLength: screenWidth * 0.138,
+                          lineThickness: screenWidth * 0.007,
+                          dashLength: screenWidth * 0.008
                       )
                     ],
                   ),
@@ -260,9 +261,9 @@ class _TicketPageState extends State<TicketPage> {
               ),
             ),
             ClipRRect(
-              borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(50),
-                  topLeft: Radius.circular(50)
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(screenHeight * 0.053),
+                  topLeft: Radius.circular(screenHeight * 0.053)
               ),
               child: Container(
                   height: screenHeight * 0.62,
@@ -276,7 +277,7 @@ class _TicketPageState extends State<TicketPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(screenHeight * 0.013),
                             child: Container(
                               height: screenHeight * 0.032,
                               width: screenWidth * 0.3,
@@ -307,7 +308,7 @@ class _TicketPageState extends State<TicketPage> {
                             ),
                           ),
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(screenHeight * 0.013),
                             child: Container(
                               color: Colors.white,
                               height: screenHeight * 0.032,
@@ -416,7 +417,7 @@ class _TicketPageState extends State<TicketPage> {
     String jsonString = json.encode(jsonRequest);
     List<int> bytes = utf8.encode(jsonString);
 
-    await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+    await Socket.connect(Global.ip,Global.port).then((serverSocket) async{
       serverSocket.encoding = utf8;
       serverSocket.add(bytes);
       await serverSocket.flush();
@@ -443,4 +444,3 @@ class _TicketPageState extends State<TicketPage> {
 
   }
 }
-

@@ -54,20 +54,21 @@ class _DateItemState extends State<DateItem> {
           // print("\n");
           },
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(screenHeight * 0.010),
           child: Container(
-            padding:  EdgeInsets.only(top: screenHeight * 0.002),
-            height: screenHeight * 0.075,
+            // margin:  EdgeInsets.only(top: screenHeight * 0.002),
+            height: screenHeight * 0.080,
             width: screenWidth * 0.146,
             color: widget.isActive ? green3 : green2,
 
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
                   threeCharDayInWeek(widget.date.weekday),
                   style:  TextStyle(
                     color: Colors.white,
-                    fontSize: screenHeight * 0.025,
+                    fontSize: screenHeight * 0.024,
                     fontWeight: FontWeight.w700,
                     fontFamily: 'Poppins',
                   ),
@@ -76,7 +77,7 @@ class _DateItemState extends State<DateItem> {
                   widget.date.day.toString(),
                   style:  TextStyle(
                     color: Colors.white,
-                    fontSize: screenHeight * 0.025,
+                    fontSize: screenHeight * 0.024,
                     fontWeight: FontWeight.w700,
                     fontFamily: 'Poppins',
                   ),

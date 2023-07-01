@@ -13,7 +13,7 @@ Container SeatNumber(BuildContext context, String name, int number){
       .height;
   return Container(
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(35),
+      borderRadius: BorderRadius.circular(screenHeight * 0.037),
       color: Colors.white,
     ),
     alignment: Alignment.center,
@@ -30,7 +30,7 @@ Container SeatNumber(BuildContext context, String name, int number){
             child: Text(name,
               style: TextStyle(
                 fontFamily: 'Poppins',
-                fontSize: 20,
+                fontSize: screenHeight * 0.021,
                 fontWeight: FontWeight.w700,
               ),
             ),

@@ -12,28 +12,28 @@ class Place{
 
 List<Place> placesList = [
   Place(
-    title: "Nasirolmolk Mosque",
-      text: "Nasirolmolk Mosque is the most beautiful place in iran ... this place is in the tehran",
+    title: "Mosque",
+      text: "Nasirolmolk Mosque is the most beautiful place in iran ...",
       imagePath: "assets/images/places/nasirolmolk.png"
   ),
   Place(
     title: "Loot Desert",
-      text: "Loot Desert is the most beautiful place in iran ... this place is in the tehran",
+      text: "Loot Desert is the most beautiful place in iran ...",
       imagePath: "assets/images/places/loot.png"
   ),
   Place(
     title: "Golestan Palace",
-      text: "Golestan Palace is the most beautiful place in iran ... this place is in the tehran",
+      text: "Golestan Palace is the most beautiful place in iran ...",
       imagePath: "assets/images/places/golestan.png"
   ),
   Place(
     title: "Shoshtar",
-      text: "Shoshtar is the most beautiful place in iran...this place is in the tehran",
+      text: "Shoshtar is the most beautiful place in iran...",
       imagePath: "assets/images/places/shoshtar.png"
   ),
   Place(
     title: "Ziggurat",
-      text: "Ziggurat is the most beautiful place in iran ... this place is in the tehran",
+      text: "Ziggurat is the most beautiful place in iran ...",
       imagePath: "assets/images/places/ziggurat.png"
   ),
 ];

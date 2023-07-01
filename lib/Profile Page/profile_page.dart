@@ -12,6 +12,8 @@ import 'dart:io';
 import 'dart:convert';
 
 import '../Information/colors.dart';
+import 'package:booking/global.dart';
+
 
 class ProfilePage extends StatefulWidget{
 
@@ -57,15 +59,13 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("Username",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
                   ),
-                ),
               ),
             ),
             SizedBox(
@@ -85,13 +85,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       //     });
                       //   }
                       // },
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: screenHeight * 0.019,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:Colors.black,
                       ),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color.fromRGBO(198, 198, 198, 1),
@@ -102,7 +102,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         hintStyle: TextStyle(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
-                          fontSize: 13,
+                          fontSize: screenHeight * 0.014,
                           color: Color.fromARGB(255, 135, 135, 135),
                         ),
                       ),
@@ -110,16 +110,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   SizedBox(
                     height: screenHeight * 0.020,
-                    child: const FittedBox(
                       child: Text(
                         ".",
                         style: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 11,
+                            fontSize: screenHeight * 0.012,
                             fontWeight: FontWeight.w400,
                             color: Color.fromRGBO(202, 44, 44, 1)
                         ),
-                      ),
                     ),
                   )
                 ],
@@ -132,15 +130,13 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("Password",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
                   ),
-                ),
               ),
             ),
             SizedBox(
@@ -153,13 +149,13 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: screenHeight * 0.020,
                     child: TextField(
                       controller: _passwordController,
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: screenHeight * 0.019,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:Colors.black,
                       ),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color.fromRGBO(198, 198, 198, 1),
@@ -170,7 +166,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         hintStyle: TextStyle(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
-                          fontSize: 13,
+                          fontSize: screenHeight * 0.014,
                           color: Color.fromARGB(255, 135, 135, 135),
                         ),
                       ),
@@ -178,16 +174,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   SizedBox(
                     height: screenHeight * 0.020,
-                    child: const FittedBox(
                       child: Text(
                         ".",
                         style: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 11,
+                            fontSize: screenHeight * 0.012,
                             fontWeight: FontWeight.w400,
                             color: Color.fromRGBO(202, 44, 44, 1)
                         ),
-                      ),
                     ),
                   )
                 ],
@@ -200,14 +194,12 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("Email",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
-                  ),
                 ),
               ),
             ),
@@ -228,13 +220,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       //   });
                       //
                       // },
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: screenHeight * 0.012,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:Colors.black,
                       ),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color.fromRGBO(198, 198, 198, 1),
@@ -245,7 +237,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         hintStyle: TextStyle(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
-                          fontSize: 13,
+                          fontSize: screenHeight * 0.014,
                           color: Color.fromARGB(255, 135, 135, 135),
                         ),
                       ),
@@ -253,16 +245,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   SizedBox(
                     height: screenHeight * 0.020,
-                    child: const FittedBox(
                       child: Text(
                         ".",
                         style: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 11,
+                            fontSize: screenHeight * 0.012,
                             fontWeight: FontWeight.w400,
                             color: Color.fromRGBO(202, 44, 44, 1)
                         ),
-                      ),
                     ),
                   )
                 ],
@@ -283,27 +273,23 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               SizedBox(
                 height: screenHeight * 0.03,
-                child: FittedBox(
                   child:  Text("Username",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                       color:green3,
                     ),
-                  ),
                 ),
               ),
               SizedBox(
                 height: screenHeight * 0.025,
-                child: FittedBox(
-                  child:  Text(widget.currentUser.username,
-                    style: const TextStyle(
-                      fontSize: 20,
+                child:  Text(widget.currentUser.username,
+                    style: TextStyle(
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                     ),
-                  ),
                 ),
               ),
             ],
@@ -316,15 +302,13 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               SizedBox(
                 height: screenHeight * 0.03,
-                child: FittedBox(
                   child:  Text("Password",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                       color:green3,
                     ),
-                  ),
                 ),
               ),
               Row(
@@ -332,15 +316,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   SizedBox(
                     height: screenHeight * 0.025,
-                    child: FittedBox(
                       child: Text( isPasswordVisible? widget.currentUser.password : "*********",
-                        style: const TextStyle(
-                          fontSize: 20,
+                        style: TextStyle(
+                          fontSize: screenHeight * 0.021,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                         ),
-
-                      ),
                     ),
                   ),
                   SizedBox(width: screenWidth * 0.03,),
@@ -370,27 +351,23 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("Email",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
                   ),
-                ),
               ),
             ),
             SizedBox(
               height: screenHeight * 0.025,
-              child: FittedBox(
                 child:  Text(widget.currentUser.email,
-                  style: const TextStyle(
-                    fontSize: 20,
+                  style: TextStyle(
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                   ),
-                ),
               ),
             ),
           ],
@@ -405,15 +382,13 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("Phone",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
                   ),
-                ),
               ),
             ),
             SizedBox(
@@ -433,13 +408,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       //     });
                       //   }
                       // },
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: screenHeight * 0.019,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:Colors.black,
                       ),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color.fromRGBO(198, 198, 198, 1),
@@ -450,7 +425,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         hintStyle: TextStyle(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
-                          fontSize: 13,
+                          fontSize: screenHeight * 0.014,
                           color: Color.fromARGB(255, 135, 135, 135),
                         ),
                       ),
@@ -458,16 +433,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   SizedBox(
                     height: screenHeight * 0.020,
-                    child: const FittedBox(
                       child: Text(
                         ".",
                         style: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 11,
+                            fontSize: screenHeight * 0.012,
                             fontWeight: FontWeight.w400,
                             color: Color.fromRGBO(202, 44, 44, 1)
                         ),
-                      ),
                     ),
                   )
                 ],
@@ -480,15 +453,13 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("Password",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
                   ),
-                ),
               ),
             ),
             SizedBox(
@@ -501,13 +472,13 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: screenHeight * 0.020,
                     child: TextField(
                       controller: _idController,
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: screenHeight * 0.019,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:Colors.black,
                       ),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color.fromRGBO(198, 198, 198, 1),
@@ -518,7 +489,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         hintStyle: TextStyle(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
-                          fontSize: 13,
+                          fontSize: screenHeight * 0.014,
                           color: Color.fromARGB(255, 135, 135, 135),
                         ),
                       ),
@@ -526,16 +497,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   SizedBox(
                     height: screenHeight * 0.020,
-                    child: const FittedBox(
                       child: Text(
                         ".",
                         style: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 11,
+                            fontSize: screenHeight * 0.012,
                             fontWeight: FontWeight.w400,
                             color: Color.fromRGBO(202, 44, 44, 1)
                         ),
-                      ),
                     ),
                   )
                 ],
@@ -548,15 +517,13 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("Birthday",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
                   ),
-                ),
               ),
             ),
             SizedBox(
@@ -570,13 +537,13 @@ class _ProfilePageState extends State<ProfilePage> {
                     child:  TextField(
                       controller: _birthdayController,
 
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: screenHeight * 0.019,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:Colors.black,
                       ),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color.fromRGBO(198, 198, 198, 1),
@@ -587,7 +554,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         hintStyle: TextStyle(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
-                          fontSize: 13,
+                          fontSize: screenHeight * 0.014,
                           color: Color.fromARGB(255, 135, 135, 135),
                         ),
                       ),
@@ -595,18 +562,16 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   SizedBox(
                     height: screenHeight * 0.020,
-                    child: const FittedBox(
-                      child: Text(
+                    child: Text(
                         ".",
                         style: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 11,
+                            fontSize: screenHeight * 0.012,
                             fontWeight: FontWeight.w400,
                             color: Color.fromRGBO(202, 44, 44, 1)
                         ),
-                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -624,27 +589,23 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               SizedBox(
                 height: screenHeight * 0.03,
-                child: FittedBox(
                   child:  Text("Phone",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                       color:green3,
                     ),
-                  ),
                 ),
               ),
               SizedBox(
                 height: screenHeight * 0.025,
-                child: FittedBox(
                   child:  Text(widget.currentUser.phone,
-                    style: const TextStyle(
-                      fontSize: 20,
+                    style: TextStyle(
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                     ),
-                  ),
                 ),
               ),
             ],
@@ -657,15 +618,13 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               SizedBox(
                 height: screenHeight * 0.03,
-                child: FittedBox(
                   child:  Text("ID",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                       color:green3,
                     ),
-                  ),
                 ),
               ),
               Row(
@@ -673,14 +632,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   SizedBox(
                     height: screenHeight * 0.025,
-                    child: FittedBox(
                       child:  Text(widget.currentUser.id,
-                        style: const TextStyle(
-                          fontSize: 20,
+                        style: TextStyle(
+                          fontSize: screenHeight * 0.021,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                         ),
-                      ),
                     ),
                   ),
                 ],
@@ -693,27 +650,23 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("Birthday",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
                   ),
-                ),
               ),
             ),
             SizedBox(
               height: screenHeight * 0.025,
-              child: FittedBox(
                 child:  Text(widget.currentUser.birthday,
-                  style: const TextStyle(
-                    fontSize: 20,
+                  style: TextStyle(
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                   ),
-                ),
               ),
             ),
           ],
@@ -777,14 +730,12 @@ class _ProfilePageState extends State<ProfilePage> {
               margin: EdgeInsets.only(left: screenWidth * 0.1),
                 alignment: Alignment.topLeft,
                 height: screenHeight * 0.045,
-                child: const FittedBox(
                   child:  Text("Account",
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: screenHeight * 0.031,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                     ),
-                  ),
                 ),
             ),
             Container(
@@ -792,7 +743,7 @@ class _ProfilePageState extends State<ProfilePage> {
               width: screenWidth * 0.83 ,
               height: screenHeight * 0.187,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(35),
+                borderRadius: BorderRadius.circular(screenHeight * 0.027),
                 color: grey3,
               ),
               child: Column(
@@ -958,7 +909,7 @@ class _ProfilePageState extends State<ProfilePage> {
     String jsonString = json.encode(jsonRequest);
     List<int> bytes = utf8.encode(jsonString);
 
-    await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+    await Socket.connect(Global.ip,Global.port).then((serverSocket) async{
       serverSocket.encoding = utf8;
       serverSocket.add(bytes);
       await serverSocket.flush();
@@ -1006,7 +957,7 @@ class _ProfilePageState extends State<ProfilePage> {
     String jsonString = json.encode(jsonRequest);
     List<int> bytes = utf8.encode(jsonString);
 
-    await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+    await Socket.connect(Global.ip,Global.port).then((serverSocket) async{
       serverSocket.encoding = utf8;
       serverSocket.add(bytes);
       await serverSocket.flush();

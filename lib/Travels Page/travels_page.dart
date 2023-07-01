@@ -74,21 +74,19 @@ class _TravelsPageState extends State<TravelsPage> {
             width: screenWidth * 0.62,
           decoration:  BoxDecoration(
           color: yellow2,
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(100),
-              bottomRight: Radius.circular(100),
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(screenHeight * 0.107),
+              bottomRight: Radius.circular(screenHeight * 0.107),
             ),
           ),
             child: SizedBox(
               height: screenHeight * 0.06,
-              child: const FittedBox(
                 child: Text("Travels",
                   style: TextStyle(
-                      fontSize: 34,
+                      fontSize: screenHeight * 0.035,
                       fontWeight: FontWeight.w400,
                       fontFamily: 'Poppins'
                   ),
-                ),
               ),
             )
           ),

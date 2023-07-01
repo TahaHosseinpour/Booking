@@ -65,6 +65,11 @@ class _MyDatePickerTextFieldState extends State<MyDatePickerTextField> {
         ),
         child:TextField(
           controller: _textEditingController,
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            fontSize: screenHeight * 0.011,
+            color: Colors.black,
+          ),
           readOnly: true,
           onTap: () {
             _selectDate(context);
@@ -73,12 +78,12 @@ class _MyDatePickerTextFieldState extends State<MyDatePickerTextField> {
             hintText: 'Seclect',
             hintStyle: TextStyle(
                 fontFamily: 'Poppins',
-                fontSize: screenHeight * 0.015,
+                fontSize: screenHeight * 0.013,
                 color: grey1,
             ),
-            contentPadding: EdgeInsets.only(top: 10 , bottom: 9,right: 15,left: 15),
+            contentPadding: EdgeInsets.only(top: screenHeight * 0.010 , bottom: screenHeight * 0.009,right: screenWidth * 0.034,left: screenWidth * 0.034),
             border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(screenHeight * 0.005),
               borderSide: BorderSide.none
         ),
           filled: true,

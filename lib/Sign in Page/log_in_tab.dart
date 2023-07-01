@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:io';
 import 'dart:convert';
+import 'dart:async';
 
 
+import 'package:booking/global.dart';
 import 'package:booking/Information/colors.dart';
 import 'package:booking/Information/widgets.dart';
 import 'package:booking/Database/user.dart';
@@ -39,7 +41,7 @@ class _LogInTabState extends State<LogInTab> {
 
 
     return ClipRRect(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(contextHeight * 0.032),
       child: Container(
         height: contextHeight * 0.385,
         width: contextWidth * 0.828,
@@ -220,7 +222,7 @@ class _LogInTabState extends State<LogInTab> {
     List<int> bytes = utf8.encode(jsonString);
 
 
-    await Socket.connect('192.168.1.9',8000).then((serverSocket) async {
+    await Socket.connect(Global.ip,Global.port).then((serverSocket) async {
       print("conected to server");
       serverSocket.encoding = utf8;
       serverSocket.add(bytes);
@@ -235,11 +237,6 @@ class _LogInTabState extends State<LogInTab> {
           setState(() {
             LogInTab.result = parseUserFromJson(receivedData);
           });
-          print(result.username);
-          print(result.transactionsList[0].id);
-          print(result.ticketsList[0].origin);
-          print(result.ticketsList[1].departureTime);
-
         },
         onError: (error) {
           result = usersList.first;
@@ -248,7 +245,6 @@ class _LogInTabState extends State<LogInTab> {
 
       serverSocket.close();
     });
-
     print("user name result : " + result.username);
     return result;
 

@@ -55,7 +55,7 @@ class _SearchBoxState extends State<SearchBox> {
           width: screenWidth * 0.83,
           height: screenHeight * 0.19,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(35),
+            borderRadius: BorderRadius.circular(screenHeight * 0.037),
             color: grey3,
           ),
           child: Column(
@@ -82,13 +82,11 @@ class _SearchBoxState extends State<SearchBox> {
                             SizedBox(width: screenWidth * 0.01,),
                             SizedBox(
                                 height: screenHeight * 0.017,
-                                child: const FittedBox(
                                   child:  Text("Departure",
                                     style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: screenHeight * 0.013,
                                       fontFamily: 'Poppins',
                                     ),
-                                  ),
                                 )
                             ),
                           ],
@@ -114,13 +112,11 @@ class _SearchBoxState extends State<SearchBox> {
                             Container(
                                 margin: EdgeInsets.only(right: screenWidth * 0.27),
                                 height: screenHeight * 0.017,
-                                child: const FittedBox(
                                   child: Text("Back",
                                     style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: screenHeight * 0.013,
                                       fontFamily: 'Poppins',
                                     ),
-                                  ),
                                 )
                             ),
                           ],
@@ -173,7 +169,7 @@ class _SearchBoxState extends State<SearchBox> {
                 margin: EdgeInsets.only(top: screenHeight * 0.19),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(45),
+                  borderRadius: BorderRadius.circular(screenHeight * 0.048),
                   color: yellow1,
                 ),
                 child:  Container(
@@ -183,7 +179,7 @@ class _SearchBoxState extends State<SearchBox> {
                       "Search",
                       style: TextStyle(
                         backgroundColor: yellow1,
-                        fontSize: 25,
+                        fontSize: screenHeight * 0.027,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                       ),

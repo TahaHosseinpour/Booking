@@ -118,7 +118,7 @@ class _MainPageState extends State<MainPage> {
                   width: screenWidth * 0.19,
                   padding:  EdgeInsets.only(top: screenHeight * 0.002,bottom: screenHeight * 0.004),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(screenHeight * 0.016),
                       border: Border.all(
                           width: 1,
                           color: green2
@@ -160,7 +160,7 @@ class _MainPageState extends State<MainPage> {
                   width: screenWidth * 0.19,
                   padding:  EdgeInsets.only(top: screenHeight * 0.008,bottom: screenHeight * 0.004),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(screenHeight * 0.016),
                     border: Border.all(
                       width: 1,
                       color: green2
@@ -203,7 +203,7 @@ class _MainPageState extends State<MainPage> {
                   width: screenWidth * 0.19,
                   padding: EdgeInsets.only(top:screenHeight * 0.008 ,bottom: screenHeight * 0.004),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(screenHeight * 0.016),
                       border: Border.all(
                           width: 1,
                           color: green2
@@ -245,7 +245,7 @@ class _MainPageState extends State<MainPage> {
                   width: screenWidth * 0.19,
                   padding: EdgeInsets.only(top: screenHeight * 0.003,bottom: screenHeight * 0.005),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(screenHeight * 0.016),
                       border: Border.all(
                           width: 1,
                           color: green2

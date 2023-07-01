@@ -94,7 +94,7 @@ class _PassengersPageState extends State<PassengersPage>{
                    child: FittedBox(
                      child: Text("Passengers",
                        style: TextStyle(
-                         fontSize: 34,
+                         fontSize: screenHeight * 0.036,
                          fontFamily: 'Poppins',
                          fontWeight: FontWeight.w400,
                        ),
@@ -174,7 +174,7 @@ class _PassengersPageState extends State<PassengersPage>{
                 width: screenWidth * 0.86,
                 height: screenHeight * 0.13,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(screenHeight * 0.016),
                 color: green3,
               ),
               child: Row(
@@ -184,7 +184,7 @@ class _PassengersPageState extends State<PassengersPage>{
                     width: screenWidth * 0.4,
                     height: screenHeight * 0.132,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(screenHeight * 0.016),
                       color: yellow2,
                     ),
                     child: Column(
@@ -204,7 +204,7 @@ class _PassengersPageState extends State<PassengersPage>{
                           child:FittedBox(
                             child:  Text(widget.futureTravel.companyName,
                               style: TextStyle(
-                                fontSize: 24,
+                                fontSize: screenHeight * 0.025,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w700,
                               ),
@@ -226,16 +226,14 @@ class _PassengersPageState extends State<PassengersPage>{
                               Container(
                                 width: screenWidth * 0.15,
                                 height: screenHeight * 0.048,
-                                child:FittedBox(
-                                  child:  Text(ori,
+                                child:  Text(ori,
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 34,
+                                      fontSize: screenHeight * 0.035,
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),
-                                ),
                                margin: EdgeInsets.only(top: screenHeight * 0.02),
                               ),
                               Container(
@@ -248,16 +246,14 @@ class _PassengersPageState extends State<PassengersPage>{
                               Container(
                                 width: screenWidth * 0.137,
                                 height: screenHeight * 0.048,
-                                child: FittedBox(
-                                  child: Text(des,
+                                child : Text(des,
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 34,
+                                      fontSize: screenHeight * 0.035,
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),
-                                ),
                                 margin: EdgeInsets.only(top: screenHeight * 0.02),
                               ),
                             ],
@@ -266,14 +262,12 @@ class _PassengersPageState extends State<PassengersPage>{
                         Container(
                           width: screenWidth * 0.38,
                           height: screenHeight * 0.048,
-                          child:FittedBox(
-                            child:  Text("${dayOfWeek} , ${widget.futureTravel.departureTime.month}/${widget.futureTravel.departureTime.day}",
+                          child:  Text("${dayOfWeek} , ${widget.futureTravel.departureTime.month}/${widget.futureTravel.departureTime.day}",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 34,
+                                fontSize: screenHeight * 0.035,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w700,
-                              ),
                             ),
                           ),
                           margin: EdgeInsets.only(bottom: screenHeight * 0.01),
@@ -320,7 +314,7 @@ class _PassengersPageState extends State<PassengersPage>{
         bottomNavigationBar: Container(
           height:screenHeight * 0.29,
           decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(screenHeight * 0.037), topRight: Radius.circular(screenHeight * 0.037)),
             color: yellow2,
           ),
           child: Column(
@@ -333,29 +327,25 @@ class _PassengersPageState extends State<PassengersPage>{
                     width: screenWidth * 0.22,
                     height: screenHeight * 0.048,
                     margin: EdgeInsets.only(left: screenWidth * 0.17),
-                    child: FittedBox(
-                      child: Text('Price :',
+                    child: Text('Price :',
                         style: TextStyle(
-                          fontSize: 34,
+                          fontSize: screenHeight * 0.035,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w700,
                           color:grey2,
                         ),
-                      ),
                     ),
                   ),
                   Container(
                     width: screenWidth * 0.26,
                     height: screenHeight * 0.07,
                     margin: EdgeInsets.only(right: screenWidth * 0.17),
-                    child: FittedBox(
-                      child: Text('${widget.futureTravel.cost}\$',
-                        style: const TextStyle(
-                          fontSize: 50,
+                    child: Text('${widget.futureTravel.cost}\$',
+                        style: TextStyle(
+                          fontSize: screenHeight * 0.053,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w700,
                         ),
-                      ),
                     ),
                   ),
                 ],

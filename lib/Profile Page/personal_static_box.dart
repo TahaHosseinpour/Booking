@@ -34,27 +34,23 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("Phone",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
                   ),
-                ),
               ),
             ),
             SizedBox(
               height: screenHeight * 0.025,
-              child: FittedBox(
                 child:  Text(widget.phone,
-                  style: const TextStyle(
-                    fontSize: 20,
+                  style: TextStyle(
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                   ),
-                ),
               ),
             ),
           ],
@@ -64,15 +60,13 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("ID",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
                   ),
-                ),
               ),
             ),
             SizedBox(
@@ -94,27 +88,23 @@ class _PersonalStaticBoxState extends State<PersonalStaticBox> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("Birthday",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
                   ),
-                ),
               ),
             ),
             SizedBox(
               height: screenHeight * 0.025,
-              child: FittedBox(
                 child:  Text(widget.birthday,
-                  style: const TextStyle(
-                    fontSize: 20,
+                  style: TextStyle(
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                   ),
-                ),
               ),
             ),
           ],

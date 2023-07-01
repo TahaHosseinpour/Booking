@@ -38,7 +38,7 @@ class _PassengerInformationState extends State<PassengerInformation> {
         width: screenWidth * 0.83,
         height: screenHeight * 0.35,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(40),
+          borderRadius: BorderRadius.circular(screenHeight * 0.042),
           color: grey3,
         ),
         child: Column(
@@ -143,7 +143,7 @@ class _PassengerInformationState extends State<PassengerInformation> {
                         labelText: "Month",
                         labelStyle: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 12,
+                            fontSize: screenHeight * 0.013,
                             color: grey2
                         ),
                         //contentPadding: EdgeInsets.only(bottom: 5),
@@ -171,7 +171,7 @@ class _PassengerInformationState extends State<PassengerInformation> {
                         labelText: "Day",
                         labelStyle: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 12,
+                            fontSize: screenHeight * 0.013,
                             color: grey2
                         ),
                         //contentPadding: EdgeInsets.only(bottom: 5),

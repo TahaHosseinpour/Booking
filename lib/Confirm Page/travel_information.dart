@@ -36,7 +36,7 @@ Container TravelInformation(BuildContext context , User currentUser , Ticket fut
     height: screenHeight * 0.3,
     padding: EdgeInsets.only( top: screenHeight * 0.006, bottom: screenHeight * 0.02, right: screenWidth * 0.079, left: screenWidth * 0.079),
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(35),
+      borderRadius: BorderRadius.circular(screenHeight * 0.037),
       color: Colors.white,
     ),
     child: Column(
@@ -56,28 +56,24 @@ Container TravelInformation(BuildContext context , User currentUser , Ticket fut
               Container(
                 // width:screenWidth * 0.12,
                 height: screenHeight * 0.028,
-                child: FittedBox(
-                  child: Text("Origin",
+                child: Text("Origin",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                     ),
-                  ),
                 ),
               ),
               Container(
                 // width:screenWidth * 0.158,
                 height: screenHeight * 0.028,
-                child: FittedBox(
-                  child: Text(futureTravel.origin,
+                child: Text(futureTravel.origin,
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                       color: grey2,
                     ),
-                  ),
                 ),
               ),
             ],
@@ -90,28 +86,24 @@ Container TravelInformation(BuildContext context , User currentUser , Ticket fut
               Container(
                 // width:screenWidth * 0.24,
                 height: screenHeight * 0.028,
-                child: FittedBox(
-                  child: Text("Destination",
+                child: Text("Destination",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                     ),
-                  ),
                 ),
               ),
               Container(
                 // width:screenWidth * 0.16,
                 height: screenHeight * 0.028,
-                child: FittedBox(
-                  child: Text(futureTravel.destination,
+                child: Text(futureTravel.destination,
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                       color: grey2,
                     ),
-                  ),
                 ),
               ),
             ],
@@ -124,28 +116,24 @@ Container TravelInformation(BuildContext context , User currentUser , Ticket fut
               Container(
                 // width:screenWidth * 0.25,
                 height: screenHeight * 0.028,
-                child: FittedBox(
-                  child: Text("Date & Time",
+                child: Text("Date & Time",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                     ),
-                  ),
                 ),
               ),
               Container(
                 // width:screenWidth * 0.27,
                 height: screenHeight * 0.028,
-                child: FittedBox(
-                  child: Text("${futureTravel.departureTime.day} ${monthName} - ${futureTravel.departureTime.hour}:${futureTravel.departureTime.minute}",
+                child: Text("${futureTravel.departureTime.day} ${monthName} - ${futureTravel.departureTime.hour}:${futureTravel.departureTime.minute}",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                       color: grey2,
                     ),
-                  ),
                 ),
               ),
             ],
@@ -158,28 +146,24 @@ Container TravelInformation(BuildContext context , User currentUser , Ticket fut
               Container(
                 // width:screenWidth * 0.2,
                 height: screenHeight * 0.028,
-                child: FittedBox(
                   child: Text("Company",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                     ),
-                  ),
                 ),
               ),
               Container(
                 // width:screenWidth * 0.24,
                 height: screenHeight * 0.028,
-                child: FittedBox(
                   child: Text(futureTravel.companyName,
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                       color: grey2,
                     ),
-                  ),
                 ),
               ),
             ],
@@ -192,28 +176,24 @@ Container TravelInformation(BuildContext context , User currentUser , Ticket fut
               Container(
                 // width:screenWidth * 0.27,
                 height: screenHeight * 0.028,
-                child: FittedBox(
-                  child: Text("Flight Number",
+            child: Text("Flight Number",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                     ),
-                  ),
                 ),
               ),
               Container(
                 // width:screenWidth * 0.12,
                 height: screenHeight * 0.028,
-                child: FittedBox(
-                  child: Text(futureTravel.id.toString(),
+                child: Text(futureTravel.id.toString(),
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                       color: grey2,
                     ),
-                  ),
                 ),
               ),
             ],
@@ -226,28 +206,24 @@ Container TravelInformation(BuildContext context , User currentUser , Ticket fut
               Container(
                 // width:screenWidth * 0.11,
                 height: screenHeight * 0.028,
-                child: FittedBox(
-                  child: Text("Class",
+                child: Text("Class",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                     ),
-                  ),
                 ),
               ),
               Container(
                 // width:screenWidth * 0.18,
                 height: screenHeight * 0.028,
-                child: FittedBox(
-                  child: Text(travelCla,
+                child: Text(travelCla,
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                       color: grey2,
                     ),
-                  ),
                 ),
               ),
             ],

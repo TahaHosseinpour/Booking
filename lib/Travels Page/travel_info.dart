@@ -44,12 +44,12 @@ class _TravelInfoState extends State<TravelInfo> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: EdgeInsets.only(bottom: screenHeight * 0.013),
       child: Container(
         padding: EdgeInsets.only(bottom: screenHeight * 0.007),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(35),
+          borderRadius: BorderRadius.circular(screenHeight * 0.037),
         ),
         width:screenWidth * 0.83 ,
         height: screenHeight * 0.182,
@@ -73,7 +73,7 @@ class _TravelInfoState extends State<TravelInfo> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 6,),
+                  SizedBox(width: screenWidth * 0.013,),
                   Container(
                     child: Image.asset(companyLogoPath!,
                       height: screenHeight * 0.032,

@@ -11,7 +11,8 @@ class TabButton extends StatefulWidget {
   String rightText;
   double height;
   FontWeight fontWeight = FontWeight.w700;
-  double fontSize = 20;
+  double fontSize =20;
+
 
 
 
@@ -47,10 +48,12 @@ class _TabButtonState extends State<TabButton> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
+
+
     return Column(
       children: [
         ClipRRect(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(screenHeight * 0.042),
         child: Container(
           width: screenWidth * 0.83,
           height: widget.height,
@@ -70,7 +73,7 @@ class _TabButtonState extends State<TabButton> {
                 elevation: 0,
                 primary: leftButtonIsActive ? yellow1 : yellow2,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(screenHeight * 0.042),
 
                 ),
                 side: BorderSide.none
@@ -100,7 +103,7 @@ class _TabButtonState extends State<TabButton> {
                     elevation: 0,
                     primary: rightButtonIsActive ? yellow1 : yellow2,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40),
+                      borderRadius: BorderRadius.circular(screenHeight * 0.042),
                       side: BorderSide.none,
                       ),
                     ),

@@ -41,7 +41,7 @@ class _TransactionItemState extends State<TransactionItem> {
       child: Row(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(screenHeight * 0.011), bottomLeft: Radius.circular(screenHeight * 0.011)),
             child: Container(
               color: widget.color,
               width: screenWidth * 0.272,
@@ -79,7 +79,7 @@ class _TransactionItemState extends State<TransactionItem> {
             width: screenWidth * 0.002,
           ),
           ClipRRect(
-            borderRadius: BorderRadius.only(topRight: Radius.circular(10) , bottomRight: Radius.circular(10)),
+            borderRadius: BorderRadius.only(topRight: Radius.circular(screenHeight * 0.011) , bottomRight: Radius.circular(screenHeight * 0.011)),
             child: Container(
               color: widget.color,
               width: screenWidth * 0.272,
@@ -100,7 +100,7 @@ class _TransactionItemState extends State<TransactionItem> {
     );
 
     Widget backCard = ClipRRect(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(screenHeight * 0.011),
       child: Container(
         height: screenHeight * 0.040,
         color: widget.color,

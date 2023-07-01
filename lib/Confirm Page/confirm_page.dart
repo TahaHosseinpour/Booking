@@ -6,6 +6,9 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'dart:math';
+
+import 'package:booking/global.dart';
+
 import '../Information/colors.dart';
 import 'package:booking/Database/travel.dart';
 import 'package:booking/Database/user.dart';
@@ -28,7 +31,7 @@ class ConfirmPage extends StatefulWidget{
   User currentUser;
   static bool result = false;
   static bool createTransactionResult = false;
-  List<Passenger> passengerList;
+  List<Passenger> passengerList = [];
 
 
   ConfirmPage({
@@ -95,14 +98,12 @@ class _ConfirmPage extends State<ConfirmPage> {
                     margin: EdgeInsets.only(right: screenWidth * 0.48, top: screenHeight * 0.012),
                     width: screenWidth * 0.38,
                     height: screenHeight * 0.048,
-                    child: const FittedBox(
-                      child: Text("Confirm",
+                    child: Text("Confirm",
                         style: TextStyle(
-                          fontSize: 34,
+                          fontSize: screenHeight * 0.036,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                         ),
-                      ),
                     ),
                   ),
                 ],
@@ -112,7 +113,7 @@ class _ConfirmPage extends State<ConfirmPage> {
                 width: screenWidth,
                 color: grey3,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     SvgPicture.asset('assets/images/local.svg',
                       height: screenHeight * 0.03,
@@ -178,7 +179,7 @@ class _ConfirmPage extends State<ConfirmPage> {
         bottomNavigationBar: Container(
           height:screenHeight * 0.29,
           decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(screenHeight * 0.037), topRight: Radius.circular(screenHeight * 0.037)),
             color: yellow2,
           ),
           child: Column(
@@ -190,29 +191,25 @@ class _ConfirmPage extends State<ConfirmPage> {
                   Container(
                     width: screenWidth * 0.22,
                     height: screenHeight * 0.048,
-                    child: FittedBox(
-                      child: Text('Price :',
+                    child: Text('Price :',
                         style: TextStyle(
-                          fontSize: 34,
+                          fontSize: screenHeight * 0.035,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w700,
                           color: grey2,
                         ),
-                      ),
                     ),
                     margin: EdgeInsets.only(left: screenWidth * 0.17),
                   ),
                   Container(
                     width: screenWidth * 0.26,
                     height: screenHeight * 0.07,
-                    child: FittedBox(
-                      child: Text('${widget.futureTravel.cost}\$',
+                    child: Text('${widget.futureTravel.cost}\$',
                         style: TextStyle(
-                          fontSize: 50,
+                          fontSize: screenHeight * 0.053,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w700,
                         ),
-                      ),
                     ),
                     margin: EdgeInsets.only(right: screenWidth * 0.17),
                   ),
@@ -273,7 +270,7 @@ class _ConfirmPage extends State<ConfirmPage> {
     String jsonString = json.encode(jsonRequest);
     List<int> bytes = utf8.encode(jsonString);
 
-    await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+    await Socket.connect(Global.ip,Global.port).then((serverSocket) async{
       serverSocket.encoding = utf8;
       serverSocket.add(bytes);
       await serverSocket.flush();
@@ -326,7 +323,7 @@ class _ConfirmPage extends State<ConfirmPage> {
     String jsonString = json.encode(jsonRequest);
     List<int> bytes = utf8.encode(jsonString);
 
-    await Socket.connect('192.168.1.9',8000).then((serverSocket) async{
+    await Socket.connect(Global.ip,Global.port).then((serverSocket) async{
       serverSocket.encoding = utf8;
       serverSocket.add(bytes);
       await serverSocket.flush();

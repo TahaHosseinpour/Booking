@@ -32,7 +32,7 @@ Padding ticketItem(BuildContext context,User currentUser ,int passengersNumber,d
     child: Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(35),
+        borderRadius: BorderRadius.circular(screenHeight * 0.036),
       ),
       width: screenWidth * 0.83,
       height: screenHeight * 0.23,
@@ -181,7 +181,7 @@ Padding ticketItem(BuildContext context,User currentUser ,int passengersNumber,d
                 height:  screenHeight * 0.018,
                 decoration: BoxDecoration(
                   color: yellow1,
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(screenHeight * 0.005),
                 ),
                 child: Text(travelClass,
                   textAlign: TextAlign.center,
@@ -229,7 +229,7 @@ Padding ticketItem(BuildContext context,User currentUser ,int passengersNumber,d
                     backgroundColor: yellow1,
                     fixedSize: Size(screenWidth * 0.35, screenHeight * 0.055),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(70),
+                      borderRadius: BorderRadius.circular(screenHeight * 0.075),
                     ),
                   ),
                   child: Text("Buy",

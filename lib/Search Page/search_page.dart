@@ -94,7 +94,7 @@ class _SearchPageState extends State<SearchPage> {
               Back(context , imagePa),
               Center(
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
+                  borderRadius: BorderRadius.circular(screenHeight * 0.053),
                   child: Container(
                     // decoration: BoxDecoration(
                     //   borderRadius: BorderRadius.circular(70),
@@ -247,7 +247,7 @@ class _SearchPageState extends State<SearchPage> {
                                    // SizedBox(width: screenWidth * 0.024,),
                                     Container(
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius: BorderRadius.circular(screenHeight * 0.011),
                                           color: Colors.white,
                                         ),
                                         height: screenHeight * 0.032,
@@ -269,7 +269,7 @@ class _SearchPageState extends State<SearchPage> {
                                                   width: screenWidth * 0.046,
                                                 ),
                                               ),
-                                              margin: EdgeInsets.only(left: 2.22),
+                                              margin: EdgeInsets.only(left: screenWidth * 0.005),
                                             ),
                                             Container(
                                               child: Text(adultPassengersNumber.toString(),
@@ -291,7 +291,7 @@ class _SearchPageState extends State<SearchPage> {
                                                   width: screenWidth * 0.046,
                                                 ),
                                             ),
-                                              margin: EdgeInsets.only(right: 2.22),
+                                              margin: EdgeInsets.only(right: screenWidth * 0.005),
                                             ),
                                           ],
                                         )
@@ -299,7 +299,7 @@ class _SearchPageState extends State<SearchPage> {
                                    // SizedBox(width: screenWidth * 0.081,),
                                     Container(
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius: BorderRadius.circular(screenHeight * 0.011),
                                           color: Colors.white,
                                         ),
                                         height: screenHeight * 0.032,
@@ -321,7 +321,7 @@ class _SearchPageState extends State<SearchPage> {
                                                   width: screenWidth * 0.046,
                                                 ),
                                               ),
-                                              margin: EdgeInsets.only(left: 2.22),
+                                              margin: EdgeInsets.only(left: screenWidth * 0.005),
                                             ),
                                             Container(
                                               child: Text(childPassengersNumber.toString(),
@@ -380,7 +380,7 @@ class _SearchPageState extends State<SearchPage> {
                                           child:FittedBox(
                                             child:  Text("Departure",
                                               style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: screenHeight * 0.012,
                                                 fontFamily: 'Poppins',
                                               ),
                                             ),
@@ -412,7 +412,7 @@ class _SearchPageState extends State<SearchPage> {
                                           child: FittedBox(
                                             child: Text("Back",
                                               style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: screenHeight * 0.012,
                                                 fontFamily: 'Poppins',
                                               ),
                                             ),

@@ -37,20 +37,18 @@ class _TransactionsPageState extends State<TransactionsPage> {
                   decoration:  BoxDecoration(
                     color: yellow2,
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(60),
-                      bottomRight: Radius.circular(60),
+                      bottomLeft: Radius.circular(screenHeight * 0.064),
+                      bottomRight: Radius.circular(screenHeight * 0.064),
                     ),
                   ),
                   child: Container(
                     height: screenHeight * 0.055,
-                    child: FittedBox(
-                      child: Text("Transactions",
+                    child: Text("Transactions",
                         style: TextStyle(
-                            fontSize: 34,
+                            fontSize: screenHeight * 0.035,
                             fontWeight: FontWeight.w400,
                             fontFamily: 'Poppins'
                         ),
-                      ),
                     ),
                   )
               ),
@@ -66,7 +64,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                       child: Row(
                         children: [
                           ClipRRect(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(40)),
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(screenHeight * 0.042)),
                             child: Container(
                               color: green3,
                               width: screenWidth * 0.272,
@@ -104,7 +102,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                             width: screenWidth * 0.002,
                           ),
                           ClipRRect(
-                            borderRadius: BorderRadius.only(topRight: Radius.circular(40)),
+                            borderRadius: BorderRadius.only(topRight: Radius.circular(screenHeight * 0.042)),
                             child: Container(
                               color: green3,
                               width: screenWidth * 0.272,

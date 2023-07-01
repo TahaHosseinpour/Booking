@@ -17,7 +17,7 @@ Container Price(BuildContext context,String button_name ,Travel futureTravel , U
   return Container(
     height:screenHeight * 0.29,
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
+      borderRadius: BorderRadius.only(topLeft: Radius.circular(screenHeight * 0.037), topRight: Radius.circular(screenHeight * 0.037)),
       color: yellow2,
     ),
     child: Column(
@@ -33,7 +33,7 @@ Container Price(BuildContext context,String button_name ,Travel futureTravel , U
                 child: FittedBox(
                   child: Text('Price :',
                     style: TextStyle(
-                      fontSize: 34,
+                      fontSize: screenHeight * 0.036,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                       color:grey2,
@@ -48,7 +48,7 @@ Container Price(BuildContext context,String button_name ,Travel futureTravel , U
                 child: FittedBox(
                   child: Text('${futureTravel.cost}\$',
                     style: TextStyle(
-                      fontSize: 50,
+                      fontSize: screenHeight * 0.053,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                     ),

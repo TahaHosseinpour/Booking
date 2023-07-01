@@ -33,27 +33,23 @@ class _AccountStaticBoxState extends State<AccountStaticBox> {
               children: [
                 Container(
                   height: screenHeight * 0.03,
-                  child: FittedBox(
                     child:  Text("Username",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: screenHeight * 0.021,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:green3,
                       ),
-                    ),
                   ),
                 ),
                 Container(
                   height: screenHeight * 0.025,
-                  child: FittedBox(
                     child:  Text(widget.username,
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: screenHeight * 0.021,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                       ),
-                    ),
                   ),
                 ),
               ],
@@ -65,15 +61,13 @@ class _AccountStaticBoxState extends State<AccountStaticBox> {
               children: [
                 Container(
                   height: screenHeight * 0.03,
-                  child: FittedBox(
                     child:  Text("Password",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: screenHeight * 0.021,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:green3,
                       ),
-                    ),
                   ),
                 ),
                 Container(
@@ -83,14 +77,12 @@ class _AccountStaticBoxState extends State<AccountStaticBox> {
                     children: [
                       Container(
                         height: screenHeight * 0.025,
-                        child: FittedBox(
                           child:  Text(widget.password,
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: screenHeight * 0.021,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w400,
                             ),
-                          ),
                         ),
                       ),
                       SizedBox(width: screenWidth * 0.03,),
@@ -119,27 +111,23 @@ class _AccountStaticBoxState extends State<AccountStaticBox> {
               children: [
                 Container(
                   height: screenHeight * 0.03,
-                  child: FittedBox(
                     child:  Text("Email",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: screenHeight * 0.021,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:green3,
                       ),
-                    ),
                   ),
                 ),
                 Container(
                   height: screenHeight * 0.025,
-                  child: FittedBox(
                     child:  Text(widget.email,
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: screenHeight * 0.021,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                       ),
-                    ),
                   ),
                 ),
               ],

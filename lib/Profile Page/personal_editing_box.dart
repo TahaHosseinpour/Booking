@@ -71,15 +71,13 @@ class _PersonalEditingBoxState extends State<PersonalEditingBox> {
             children: [
               SizedBox(
                 height: screenHeight * 0.03,
-                child: FittedBox(
                   child:  Text("Phone",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: screenHeight * 0.021,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                       color:green3,
                     ),
-                  ),
                 ),
               ),
               SizedBox(
@@ -90,9 +88,9 @@ class _PersonalEditingBoxState extends State<PersonalEditingBox> {
                     SizedBox(
                       width: screenWidth * 0.348,
                       height: screenHeight * 0.020,
-                      child: const TextField(
+                      child: TextField(
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: screenHeight * 0.019,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                           color:Colors.black,
@@ -108,7 +106,7 @@ class _PersonalEditingBoxState extends State<PersonalEditingBox> {
                             hintStyle: TextStyle(
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w400,
-                              fontSize: 13,
+                              fontSize: screenHeight * 0.014,
                               color: Color.fromARGB(255, 135, 135, 135),
                             ),
                         ),
@@ -116,16 +114,14 @@ class _PersonalEditingBoxState extends State<PersonalEditingBox> {
                     ),
                     SizedBox(
                       height: screenHeight * 0.020,
-                      child: const FittedBox(
                         child: Text(
                           ".",
                           style: TextStyle(
                               fontFamily: 'Poppins',
-                              fontSize: 11,
+                              fontSize: screenHeight * 0.012,
                               fontWeight: FontWeight.w400,
                               color: Color.fromRGBO(202, 44, 44, 1)
                           ),
-                        ),
                       ),
                     )
                   ],
@@ -144,15 +140,13 @@ class _PersonalEditingBoxState extends State<PersonalEditingBox> {
               children: [
                 SizedBox(
                   height: screenHeight * 0.03,
-                  child: FittedBox(
                     child:  Text("ID",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: screenHeight * 0.021,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:green3,
                       ),
-                    ),
                   ),
                 ),
                 SizedBox(
@@ -165,13 +159,13 @@ class _PersonalEditingBoxState extends State<PersonalEditingBox> {
                         height: screenHeight * 0.020,
                         child: TextField(
                           controller: _idController,
-                          style: const TextStyle(
-                            fontSize: 18,
+                          style: TextStyle(
+                            fontSize: screenHeight * 0.019,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w400,
                             color:Colors.black,
                           ),
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             border: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color.fromRGBO(198, 198, 198, 1),
@@ -182,7 +176,7 @@ class _PersonalEditingBoxState extends State<PersonalEditingBox> {
                             hintStyle: TextStyle(
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w400,
-                              fontSize: 13,
+                              fontSize :screenHeight * 0.014,
                               color: Color.fromARGB(255, 135, 135, 135),
                             ),
                           ),
@@ -190,16 +184,14 @@ class _PersonalEditingBoxState extends State<PersonalEditingBox> {
                       ),
                       SizedBox(
                         height: screenHeight * 0.020,
-                        child: const FittedBox(
                           child: Text(
                             "Error",
                             style: TextStyle(
                                 fontFamily: 'Poppins',
-                                fontSize: 11,
+                                fontSize: screenHeight * 0.012,
                                 fontWeight: FontWeight.w400,
                                 color: Color.fromRGBO(202, 44, 44, 1)
                             ),
-                          ),
                         ),
                       )
                     ],
@@ -218,15 +210,13 @@ class _PersonalEditingBoxState extends State<PersonalEditingBox> {
               children: [
                 SizedBox(
                   height: screenHeight * 0.03,
-                  child: FittedBox(
                     child:  Text("Birthday",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: screenHeight * 0.021,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:green3,
                       ),
-                    ),
                   ),
                 ),
                 SizedBox(
@@ -237,9 +227,9 @@ class _PersonalEditingBoxState extends State<PersonalEditingBox> {
                       SizedBox(
                         width: screenWidth * 0.348,
                         height: screenHeight * 0.020,
-                        child: const TextField(
+                        child: TextField(
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: screenHeight * 0.019,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w400,
                             color:Colors.black,
@@ -255,7 +245,7 @@ class _PersonalEditingBoxState extends State<PersonalEditingBox> {
                             hintStyle: TextStyle(
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w400,
-                              fontSize: 13,
+                              fontSize: screenHeight * 0.014,
                               color: Color.fromARGB(255, 135, 135, 135),
                             ),
                           ),
@@ -263,16 +253,14 @@ class _PersonalEditingBoxState extends State<PersonalEditingBox> {
                       ),
                       SizedBox(
                         height: screenHeight * 0.020,
-                        child: const FittedBox(
                           child: Text(
                             "Error",
                             style: TextStyle(
                                 fontFamily: 'Poppins',
-                                fontSize: 11,
+                                fontSize: screenHeight * 0.012,
                                 fontWeight: FontWeight.w400,
                                 color: Color.fromRGBO(202, 44, 44, 1)
                             ),
-                          ),
                         ),
                       )
                     ],

@@ -27,7 +27,7 @@ class _SignInState extends State<SignIn> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     TabButton SignInSignUp = TabButton(leftText: "Log In", rightText: "Sign Up", height: screenHeight * 0.076);
-    SignInSignUp.fontSize = 30;
+    SignInSignUp.fontSize = screenHeight * 0.032;
     SignInSignUp.fontWeight = FontWeight.w400;
 
 
@@ -87,7 +87,7 @@ class _SignInState extends State<SignIn> {
             Container(
               margin: EdgeInsets.only(bottom: screenHeight * 0.04,),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(40),
+                borderRadius: BorderRadius.circular(screenHeight * 0.042),
                 child: Container(
                   width: screenWidth * 0.832,
                   height: screenHeight * 0.461,

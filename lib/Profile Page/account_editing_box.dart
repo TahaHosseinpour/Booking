@@ -37,15 +37,13 @@ class _AccountEditingBoxState extends State<AccountEditingBox> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("Username",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
                   ),
-                ),
               ),
             ),
             SizedBox(
@@ -62,13 +60,13 @@ class _AccountEditingBoxState extends State<AccountEditingBox> {
                           username = value;
                         });
                       },
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style:  TextStyle(
+                        fontSize: screenHeight * 0.019,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:Colors.black,
                       ),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color.fromRGBO(198, 198, 198, 1),
@@ -79,7 +77,7 @@ class _AccountEditingBoxState extends State<AccountEditingBox> {
                         hintStyle: TextStyle(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
-                          fontSize: 13,
+                          fontSize: screenHeight * 0.014,
                           color: Color.fromARGB(255, 135, 135, 135),
                         ),
                       ),
@@ -87,16 +85,14 @@ class _AccountEditingBoxState extends State<AccountEditingBox> {
                   ),
                   SizedBox(
                     height: screenHeight * 0.020,
-                    child: const FittedBox(
                       child: Text(
                         ".",
                         style: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 11,
+                            fontSize: screenHeight * 0.012,
                             fontWeight: FontWeight.w400,
                             color: Color.fromRGBO(202, 44, 44, 1)
                         ),
-                      ),
                     ),
                   )
                 ],
@@ -109,15 +105,13 @@ class _AccountEditingBoxState extends State<AccountEditingBox> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("Password",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
                   ),
-                ),
               ),
             ),
             SizedBox(
@@ -134,13 +128,13 @@ class _AccountEditingBoxState extends State<AccountEditingBox> {
                           password = value;
                         });
                       },
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: screenHeight * 0.019,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:Colors.black,
                       ),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color.fromRGBO(198, 198, 198, 1),
@@ -151,7 +145,7 @@ class _AccountEditingBoxState extends State<AccountEditingBox> {
                         hintStyle: TextStyle(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
-                          fontSize: 13,
+                          fontSize: screenHeight * 0.014,
                           color: Color.fromARGB(255, 135, 135, 135),
                         ),
                       ),
@@ -159,16 +153,14 @@ class _AccountEditingBoxState extends State<AccountEditingBox> {
                   ),
                   SizedBox(
                     height: screenHeight * 0.020,
-                    child: const FittedBox(
                       child: Text(
                         ".",
                         style: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 11,
+                            fontSize: screenHeight * 0.012,
                             fontWeight: FontWeight.w400,
                             color: Color.fromRGBO(202, 44, 44, 1)
                         ),
-                      ),
                     ),
                   )
                 ],
@@ -181,15 +173,13 @@ class _AccountEditingBoxState extends State<AccountEditingBox> {
           children: [
             SizedBox(
               height: screenHeight * 0.03,
-              child: FittedBox(
                 child:  Text("Email",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: screenHeight * 0.021,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color:green3,
                   ),
-                ),
               ),
             ),
             SizedBox(
@@ -206,13 +196,13 @@ class _AccountEditingBoxState extends State<AccountEditingBox> {
                           email = value;
                         });
                       },
-                      style: const TextStyle(
-                        fontSize: 13,
+                      style: TextStyle(
+                        fontSize: screenHeight * 0.014,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         color:Colors.black,
                       ),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color.fromRGBO(198, 198, 198, 1),
@@ -223,7 +213,7 @@ class _AccountEditingBoxState extends State<AccountEditingBox> {
                         hintStyle: TextStyle(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
-                          fontSize: 13,
+                          fontSize: screenHeight * 0.014,
                           color: Color.fromARGB(255, 135, 135, 135),
                         ),
                       ),
@@ -231,16 +221,14 @@ class _AccountEditingBoxState extends State<AccountEditingBox> {
                   ),
                   SizedBox(
                     height: screenHeight * 0.020,
-                    child: const FittedBox(
                       child: Text(
                         ".",
                         style: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 11,
+                            fontSize: screenHeight * 0.012,
                             fontWeight: FontWeight.w400,
                             color: Color.fromRGBO(202, 44, 44, 1)
                         ),
-                      ),
                     ),
                   )
                 ],
